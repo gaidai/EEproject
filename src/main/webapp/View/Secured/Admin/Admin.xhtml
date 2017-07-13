@@ -1,0 +1,63 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:jr="http://jasperreportjsf.sf.net/tld/jasperreports-jsf-1_2.tld"
+      xmlns:p="http://primefaces.org/ui">
+    <h:head>
+        <title>User Manager</title>
+    </h:head>
+   
+    <h:body>
+        
+       
+        <h:form id="form1">
+            <p:outputLabel value="Welcome Admin "></p:outputLabel>
+    <h:outputLabel value="#{loginController.username}"></h:outputLabel>
+        
+  <h:outputLink value="#{request.contextPath}/logout">logout</h:outputLink> 
+                                
+
+         <p:spacer height="1px"></p:spacer>
+        <center><h2>User Manager</h2></center>     
+                                 
+           <center><h3>Users</h3></center>    
+     <p:dataTable  value="#{userBean.userList}" var="user" editable="true" rowKey="#{user[0]}"  paginator="true" rows="5" id="userTable">
+      <p:column selectionMode="multiple" headerText="Select" style="width:6%" />
+                <p:column headerText="UserId" style="text-align: left;">
+                    <h:outputText value="#{user[0]}"/>
+                </p:column>
+                
+      <p:column filterBy="#{user.firstName}"  filterOptions=""  filterMatchMode="startsWith" headerText="First Name">
+                     <h:outputText value="#{user[1]}"/>
+                    </p:column>
+            
+                    <p:column headerText="Last Name">
+                        <h:outputText value="#{user[2]}"/>
+                    </p:column>
+               
+                <p:column headerText="UserName">
+                    <h:outputText value="#{user[3]}"/>
+                    </p:column>
+                <p:column headerText="Email">
+                    <h:outputText value="#{user[4]}"/>
+                    </p:column>
+                    <p:column headerText="Password" >
+                        <h:outputText value="#{user[5]}">
+                     <f:convertDateTime type="date" pattern="dd-MMM-yyyy"/>
+                         </h:outputText>
+                   </p:column>
+                    <p:column headerText="Status">
+                        <h:outputText value="#{user[6]}"/>
+                    </p:column>
+                     <p:column headerText="Role">
+                         <h:outputText value="#{user[7]}"/>
+                    </p:column>                   
+               
+            </p:dataTable>
+        </h:form>
+
+    </h:body>
+</html>
+
