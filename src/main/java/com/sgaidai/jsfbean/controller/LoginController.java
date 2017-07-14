@@ -10,11 +10,13 @@ import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.ServletRequest;
 import javax.servlet.ServletResponse;
+import lombok.Getter;
+import lombok.Setter;
 
 
-
+@Getter
+@Setter
 @Named(value = "loginController")
-
 @SessionScoped
 public class LoginController implements Serializable {
        private String username;
@@ -46,25 +48,6 @@ public class LoginController implements Serializable {
         return null;
     }
     
-    
-   
-
-   
-     public String getUsername() {
-        return username;
-    }
-
-    public void setUsername(String username) {
-        this.username = username;
-    }
-
-    public String getPassword() {
-        return password;
-    }
-
-    public void setPassword(String password) {
-        this.password = password;
-    }
 }
 
 

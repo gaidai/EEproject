@@ -18,7 +18,27 @@
 	
     <b:container>
         <b:row >
-         
+            <b:column  col-lg="4"  >
+                <h1>Add a Person</h1>
+                
+                <h:form>
+                    <b:inputText value="#{person.name}" label="name" >
+                        <f:facet name="prepend">
+                            <i class="fa  fa-pencil fa-lg " />
+                        </f:facet>                       
+                    </b:inputText>
+                    <b:inputText value="#{person.country}" label="country" >
+                        <f:facet name="prepend">
+                            <i class="fa  fa-pencil fa-lg " />
+                        </f:facet>                      
+                    </b:inputText>
+                   
+                    <br/>       
+                    <h:commandButton action="#{personService.addPerson(person)}" value="Add Person" class="btn btn-success"></h:commandButton>               
+                </h:form>
+               
+                
+            </b:column>
             
             <b:column  span="1" col-lg="7"  >
                 <h:form>
@@ -28,6 +48,9 @@
                         <b:dataTableColumn value="#{p.country}" label="country"/>
                         
                  
+                        <b:dataTableColumn label="*">
+                            <h:commandLink action="#{personService.deletePerson(p)}"><i class="fa  fa-trash fa-lg " /></h:commandLink>
+                       </b:dataTableColumn>
                     </b:dataTable>
                 </h:form>   
                

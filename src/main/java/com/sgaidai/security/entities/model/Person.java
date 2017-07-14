@@ -1,9 +1,8 @@
 package com.sgaidai.security.entities.model;
 
 import java.io.Serializable;
-import javax.enterprise.context.SessionScoped;
 import javax.faces.bean.ManagedBean;
-import javax.inject.Named;
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -15,22 +14,30 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 import lombok.ToString;
 
-@Getter
-@Setter
-@NoArgsConstructor
+
 @AllArgsConstructor
+@NoArgsConstructor
 @ToString
-@Named 
 @ManagedBean(name="person")
-@SessionScoped
 @Table(name="Person")
 @Entity
 public class Person implements Serializable {
 
-	@Id
-        @GeneratedValue(strategy=GenerationType.IDENTITY)
-	private Integer id;
-	private String name;
-        private String country;
+    @Getter
+    @Setter
+    @Id
+    @Column(name="id")
+    @GeneratedValue(strategy=GenerationType.IDENTITY)
+    private int id;
+    
+    @Getter
+    @Setter
+    @Column(name="name")
+    private String name;
+    
+    @Getter
+    @Setter
+    @Column(name="country")
+    private String country;
 	
 }
