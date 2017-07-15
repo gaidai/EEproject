@@ -8,19 +8,17 @@ import javax.enterprise.context.RequestScoped;
 import javax.inject.Named;
 
 import javax.persistence.EntityManager;
-import javax.persistence.PersistenceContext;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
-import org.springframework.web.bind.annotation.RequestMapping;
 
 @Named
 @Service
 @Repository
 @RequestScoped
-public class PersonDaoImpl implements PersonDao {
+public class PersonDAOImpl implements PersonDAO {
     
         @Autowired
 	private EntityManager em;

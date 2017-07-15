@@ -14,8 +14,8 @@
             .form-signin {
                 margin: 0 auto;
                 max-width: 320px;
-                padding: 15px;
-            }
+                padding: 50px;
+            } 
         </style>
  </h:head>
 <body style="padding-top: 60px; background-color: #add;">
@@ -26,13 +26,12 @@
                 Reason : Bad Credentials!Please Try Again.
         </div>
     </c:if>
-    <b:container>
+    
         <h:form styleClass="form-signin" prependId="false" id="form">
-            <b:row> <h2 class="form-signin-heading">Login</h2> </b:row>
             
             <b:row> 
                 <b:icon name="user" /> &nbsp;
-                <p:inputText value="#{loginController.username}" id="username" required="true" requiredMessage="UserName is required"/>
+                <p:inputText value="#{loginController.username}" id="username" required="true" size="20" requiredMessage="UserName is required"/>
             </b:row>
             <b:row> 
                 <b:iconAwesome name="key" /> &nbsp;
@@ -43,7 +42,16 @@
                 <b:commandButton action="#{loginController.login()}" value="Login" ajax="false" look="primary " icon="log-in"  size="lg"/>
             </b:row> 
         </h:form>
-    </b:container>
+    <br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/>
+    
+    <b:button href="http://sgaidai.com" look="info"  value="sgaidai.com" icon="bookmark" />
+    
+        <h:form   >
+            <p:stack icon="/resources/images/png/Basket.png" expanded="true">
+                <p:menuitem value="Resume"  icon="/resources/images/png/Document.png" url="#"/>
+                <p:menuitem value="Music" icon="/resources/images/png/Music.png" url="#"/>
+            </p:stack>
+        </h:form>
     
 
 

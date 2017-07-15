@@ -4,7 +4,7 @@ package com.sgaidai.jsfbean.controller;
 
 
 import com.sgaidai.security.entities.model.Person;
-import com.sgaidai.springdatajpa.dao.PersonDao;
+import com.sgaidai.springdatajpa.dao.PersonDAO;
 import java.io.Serializable;
 import java.util.List;
 import javax.enterprise.context.SessionScoped;
@@ -20,7 +20,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 public class PersonService implements Serializable{
 
 	@Autowired
-	private PersonDao personDAO;
+	private PersonDAO personDAO;
 
 	
         
@@ -41,11 +41,11 @@ public class PersonService implements Serializable{
 		this.personDAO.deletePerson(p);
 
 	}
-        public void setPersonDAO(PersonDao personDAO) {
+        public void setPersonDAO(PersonDAO personDAO) {
                 this.personDAO = personDAO;
             }
 
-        public PersonDao getPersonDAO() {
+        public PersonDAO getPersonDAO() {
             return personDAO;
         }
         

@@ -11,6 +11,8 @@
 		<welcome-file>View/UnSecured/register.xhtml</welcome-file>
 	</welcome-file-list>
         
+      
+        
 	<context-param>
 		<param-name>contextConfigLocation</param-name>
 		<param-value>
