@@ -20,7 +20,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @Service
 @Repository
 @RequestScoped
-public class PersonDaoImpl implements PersonDAO {
+public class PersonDaoImpl implements PersonDao {
     
         @Autowired
 	private EntityManager em;
