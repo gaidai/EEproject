@@ -4,39 +4,49 @@
       xmlns:f="http://java.sun.com/jsf/core"
       xmlns:ui="http://java.sun.com/jsf/facelets"
       xmlns:c="http://java.sun.com/jsp/jstl/core"
+      xmlns:b="http://bootsfaces.net/ui"
       xmlns:p="http://primefaces.org/ui">
 
    
 <h:head>
         <title>Login</title>
-        
+         <style type="text/css">
+            .form-signin {
+                margin: 0 auto;
+                max-width: 320px;
+                padding: 15px;
+            }
+        </style>
  </h:head>
-<body>
-     <center><h2>Login</h2></center>
-<c:if test="${'fail' eq param.auth}">
-    <div style="color:red">
-        Login Failed!!!<br/>
-            Reason : Bad Credentials!Please Try Again.
-    </div>
-
-</c:if>
-     <center><h:form prependId="false" id="form">
-             
-            <p:panelGrid columns="2" style="border-bottom-width: 0px;">
-                <h:outputText value="UserName:"/>
+<body style="padding-top: 60px; background-color: #add;">
+     
+    <c:if test="${'fail' eq param.auth}">
+        <div style="color:red">
+            Login Failed!!!<br/>
+                Reason : Bad Credentials!Please Try Again.
+        </div>
+    </c:if>
+    <b:container>
+        <h:form styleClass="form-signin" prependId="false" id="form">
+            <b:row> <h2 class="form-signin-heading">Login</h2> </b:row>
+            
+            <b:row> 
+                <b:icon name="user" /> &nbsp;
                 <p:inputText value="#{loginController.username}" id="username" required="true" requiredMessage="UserName is required"/>
-                <h:outputText value="Password:"/>
-                <p:password value="#{loginController.password}" id="password" required="true" requiredMessage="Password is required"/>
-                                            
-            </p:panelGrid>
-             <p:spacer height="20px" width="10px">  </p:spacer>
-             <p:row ><p:selectBooleanCheckbox label="Remember Me" id="remember-me" >Remember Me </p:selectBooleanCheckbox>
-                 <h:outputText value=" " /> </p:row><br></br> 
-                 <p:row> <p:commandButton action="#{loginController.login()}" value="Login" ajax="false"/> </p:row>
-             
-              
+            </b:row>
+            <b:row> 
+                <b:iconAwesome name="key" /> &nbsp;
+                <p:password value="#{loginController.password}" id="password" required="true" requiredMessage="Password is required" placeholder="Password"/>
+            </b:row>
+            <b:row> 
+                <b:selectBooleanCheckbox id="remember-me" value="true" caption="remember me"/> &nbsp; &nbsp; &nbsp;
+                <b:commandButton action="#{loginController.login()}" value="Login" ajax="false" look="primary " icon="log-in"  size="lg"/>
+            </b:row> 
         </h:form>
-</center>
+    </b:container>
+    
+
+
 		
 </body>
 </html>

@@ -39,11 +39,10 @@ public class PersonDaoImpl implements PersonDAO {
         
         @Transactional
         @Override
-        public void deletePerson(Person l ) {
-            Person p = new Person(l.getId(),l.getName(), l.getCountry());
-            System.out.println("************ " + l.getId() + " ************");
-		p = em.merge(p);
-            this.em.remove(p);
+        public void deletePerson(Person p  ) {
+            Person del = new Person(p.getId(),p.getName(), p.getCountry());
+		del = em.merge(del);
+            this.em.remove(del);
 
 	}
 
