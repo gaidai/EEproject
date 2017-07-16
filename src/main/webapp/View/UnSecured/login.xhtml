@@ -28,7 +28,7 @@
     </c:if>
     
         <h:form styleClass="form-signin" prependId="false" id="form">
-            
+          
             <b:row> 
                 <b:icon name="user" /> &nbsp;
                 <p:inputText value="#{loginController.username}" id="username" required="true" size="20" requiredMessage="UserName is required"/>
@@ -45,16 +45,12 @@
     <br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/>
     
     <b:button href="http://sgaidai.com" look="info"  value="sgaidai.com" icon="bookmark" />
-    
-        <h:form   >
-            <p:stack icon="/resources/images/png/Basket.png" expanded="true">
-                <p:menuitem value="Resume"  icon="/resources/images/png/Document.png" url="#"/>
-                <p:menuitem value="Music" icon="/resources/images/png/Music.png" url="#"/>
-            </p:stack>
-        </h:form>
-    
-
-
-		
+    <h:form>
+        <p:stack icon="/resources/images/png/Basket.png" expanded="true">
+            <p:menuitem value="Resume"  icon="/resources/images/png/Document.png" url="http://sgaidai.com/junior.html"/>
+            <p:menuitem value="Music" icon="/resources/images/png/Music.png" url="http://sgaidai.com/multimedia.html"/>
+            <p:menuitem value="Contact" icon="/resources/images/png/Contact.png" url="http://sgaidai.com/contacts.html"/>
+        </p:stack>
+    </h:form>
 </body>
 </html>

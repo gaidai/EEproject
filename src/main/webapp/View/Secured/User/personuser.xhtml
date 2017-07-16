@@ -15,7 +15,18 @@
         
 </h:head>
 <h:body>
-	
+    <p:spacer height="10px"></p:spacer>
+    <h:form id="form1">
+        <p:outputLabel value="Welcome User "></p:outputLabel>
+        <h:outputLabel value="#{loginController.username} "></h:outputLabel>
+        <h:outputLink value="#{request.contextPath}/logout">logout</h:outputLink> 
+                                
+
+         <p:spacer height="10px"></p:spacer>
+          <a style="color: #FF0000" href="#{request.contextPath}/View/Secured/User/User.xhtml"> UserLink</a>    
+    </h:form>
+   
+           <center><h3>Persons</h3></center>   
     <b:container>
         <b:row >
             <b:column  col-lg="4"  >
@@ -58,5 +69,28 @@
             </b:column>
         </b:row>
     </b:container>
+        <b:container >
+           <b:row>
+                <p:lightBox styleClass="imagebox" id="lighbox1">  
+                    <h:outputLink value="http://www.stockvault.net/blog/wp-content/uploads/2012/07/colorfulnature-12.jpg" title="Nature 1">  
+                        *1
+                    </h:outputLink>
+
+                    <h:outputLink value="http://ndl.mgccw.com/mu3/000/685/888/sss/b23a12b470de4532aeae3d80f5ccb715_small.png" title="Nature 2">  
+                        * 2
+                    </h:outputLink>
+
+                    <h:outputLink value="http://rcysl.com/wp-content/uploads/2016/12/4K-Ultra-Cool-Nature-Pictures.jpg" title="Nature 3">  
+                        * 3
+                    </h:outputLink>
+
+                    <h:outputLink value="http://ndl.mgccw.com/mu3/000/685/888/sss/c53ae1d87b804a7d8565f243fdaba8bb_small.png" title="Nature 4">  
+                        * 4
+                    </h:outputLink>
+                </p:lightBox>
+            </b:row>       
+        </b:container>
+        <h:outputStylesheet library="webjars" name="font-awesome/4.7.0/css/font-awesome-jsf.css" />
+        <br />
 </h:body>
 </html>

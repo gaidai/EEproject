@@ -12,6 +12,7 @@ import javax.servlet.ServletRequest;
 import javax.servlet.ServletResponse;
 import lombok.Getter;
 import lombok.Setter;
+import org.springframework.security.core.authority.AuthorityUtils;
 
 
 @Getter
@@ -27,7 +28,7 @@ public class LoginController implements Serializable {
                 
         ExternalContext context = FacesContext.getCurrentInstance().getExternalContext();     
        username = context.getRequestParameterMap().get("username");
-       System.out.println("Login controller username2 is :-" + username);
+       System.out.println("Login controller username is :-" + username);
         RequestDispatcher dispatcher = ((ServletRequest) context.getRequest()).getRequestDispatcher("/login");
         dispatcher.forward((ServletRequest) context.getRequest(), (ServletResponse) context.getResponse());
         FacesContext.getCurrentInstance().responseComplete();
@@ -43,7 +44,8 @@ public class LoginController implements Serializable {
         RequestDispatcher dispatcher = ((ServletRequest) context.getRequest()).getRequestDispatcher("/logout");
         dispatcher.forward((ServletRequest) context.getRequest(), (ServletResponse) context.getResponse());
         FacesContext.getCurrentInstance().responseComplete();
-         
+        username = null;
+        
         
         return null;
     }

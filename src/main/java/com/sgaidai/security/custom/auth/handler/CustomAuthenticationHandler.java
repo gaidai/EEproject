@@ -22,6 +22,7 @@ Authentication authentication) throws ServletException, IOException {
       String userTargetUrl = "/View/Secured/User/User.xhtml";
       String adminTargetUrl = "/View/Secured/Admin/Admin.xhtml";
       Set<String> roles = AuthorityUtils.authorityListToSet(authentication.getAuthorities());
+     
       if (roles.contains("ROLE_ADMIN")) {
          getRedirectStrategy().sendRedirect(request, response, adminTargetUrl);
       } else if (roles.contains("ROLE_USER")) {
