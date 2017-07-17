@@ -1,0 +1,19 @@
+<!DOCTYPE composition PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:ui="http://java.sun.com/jsf/facelets"
+    xmlns:h="http://java.sun.com/jsf/html"
+    xmlns:sec="http://www.springframework.org/security/tags">
+
+    <sec:authorize ifAllGranted="ROLE_FOO, ROLE_BAR">
+        Lorem ipsum dolor sit amet
+    </sec:authorize>
+
+    <sec:authorize ifNotGranted="ROLE_FOO, ROLE_BAR">
+        Lorem ipsum dolor sit amet
+    </sec:authorize>
+
+    <sec:authorize ifAnyGranted="ROLE_FOO, ROLE_BAR">
+        Lorem ipsum dolor sit amet
+    </sec:authorize>
+
+</ui:composition>

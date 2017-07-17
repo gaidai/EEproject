@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+        xmlns:c="http://java.sun.com/jsp/jstl/core"
+        xmlns:f="http://xmlns.jcp.org/jsf/core"
+        xmlns:b="http://bootsfaces.net/ui"
+        xmlns:sec="http://www.springframework.org/security/tags"
+        xmlns:p="http://primefaces.org/ui">
+<h:head>
+	<title><ui:insert name="title">Название по умолчанию</ui:insert></title>
+	<style type="text/css"></style>
+        
+</h:head>
+<h:body style="padding-top: 50px; padding-bottom: 20px; background-color: #add;">
+
+        <b:navBar brand="Brand" brandHref="#" inverse="true" fixed="top">
+            <b:navbarLinks>
+                <b:navLink value="Link" href="#"></b:navLink>
+                <b:navLink value="Link" href="#"></b:navLink>
+                <b:dropMenu value="Dropdown">
+                    <b:navLink value="Action" href="#"></b:navLink>
+                    <b:navLink value="Another action" href="#"></b:navLink>
+                    <b:navLink value="Something else here" href="#"></b:navLink>
+                    <b:navLink></b:navLink>
+                    <b:navLink header="Nav header"></b:navLink>
+                    <b:navLink value="Separated link" href="#"></b:navLink>
+                    <b:navLink value="One more separated link" href="#"></b:navLink>
+                </b:dropMenu>
+                
+            </b:navbarLinks>  &nbsp; &nbsp;&nbsp; &nbsp;
+            <sec:authorize access="!isAuthenticated()">
+                 <h:form styleClass="navbar-form navbar-right">
+                    &nbsp; &nbsp;&nbsp; &nbsp;
+                    <b:button href="#{request.contextPath}/View/UnSecured/login.xhtml" value="Login" look="info" icon="chevron-right" iconAlign="right"></b:button>
+                </h:form>
+            </sec:authorize>
+            <sec:authorize access="isAuthenticated()">
+                <h:form styleClass="navbar-form navbar-right">
+                    <b:navLink style="font-size: 20"  value="Hello #{loginController.username}" >&nbsp; &nbsp;&nbsp; &nbsp;</b:navLink>
+                    <b:button href="#{request.contextPath}/logout" value="Logout" look="danger" icon="chevron-right" iconAlign="right"></b:button>
+                </h:form>
+            </sec:authorize>
+        </b:navBar>
+      <hr/>
+    <ui:insert name="content">content по умолчанию</ui:insert>
+    <hr/>
+    <h:outputText value="S.Gaidai" style="font-style:italic"/>                           
+  
+</h:body>
+</html>
