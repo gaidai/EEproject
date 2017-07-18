@@ -18,8 +18,9 @@
             } 
         </style>
  </h:head>
-<body style="padding-top: 60px; background-color: #add;">
-     
+<body style="padding-top: 30px; background-color: #add;">
+    <b:button href="#{request.contextPath}/View/UnSecured/register.xhtml" value="Register" look="primary" icon="chevron-right" size="lg" iconAlign="right"></b:button>
+    <p:spacer height="15px"/>
     <c:if test="${'fail' eq param.auth}">
         <div style="color:red">
             Login Failed!!!<br/>
@@ -45,6 +46,8 @@
     <br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/>
     
     <b:button href="http://sgaidai.com" look="info"  value="sgaidai.com" icon="bookmark" />
+    <p:spacer height="30px"/>
+    
     <h:form>
         <p:stack icon="/resources/images/png/Basket.png" expanded="true">
             <p:menuitem value="Resume"  icon="/resources/images/png/Document.png" url="http://sgaidai.com/junior.html"/>

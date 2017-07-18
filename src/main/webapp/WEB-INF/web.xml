@@ -8,7 +8,7 @@
 	
         <!-- Welcome Page -->
 	<welcome-file-list>
-		<welcome-file>View/UnSecured/register.xhtml</welcome-file>
+		<welcome-file>View/UnSecured/cameras.xhtml</welcome-file>
 	</welcome-file-list>
         
       

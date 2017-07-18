@@ -22,10 +22,10 @@
                          password-parameter="password"/>
                 <csrf disabled="true"/>
               
-		<logout logout-success-url="/View/UnSecured/login.xhtml" />
+		<logout logout-success-url="/View/UnSecured/home.xhtml" />
 		<logout invalidate-session="true"
 	delete-cookies="JSESSIONID,SPRING_SECURITY_REMEMBER_ME_COOKIE"
-			logout-success-url="/View/UnSecured/login.xhtml" />
+			logout-success-url="/View/UnSecured/home.xhtml" />
 <remember-me  key="springRocks" services-ref="rememberMeServices" />
 	</http>
     <beans:bean id="daoAuthenticationProvider" class="org.springframework.security.authentication.dao.DaoAuthenticationProvider">

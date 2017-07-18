@@ -19,7 +19,7 @@ public class CustomAuthenticationHandler extends SimpleUrlAuthenticationSuccessH
  @Override
  public void onAuthenticationSuccess(HttpServletRequest request, HttpServletResponse response, 
 Authentication authentication) throws ServletException, IOException {
-      String userTargetUrl = "/View/Secured/User/User.xhtml";
+      String userTargetUrl = "/View/UnSecured/home.xhtml";
       String adminTargetUrl = "/View/Secured/Admin/Admin.xhtml";
       Set<String> roles = AuthorityUtils.authorityListToSet(authentication.getAuthorities());
      

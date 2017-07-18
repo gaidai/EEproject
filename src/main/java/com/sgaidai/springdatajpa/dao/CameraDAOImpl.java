@@ -2,7 +2,8 @@ package com.sgaidai.springdatajpa.dao;
 
 
 
-import com.sgaidai.security.entities.model.Person;
+
+import com.sgaidai.security.entities.model.product.Camera;
 import java.util.List;
 import javax.enterprise.context.RequestScoped;
 import javax.inject.Named;
@@ -18,27 +19,28 @@ import org.springframework.transaction.annotation.Transactional;
 @Service
 @Repository
 @RequestScoped
-public class PersonDAOImpl implements PersonDAO {
+public class CameraDAOImpl implements CameraDAO {
     
         @Autowired
 	private EntityManager em;
         
         @Transactional
         @Override
-	public void addPerson(Person p) {
-		this.em.persist(p);
+	public void addCamera(Camera c) {
+		this.em.persist(c);
 	}
         
         @Transactional 
         @Override
-	public List<Person> listPersons() {
-		return this.em.createQuery("SELECT p FROM Person p").getResultList();
+	public List<Camera> listCameras() {
+		return this.em.createQuery("SELECT c FROM Camera c").getResultList();
 	}
         
         @Transactional
         @Override
-        public void deletePerson(Person p  ) {
-            Person del = new Person(p.getId(),p.getName(), p.getCountry());
+        public void deleteCamera(Camera c  ) {
+            Camera del = new Camera();
+            del = c;
 		del = em.merge(del);
             this.em.remove(del);
 

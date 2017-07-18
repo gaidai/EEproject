@@ -17,38 +17,44 @@
 </h:head>
 <h:body style="padding-top: 50px; padding-bottom: 20px; background-color: #add;">
 
-        <b:navBar brand="Brand" brandHref="#" inverse="true" fixed="top">
+        <b:navBar brand="Home" brandHref="#{request.contextPath}/View/UnSecured/home.xhtml" inverse="true" fixed="top" >
             <b:navbarLinks>
-                <b:navLink value="Link" href="#"></b:navLink>
+                <b:navLink value="Delivery" href="#"></b:navLink>
                 <b:navLink value="Link" href="#"></b:navLink>
                 <b:dropMenu value="Dropdown">
                     <b:navLink value="Action" href="#"></b:navLink>
                     <b:navLink value="Another action" href="#"></b:navLink>
                     <b:navLink value="Something else here" href="#"></b:navLink>
-                    <b:navLink></b:navLink>
                     <b:navLink header="Nav header"></b:navLink>
                     <b:navLink value="Separated link" href="#"></b:navLink>
                     <b:navLink value="One more separated link" href="#"></b:navLink>
                 </b:dropMenu>
                 
-            </b:navbarLinks>  &nbsp; &nbsp;&nbsp; &nbsp;
-            <sec:authorize access="!isAuthenticated()">
-                 <h:form styleClass="navbar-form navbar-right">
-                    &nbsp; &nbsp;&nbsp; &nbsp;
-                    <b:button href="#{request.contextPath}/View/UnSecured/login.xhtml" value="Login" look="info" icon="chevron-right" iconAlign="right"></b:button>
-                </h:form>
-            </sec:authorize>
-            <sec:authorize access="isAuthenticated()">
-                <h:form styleClass="navbar-form navbar-right">
-                    <b:navLink style="font-size: 20"  value="Hello #{loginController.username}" >&nbsp; &nbsp;&nbsp; &nbsp;</b:navLink>
-                    <b:button href="#{request.contextPath}/logout" value="Logout" look="danger" icon="chevron-right" iconAlign="right"></b:button>
-                </h:form>
-            </sec:authorize>
+            </b:navbarLinks> 
+            <b:navbarLinks pull="right" >
+                <sec:authorize access="!isAuthenticated()">
+                     <h:form styleClass="navbar-form navbar-right">
+                        &nbsp; &nbsp;&nbsp; &nbsp;
+                        <b:button href="#{request.contextPath}/View/UnSecured/login.xhtml" value="Login" look="info" icon="chevron-right" iconAlign="right"></b:button>
+                    </h:form>
+                </sec:authorize>
+                <sec:authorize access="isAuthenticated()">
+                    <h:form styleClass="navbar-form navbar-right">
+                        <b:dropMenu  value="Hello #{loginController.username} !">
+                            <b:navLink value="My profile" href="#{request.contextPath}/View/Secured/User/profile.xhtml"></b:navLink>
+                            <b:navLink value="My favorite" href="#"></b:navLink>
+                        </b:dropMenu>&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;
+
+                        <b:button href="#{request.contextPath}/logout" value="Logout" look="danger" icon="chevron-right" iconAlign="right"></b:button>
+                    </h:form>
+                </sec:authorize>
+            </b:navbarLinks>
         </b:navBar>
       <hr/>
+      
     <ui:insert name="content">content по умолчанию</ui:insert>
     <hr/>
-    <h:outputText value="S.Gaidai" style="font-style:italic"/>                           
+    <h:outputText  value="S.Gaidai" style="font-style:italic"/>                           
   
 </h:body>
 </html>
