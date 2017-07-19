@@ -10,116 +10,202 @@
 <ui:composition template="navbar.xhtml">
     <ui:define name="title">Home page</ui:define>
     <ui:define name="content"> 
-    <p:spacer height="40px"></p:spacer>
+    <p:spacer height="5px"></p:spacer>
     <div style="margin-left: 10% ">
         <p:megaMenu orientation="vertical" style="margin-top:20px">
-            <p:submenu label="TV" icon="ui-icon-check">
+            <p:submenu label="Smartphones" icon="ui-icon-check">
                 <p:column>
-                    <p:submenu label="TV.1" >
-                        <p:menuitem value="TV.1.1" url="#" />
-                        <p:menuitem value="TV.1.2" url="#" />
+                    <p:submenu label="By brand:" >
+                        <p:menuitem value="Sumsung" url="#" />
+                        <p:menuitem value="Apple" url="#" />
+                        <p:menuitem value="Sony" url="#" />
+                        <p:menuitem value="HTC" url="#" />
+                        <p:menuitem value="Huawei" url="#" />
                     </p:submenu>
-                    <p:submenu label="TV.2">
-                        <p:menuitem value="TV.2.1" url="#" />
-                        <p:menuitem value="TV.2.2" url="#" />
-                        <p:menuitem value="TV.2.3" url="#" />
+                    <p:submenu label="Accesories:">
+                        <p:menuitem value="MicroSD cards" url="#" />
+                        <p:menuitem value="Headphones" url="#" />
+                        <p:menuitem value="Cases" url="#" />
+                    </p:submenu>               
+                </p:column>
+
+                <p:column>
+                    <p:submenu label="By OS:">
+                        <p:menuitem value="Android" url="#" />
+                        <p:menuitem value="iOS" url="#" />
+                    </p:submenu>
+                    <p:submenu label="Other:" >
+                        <p:menuitem value="All Smartphones" url="#" ></p:menuitem>
                     </p:submenu>
                 </p:column>
 
                 <p:column>
-                    <p:submenu label="TV.4">
-                        <p:menuitem value="TV.4.1" url="#" />
-                        <p:menuitem value="TV.4.2" url="#" />
-                    </p:submenu>
-                    <p:submenu label="TV.5">
-                        <p:menuitem value="TV.5.1" url="#" />
-                        <p:menuitem value="TV.5.2" url="#" />
-                        <p:menuitem value="TV.5.3" url="#" />
-                    </p:submenu>
-                </p:column>
-
-                <p:column>
-                    <strong>Image</strong>
-                    <p:graphicImage name="http://surfpk.com/wp-content/uploads/2012/03/iPad3-Wallpaper-Nature-7-300x300.jpg" width="200"/>
-                </p:column>
-            </p:submenu>
-
-            <p:submenu label="Sports" icon="ui-icon-document">
-
-                <p:column>
-                    <p:submenu label="Sports.1">
-                        <p:menuitem value="Sports.1.1" url="#" />
-                        <p:menuitem value="Sports.1.2" url="#" />
-                    </p:submenu>
-                    <p:submenu label="Sports.2">
-                        <p:menuitem value="Sports.2.1" url="#" />
-                        <p:menuitem value="Sports.2.2" url="#" />
-                        <p:menuitem value="Sports.2.3" url="#" />
-                    </p:submenu>
-                </p:column>
-
-                <p:column>
-                    <p:submenu label="Sports.4">
-                        <p:menuitem value="Sports.4.1" url="#" />
-                        <p:menuitem value="Sports.4.2" url="#" />
-                    </p:submenu>
-                    <p:submenu label="Sports.5">
-                        <p:menuitem value="Sports.5.1" url="#" />
-                        <p:menuitem value="Sports.5.2" url="#" />
-                        <p:menuitem value="Sports.5.3" url="#" />
-                    </p:submenu>
-                </p:column>
-                <p:column>
-                    <p:submenu label="Sports.7">
-                        <p:menuitem value="Sports.7.1" url="#" />
-                        <p:menuitem value="Sports.7.2" url="#" />
-                    </p:submenu>
+                    <p:graphicImage value="/resources/products/phones/phones2.png" width="250"/>
                 </p:column>
             </p:submenu>
 
-            <p:submenu label="Entertainment" icon="ui-icon-pencil">
+            <p:submenu label="Cameras" icon="ui-icon-document">
+
+                <p:column>
+                   <p:submenu label="By brand:" >
+                        <p:menuitem value="Canon" url="#" />
+                        <p:menuitem value="Nikon" url="#" />
+                        <p:menuitem value="Konica" url="#" />
+                        <p:menuitem value="All Smartphones" url="#" ></p:menuitem>
+                    </p:submenu>                    
+                </p:column>
+
+                <p:column>
+                    <p:submenu label="Accesories:">
+                        <p:menuitem value="Memory SD cards" url="#" />
+                        <p:menuitem value="Headphones" url="#" />
+                        <p:menuitem value="Cases" url="#" />
+                    </p:submenu> 
+                </p:column>
+                
+                <p:column>
+                    <p:graphicImage value="/resources/products/cameras/cameras1.png" width="250"/>
+                </p:column>
+            </p:submenu>
+
+            <p:submenu label="Tablets" icon="ui-icon-pencil">
                 <p:column>
                     <p:submenu label="Entertainment.1">
-                        <p:menuitem value="Entertainment.1.1" url="#" />
                         <p:menuitem value="Entertainment.1.2" url="#" />
                     </p:submenu>
                     <p:submenu label="Entertainment.2">
-                        <p:menuitem value="Entertainment.2.1" url="#" />
-                        <p:menuitem value="Entertainment.2.2" url="#" />
+                      
                         <p:menuitem value="Entertainment.2.3" url="#" />
                     </p:submenu>
                 </p:column>
 
                 <p:column>
                     <p:submenu label="Entertainment.4" icon="ui-icon-help">
-                        <p:menuitem value="Entertainment.4.1" url="#" />
                         <p:menuitem value="Entertainment.4.2" url="#" />
                     </p:submenu>
                     <p:submenu label="Entertainment.5">
                         <p:menuitem value="Entertainment.5.1" url="#" />
                         <p:menuitem value="Entertainment.5.2" url="#" />
-                        <p:menuitem value="Entertainment.5.3" url="#" />
                     </p:submenu>
                 </p:column>
             </p:submenu>
 
-            <p:submenu label="Tech" icon="ui-icon-contact">
+            <p:submenu label="Headphones" icon="ui-icon-contact">
                 <p:column>
                     <p:submenu label="Tech.1">
                         <p:menuitem value="Tech.1.1" url="#" />
                         <p:menuitem value="Tech.1.2" url="#" />
                     </p:submenu>
                     <p:submenu label="Tech.2">
-                        <p:menuitem value="Tech.2.1" url="#" />
-                        <p:menuitem value="Tech.2.2" url="#" />
-                        <p:menuitem value="Tech.2.3" url="#" />
+                        <p:menuitem value="Tech.2.1" url="#" />                        
                     </p:submenu>
                 </p:column>
 
                 <p:column>
                     <p:submenu label="Tech.4">
                         <p:menuitem value="Tech.4.1" url="#" />
-                        <p:menuitem value="Tech.4.2" url="#" />
+                    </p:submenu>
+                </p:column>
+            </p:submenu>
+            <p:submenu label="PC" icon="ui-icon-contact">
+                <p:column>
+                    <p:submenu label="Tech.1">
+                        <p:menuitem value="Tech.1.1" url="#" />
+                        <p:menuitem value="Tech.1.2" url="#" />
+                    </p:submenu>
+                    <p:submenu label="Tech.2">
+                        <p:menuitem value="Tech.2.1" url="#" />                        
+                    </p:submenu>
+                </p:column>
+
+                <p:column>
+                    <p:submenu label="Tech.4">
+                        <p:menuitem value="Tech.4.1" url="#" />
+                    </p:submenu>
+                </p:column>
+            </p:submenu>
+             <p:submenu label="TV" icon="ui-icon-contact">
+                <p:column>
+                    <p:submenu label="Tech.1">
+                        <p:menuitem value="Tech.1.1" url="#" />
+                        <p:menuitem value="Tech.1.2" url="#" />
+                    </p:submenu>
+                    <p:submenu label="Tech.2">
+                        <p:menuitem value="Tech.2.1" url="#" />                        
+                    </p:submenu>
+                </p:column>
+
+                <p:column>
+                    <p:submenu label="Tech.4">
+                        <p:menuitem value="Tech.4.1" url="#" />
+                    </p:submenu>
+                </p:column>
+            </p:submenu>
+             <p:submenu label="Audio" icon="ui-icon-contact">
+                <p:column>
+                    <p:submenu label="Tech.1">
+                        <p:menuitem value="Tech.1.1" url="#" />
+                        <p:menuitem value="Tech.1.2" url="#" />
+                    </p:submenu>
+                    <p:submenu label="Tech.2">
+                        <p:menuitem value="Tech.2.1" url="#" />                        
+                    </p:submenu>
+                </p:column>
+
+                <p:column>
+                    <p:submenu label="Tech.4">
+                        <p:menuitem value="Tech.4.1" url="#" />
+                    </p:submenu>
+                </p:column>
+            </p:submenu>
+             <p:submenu label="Sports" icon="ui-icon-contact">
+                <p:column>
+                    <p:submenu label="Tech.1">
+                        <p:menuitem value="Tech.1.1" url="#" />
+                        <p:menuitem value="Tech.1.2" url="#" />
+                    </p:submenu>
+                    <p:submenu label="Tech.2">
+                        <p:menuitem value="Tech.2.1" url="#" />                        
+                    </p:submenu>
+                </p:column>
+
+                <p:column>
+                    <p:submenu label="Tech.4">
+                        <p:menuitem value="Tech.4.1" url="#" />
+                    </p:submenu>
+                </p:column>
+            </p:submenu>
+             <p:submenu label="Shoes" icon="ui-icon-contact">
+                <p:column>
+                    <p:submenu label="Tech.1">
+                        <p:menuitem value="Tech.1.1" url="#" />
+                        <p:menuitem value="Tech.1.2" url="#" />
+                    </p:submenu>
+                    <p:submenu label="Tech.2">
+                        <p:menuitem value="Tech.2.1" url="#" />                        
+                    </p:submenu>
+                </p:column>
+
+                <p:column>
+                    <p:submenu label="Tech.4">
+                        <p:menuitem value="Tech.4.1" url="#" />
+                    </p:submenu>
+                </p:column>
+            </p:submenu>
+             <p:submenu label="Clothes" icon="ui-icon-contact">
+                <p:column>
+                    <p:submenu label="Tech.1">
+                        <p:menuitem value="Tech.1.1" url="#" />
+                        <p:menuitem value="Tech.1.2" url="#" />
+                    </p:submenu>
+                    <p:submenu label="Tech.2">
+                        <p:menuitem value="Tech.2.1" url="#" />                        
+                    </p:submenu>
+                </p:column>
+
+                <p:column>
+                    <p:submenu label="Tech.4">
+                        <p:menuitem value="Tech.4.1" url="#" />
                     </p:submenu>
                 </p:column>
             </p:submenu>

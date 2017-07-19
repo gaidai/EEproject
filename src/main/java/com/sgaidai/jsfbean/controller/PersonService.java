@@ -23,8 +23,6 @@ public class PersonService implements Serializable{
 	private PersonDAO personDAO;
 
 	
-        
-	
 	public List<Person> listPersons() {
 		return this.personDAO.listPersons();
 
