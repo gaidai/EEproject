@@ -18,4 +18,7 @@ public interface CameraDAO {
     public List<Camera> listCameras();
                
     public void deleteCamera(Camera c);
+    
+    public List<Camera> listCamerasByBrand(String b);
+    
 }
