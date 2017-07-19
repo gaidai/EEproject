@@ -12,6 +12,7 @@
     <ui:define name="content"> 
     <p:spacer height="5px"></p:spacer>
     <div style="margin-left: 10% ">
+        <h:form>
         <p:megaMenu orientation="vertical" style="margin-top:20px">
             <p:submenu label="Smartphones" icon="ui-icon-check">
                 <p:column>
@@ -48,10 +49,10 @@
 
                 <p:column>
                    <p:submenu label="By brand:" >
-                        <p:menuitem value="Canon" url="#" />
-                        <p:menuitem value="Nikon" url="#" />
-                        <p:menuitem value="Konica" url="#" />
-                        <p:menuitem value="All Smartphones" url="#" ></p:menuitem>
+                       <p:menuitem value="Canon" url="cameras/konica.xhtml" />
+                        <p:menuitem value="Nikon" url="cameras/nikon.xhtml" />
+                        <p:menuitem value="Konica" url="cameras/konica.xhtml" />
+                        <p:menuitem value="All Cameras" url="cameras/all.xhtml" ></p:menuitem>
                     </p:submenu>                    
                 </p:column>
 
@@ -210,6 +211,7 @@
                 </p:column>
             </p:submenu>
         </p:megaMenu>  
+        </h:form>
     </div>    
     </ui:define>
 </ui:composition>

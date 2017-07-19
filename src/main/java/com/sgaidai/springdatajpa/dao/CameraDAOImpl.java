@@ -54,17 +54,22 @@ public class CameraDAOImpl implements CameraDAO {
         @Transactional 
         @Override
         public List<Camera> listCamerasByBrand(String b){
+            System.out.println(b +"*************");
             CriteriaBuilder cb = em.getCriteriaBuilder();
             CriteriaQuery<Camera> criteriaQuery = cb.createQuery(Camera.class);
             Root<Camera> cameraEntityRoot = criteriaQuery.from(Camera.class);
 
             criteriaQuery.select(cameraEntityRoot).distinct(true);
+//
+//            Predicate criteria = cb.conjunction();
+//            Predicate p = cb.equal(cameraEntityRoot.get(Camera_.brand), b);
+//            criteria = cb.and(criteria, p);
 
-            Predicate criteria = cb.conjunction();
-            Predicate p = cb.equal(cameraEntityRoot.get(Camera_.brand), b);
-            criteria = cb.and(criteria, p);
-            criteriaQuery.where(criteria);
+            criteriaQuery.where(cb.equal(cameraEntityRoot.get("brand"), b));
             List<Camera> result = em.createQuery(criteriaQuery).getResultList();
+            for(Camera r: result){
+                System.out.println(r);
+            }
             return result;
         }
         

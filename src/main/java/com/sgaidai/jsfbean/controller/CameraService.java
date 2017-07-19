@@ -34,4 +34,7 @@ public class CameraService implements Serializable{
 	public void deleteCamera(Camera c) {
                 this.cameraDAO.deleteCamera(c);
 	}
+        public List<Camera> listCamerasByBrand(String brand) {
+		return this.cameraDAO.listCamerasByBrand(brand);
+	}
 }
