@@ -9,18 +9,47 @@
         xmlns:b="http://bootsfaces.net/ui"
         xmlns:f="http://xmlns.jcp.org/jsf/core">
 <ui:composition template="navbar.xhtml">
-    <ui:define name="title">Digital Cameras</ui:define>
-    <ui:define name="content">Cameras!!!! 
+    <ui:define name="title">#{cameraService.camera.brand} #{cameraService.camera.model}</ui:define>
+    <ui:define name="content">
     <p:spacer height="40px"></p:spacer>
     <f:metadata>
         <f:viewParam name="id" value="#{cameraService.camera.id}"/>
         <f:viewAction  action="#{cameraService.getcamerabyid}"/>       
     </f:metadata>
         <b:container>
-                <b:column  span="1" col-lg="7"  >
-                    <b:label value="#{cameraService.camera.brand} #{cameraService.camera.model} Price:" />   <h:outputText value="#{cameraService.camera.price}"/>
+            <b:row> <h1 align="center" > #{cameraService.camera.brand} #{cameraService.camera.model} </h1> </b:row> 
+             <p:spacer height="20"/>
+             <b:row>  
+                 <b:column   col-lg="5"  >                    
+                    <p:graphicImage value="/resources/products/cameras/#{cameraService.camera.id}/1.png" width="250"/>
+                    <p:spacer height="20"/>
+                   
               
                 </b:column>
+                <b:column   col-lg="3"  >
+                    <p:spacer height="80px" width="500px" ></p:spacer>
+                    <h3> Price: #{cameraService.camera.price} UAH </h3> 
+              
+                </b:column>
+            </b:row> 
+             <p:spacer height="60px" />
+            <b:tabView activeIndex="1">
+                <b:tab title="Descriptions">
+                    <p>This is the first tab.</p>
+                </b:tab>
+                <b:tab title="Another Tab">
+                    <p>This is the second tab.</p>
+                </b:tab>
+                <!-- The next tab shows tabs aren't limited to text. You can put anything in a tab. -->
+                <b:tab title="Image Tab">
+                  ...
+                </b:tab>
+                <b:tab title="Reviews">
+                    <f:facet name="anchor"><b:iconAwesome name="cog" spin="true" /></f:facet>
+                    <p>This is fancy tab with a spinning image.</p>
+                </b:tab>
+
+            </b:tabView>
         </b:container>
     </ui:define>
 </ui:composition>
