@@ -15,7 +15,8 @@
                 <b:column  span="1" col-lg="7"  >
                     <h:form>
                         <b:dataTable value="#{cameraService.listCameras()}" var="c" >
-                            <b:dataTableColumn value="#{c.id}" label="ID" />
+                            
+                            <b:dataTableColumn  label="ID" > <p:link outcome="camera.xhtml?id=#{c.id}" value="#{c.id}"></p:link> </b:dataTableColumn> 
                             <b:dataTableColumn value="#{c.brand} #{c.model}" label="Model" />
                             <b:dataTableColumn value="#{c.price}" label="Price"/>
                             <b:dataTableColumn value="#{c.color}" label="Color"/>

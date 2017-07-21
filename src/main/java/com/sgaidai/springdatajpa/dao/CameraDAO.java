@@ -21,4 +21,6 @@ public interface CameraDAO {
     
     public List<Camera> listCamerasByBrand(String b);
     
+    public Camera getcamerabyid(int id) ;
+    
 }

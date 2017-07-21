@@ -4,7 +4,6 @@ package com.sgaidai.springdatajpa.dao;
 
 
 import com.sgaidai.security.entities.model.product.Camera;
-import com.sgaidai.security.entities.model.product.Camera_;
 import java.util.List;
 import javax.enterprise.context.RequestScoped;
 import javax.inject.Named;
@@ -12,7 +11,6 @@ import javax.inject.Named;
 import javax.persistence.EntityManager;
 import javax.persistence.criteria.CriteriaBuilder;
 import javax.persistence.criteria.CriteriaQuery;
-import javax.persistence.criteria.Predicate;
 import javax.persistence.criteria.Root;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
@@ -60,7 +58,8 @@ public class CameraDAOImpl implements CameraDAO {
             Root<Camera> cameraEntityRoot = criteriaQuery.from(Camera.class);
 
             criteriaQuery.select(cameraEntityRoot).distinct(true);
-//
+//        }
+
 //            Predicate criteria = cb.conjunction();
 //            Predicate p = cb.equal(cameraEntityRoot.get(Camera_.brand), b);
 //            criteria = cb.and(criteria, p);
@@ -70,6 +69,29 @@ public class CameraDAOImpl implements CameraDAO {
             for(Camera r: result){
                 System.out.println(r);
             }
+            return result;
+        }
+        
+        @Transactional 
+        @Override
+        public Camera getcamerabyid(int id){
+            System.out.println(id +"******getcamerabyid*******");
+            CriteriaBuilder cb = em.getCriteriaBuilder();
+            CriteriaQuery<Camera> criteriaQuery = cb.createQuery(Camera.class);
+            Root<Camera> cameraEntityRoot = criteriaQuery.from(Camera.class);
+
+            criteriaQuery.select(cameraEntityRoot).distinct(true);
+//        }
+
+//            Predicate criteria = cb.conjunction();
+//            Predicate p = cb.equal(cameraEntityRoot.get(Camera_.brand), b);
+//            criteria = cb.and(criteria, p);
+
+            criteriaQuery.where(cb.equal(cameraEntityRoot.get("id"), id));
+            Camera result = new Camera();
+            result = em.createQuery(criteriaQuery).getSingleResult();
+            System.out.println("***********"+result.getModel());
+            
             return result;
         }
         

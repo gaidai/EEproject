@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+        xmlns:p="http://primefaces.org/ui"
+        xmlns:b="http://bootsfaces.net/ui"
+        xmlns:f="http://xmlns.jcp.org/jsf/core">
+<ui:composition template="navbar.xhtml">
+    <ui:define name="title">Digital Cameras</ui:define>
+    <ui:define name="content">Cameras!!!! 
+    <p:spacer height="40px"></p:spacer>
+    <f:metadata>
+        <f:viewParam name="id" value="#{cameraService.camera.id}"/>
+        <f:viewAction  action="#{cameraService.getcamerabyid}"/>       
+    </f:metadata>
+        <b:container>
+                <b:column  span="1" col-lg="7"  >
+                    <b:label value="#{cameraService.camera.brand} #{cameraService.camera.model} Price:" />   <h:outputText value="#{cameraService.camera.price}"/>
+              
+                </b:column>
+        </b:container>
+    </ui:define>
+</ui:composition>
+</html>

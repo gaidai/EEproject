@@ -13,15 +13,17 @@ import lombok.Setter;
 import org.springframework.beans.factory.annotation.Autowired;
 
 
+@Getter
+@Setter
 @Named 
 @ManagedBean(name="cameraService")
 @SessionScoped
 public class CameraService implements Serializable{
         
-        @Getter
-        @Setter
+        
 	@Autowired
 	private CameraDAO cameraDAO;
+        private Camera camera = new Camera();
         	
 	public List<Camera> listCameras() {
 		return this.cameraDAO.listCameras();
@@ -36,5 +38,11 @@ public class CameraService implements Serializable{
 	}
         public List<Camera> listCamerasByBrand(String brand) {
 		return this.cameraDAO.listCamerasByBrand(brand);
+	}
+        
+        public void getcamerabyid() {
+                camera = this.cameraDAO.getcamerabyid(this.camera.getId());
+                
+               
 	}
 }
