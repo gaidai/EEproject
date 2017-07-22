@@ -6,25 +6,44 @@
 	xmlns:h="http://java.sun.com/jsf/html"
 	xmlns:ui="http://java.sun.com/jsf/facelets"
         xmlns:p="http://primefaces.org/ui"
-        xmlns:b="http://bootsfaces.net/ui">
+        xmlns:b="http://bootsfaces.net/ui"
+        xmlns:f="http://xmlns.jcp.org/jsf/core">
 <ui:composition template="navbar.xhtml">
     <ui:define name="title">Digital Cameras</ui:define>
     <ui:define name="content">Cameras!!!! 
     <p:spacer height="40px"></p:spacer>
         <b:container>
-                <b:column  span="1" col-lg="7"  >
-                    <h:form>
-                        <b:dataTable value="#{cameraService.listCameras()}" var="c" >
-                            
-                            <b:dataTableColumn  label="ID" > <p:link outcome="camera.xhtml?id=#{c.id}" value="#{c.id}"></p:link> </b:dataTableColumn> 
-                            <b:dataTableColumn value="#{c.brand} #{c.model}" label="Model" />
-                            <b:dataTableColumn value="#{c.price}" label="Price"/>
-                            <b:dataTableColumn value="#{c.color}" label="Color"/>
-                            <b:dataTableColumn value="#{c.resolution}" label="Resolution"/>
+                <b:column  span="1" col-lg="8"  >
+                   
+                    <h:form> 
+                        <p:dataScroller value="#{cameraService.listCameras()}" var="c" chunkSize="10">
+                            <f:facet name="header" >
+                                Scroll Down to Load More Cameras
+                            </f:facet>
 
+                            <h:panelGrid columns="3" style="width:100%" columnClasses="logo,detail,button">
+                                <p:graphicImage value="/resources/products/cameras/#{c.id}/1.png" width="200" /> 
 
-                        </b:dataTable>
-                    </h:form>   
+                                <p:outputPanel>
+                                    <h:panelGrid columns="3" bgcolor="" cellpadding="20">
+                                        <h:outputText value="Model:" /> 
+                                        &nbsp;&nbsp;&nbsp;&nbsp;
+                                        <h:outputText value="#{c.brand} #{c.model}" style="font-weight: bold"/>
+                                        
+                                        <h:outputText value="Resolution:" />
+                                        &nbsp;&nbsp;&nbsp;&nbsp;
+                                        <h:outputText value="#{c.resolution} Mp" style="font-weight: bold"/>
+                                        
+                                        <h:outputText value="Price:" />
+                                        &nbsp;&nbsp;&nbsp;&nbsp;
+                                        <h:outputText value="#{c.price} UAH" style="font-weight: bold"/>
+                                    </h:panelGrid>
+                                </p:outputPanel>
+                                <b:button href="camera.xhtml?id=#{c.id}" icon=" glyphicon glyphicon-chevron-right" look="info"  size="md"/>
+                                <!--<b:button href="camera.xhtml?id=#{c.id}" icon="shopping-cart" look="success"  size="md"/>-->
+                            </h:panelGrid>
+                        </p:dataScroller>
+                    </h:form>
                 </b:column>
         </b:container>
     </ui:define>

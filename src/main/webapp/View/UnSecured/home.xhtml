@@ -212,6 +212,27 @@
             </p:submenu>
         </p:megaMenu>  
         </h:form>
+        <b:carousel id="rioja" styleClass="riojaPseudoClass" style="width:700px">
+            <b:carouselItem style="padding-left:150px">
+                <img src="carousel/rioja1.jpg" alt="Rioja 1" />
+            </b:carouselItem>
+            <b:carouselItem style="padding-left:150px">
+                <img src="carousel/rioja2.jpg" alt="Rioja 2" />
+            </b:carouselItem>
+            <b:carouselItem style="padding-left:150px">
+                <img src="carousel/rioja3.jpg" alt="Rioja 3" />
+            </b:carouselItem>
+            <b:carouselControl direction="right">
+                <div class="left carousel-control">
+                    <b:button value="Previous image" onclick="$('.riojaPseudoClass').carousel('prev');" style="margin-top:140px" look="info"/>
+                </div>
+            </b:carouselControl>
+            <b:carouselControl direction="left">
+                <div class="right carousel-control">
+                    <b:button value="Next image" onclick="$('.riojaPseudoClass').carousel('next');" style="margin-top:140px" look="success"/>
+                </div>
+            </b:carouselControl>
+        </b:carousel>
     </div>    
     </ui:define>
 </ui:composition>
