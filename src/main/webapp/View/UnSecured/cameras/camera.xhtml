@@ -8,7 +8,7 @@
         xmlns:p="http://primefaces.org/ui"
         xmlns:b="http://bootsfaces.net/ui"
         xmlns:f="http://xmlns.jcp.org/jsf/core">
-<ui:composition template="navbar.xhtml">
+<ui:composition template="/resources/navbar.xhtml">
     <ui:define name="title">#{cameraService.camera.brand} #{cameraService.camera.model}</ui:define>
     <ui:define name="content">
     <p:spacer height="40px"></p:spacer>
@@ -17,6 +17,15 @@
         <f:viewAction  action="#{cameraService.getcamerabyid}"/>       
     </f:metadata>
         <b:container>
+            <p:breadCrumb >
+               
+                <p:menuitem   rendered="false" ></p:menuitem>
+                <p:menuitem value="Home" url="/View/UnSecured/home.xhtml" />
+                <p:menuitem value="All cameras" url="all.xhtml" />
+                <p:menuitem value="#{cameraService.camera.brand}" url="list.xhtml?brand='#{cameraService.camera.brand}'" />
+                
+            </p:breadCrumb>
+            
             <b:row> <h1 align="center" > #{cameraService.camera.brand} #{cameraService.camera.model} </h1> </b:row> 
              <p:spacer height="20"/>
              <b:row>  
@@ -34,8 +43,9 @@
             </b:row> 
              <p:spacer height="60px" />
             <b:tabView activeIndex="1">
-                <b:tab title="Descriptions">
-                    <p>This is the first tab.</p>
+                <b:tab title="Descriptions" >
+                    <ui:include src="/resources/products/cameras/#{cameraService.camera.id}/1.xhtml" />
+<!--                    <ui:composition template="/resources/products/cameras/#{cameraService.camera.id}/1.xhtml"></ui:composition>-->
                 </b:tab>
                 <b:tab title="Another Tab">
                     <p>This is the second tab.</p>

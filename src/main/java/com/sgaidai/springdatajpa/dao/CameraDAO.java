@@ -16,6 +16,8 @@ public interface CameraDAO {
     public void addCamera(Camera c) ;      
        
     public List<Camera> listCameras();
+    
+     public List<Camera> listCamerasbyPrice();
                
     public void deleteCamera(Camera c);
     

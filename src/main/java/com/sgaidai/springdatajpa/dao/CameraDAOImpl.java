@@ -4,6 +4,7 @@ package com.sgaidai.springdatajpa.dao;
 
 
 import com.sgaidai.security.entities.model.product.Camera;
+import com.sgaidai.security.entities.model.product.Camera_;
 import java.util.List;
 import javax.enterprise.context.RequestScoped;
 import javax.inject.Named;
@@ -38,6 +39,10 @@ public class CameraDAOImpl implements CameraDAO {
 	public List<Camera> listCameras() {
 		return this.em.createQuery("SELECT c FROM Camera c").getResultList();
 	}
+        @Transactional 
+	public List<Camera> listCamerasbyPrice() {
+		return this.em.createQuery("SELECT c FROM Camera c ORDER BY c.price").getResultList();
+	}
         
         @Transactional
         @Override
@@ -53,24 +58,50 @@ public class CameraDAOImpl implements CameraDAO {
         @Override
         public List<Camera> listCamerasByBrand(String b){
             System.out.println(b +"*************");
-            CriteriaBuilder cb = em.getCriteriaBuilder();
-            CriteriaQuery<Camera> criteriaQuery = cb.createQuery(Camera.class);
-            Root<Camera> cameraEntityRoot = criteriaQuery.from(Camera.class);
-
-            criteriaQuery.select(cameraEntityRoot).distinct(true);
-//        }
-
-//            Predicate criteria = cb.conjunction();
-//            Predicate p = cb.equal(cameraEntityRoot.get(Camera_.brand), b);
-//            criteria = cb.and(criteria, p);
-
-            criteriaQuery.where(cb.equal(cameraEntityRoot.get("brand"), b));
-            List<Camera> result = em.createQuery(criteriaQuery).getResultList();
-            for(Camera r: result){
-                System.out.println(r);
-            }
-            return result;
+            return this.em.createQuery("SELECT c FROM Camera c WHERE c.brand ="+b).getResultList();
+            
+//            CriteriaBuilder cb = em.getCriteriaBuilder();
+//            CriteriaQuery<Camera> criteriaQuery = cb.createQuery(Camera.class);
+//            Root<Camera> cameraEntityRoot = criteriaQuery.from(Camera.class);
+//
+//            criteriaQuery.select(cameraEntityRoot).distinct(true);
+////        }
+//
+////            Predicate criteria = cb.conjunction();
+////            Predicate p = cb.equal(cameraEntityRoot.get(Camera_.brand), b);
+////            criteria = cb.and(criteria, p);
+//
+//            criteriaQuery.where(cb.equal(cameraEntityRoot.get(Camera_.brand), b));
+//            List<Camera> result = em.createQuery(criteriaQuery).getResultList();
+//            for(Camera r: result){
+//                System.out.println(r.getId() + " "+ r.getModel());
+//            }
+//            return result;
         }
+//        @Transactional 
+//        public List<Camera> listCamerasByPrice(String b){
+//            
+//            System.out.println(b +"*************");
+//            CriteriaBuilder cb = em.getCriteriaBuilder();
+//            CriteriaQuery<Camera> criteriaQuery = cb.createQuery(Camera.class);
+//            Root<Camera> cameraEntityRoot = criteriaQuery.from(Camera.class);
+//            
+//        
+//            
+//            criteriaQuery.select(cameraEntityRoot).distinct(true).orderBy(cb.asc(cameraEntityRoot.get("price")));
+////        }
+//
+////            Predicate criteria = cb.conjunction();
+////            Predicate p = cb.equal(cameraEntityRoot.get(Camera_.brand), b);
+////            criteria = cb.and(criteria, p);
+//
+//            criteriaQuery.where(cb.equal(cameraEntityRoot.get("brand"), b));
+//            List<Camera> result = em.createQuery(criteriaQuery).getResultList();
+//            for(Camera r: result){
+//                System.out.println(r);
+//            }
+//            return result;
+//        }
         
         @Transactional 
         @Override

@@ -51,5 +51,8 @@ public class Camera implements Serializable {
           
     @Column(name="color")
     private String color ;
+    
+    @Column(name="description")
+    private String desc ;
 	
 }

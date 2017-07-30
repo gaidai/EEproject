@@ -8,16 +8,19 @@
         xmlns:p="http://primefaces.org/ui"
         xmlns:b="http://bootsfaces.net/ui"
         xmlns:f="http://xmlns.jcp.org/jsf/core">
-<ui:composition template="navbar.xhtml">
+<ui:composition template="/resources/navbar.xhtml">
     <ui:define name="title">Digital Cameras</ui:define>
     <ui:define name="content">Cameras!!!! 
     <p:spacer height="40px"></p:spacer>
         <b:container>
-                <b:column  span="1" col-lg="8"  >
-                   
+                <b:column  span="2" col-lg="10"  >
+                    <b:button href="list.xhtml?brand='Canon'" icon=" glyphicon glyphicon-chevron-right" look="info"  size="md" value="Canon"/>
+                   <b:button href="list.xhtml?brand='Nikon'" icon=" glyphicon glyphicon-chevron-right" look="info"  size="md" value="Nikon"/>
+                   <b:button href="list.xhtml?brand='Konica'" icon=" glyphicon glyphicon-chevron-right" look="info"  size="md" value="Konica"/>
                     <h:form> 
-                        <p:dataScroller value="#{cameraService.listCameras()}" var="c" chunkSize="10">
+                        <p:dataScroller value="#{cameraService.listCamerasbyPrice()}"  var="c" chunkSize="10">
                             <f:facet name="header" >
+                                
                                 Scroll Down to Load More Cameras
                             </f:facet>
 
