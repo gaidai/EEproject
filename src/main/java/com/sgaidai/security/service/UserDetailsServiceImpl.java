@@ -1,5 +1,6 @@
 package com.sgaidai.security.service;
 
+import static com.sgaidai.jsfbean.controller.UserBean.log;
 import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
@@ -29,9 +30,10 @@ public class UserDetailsServiceImpl implements UserDetailsService {
 	
         System.out.println("username is:-" + username);
               com.sgaidai.security.entities.model.User user = userRepository.findByUsername(username);
-              
+              log= user;
                 System.out.println("Password From Detailservice is:-" + user.getPassword().toString());
-                 System.out.println(user.toString());
+                System.out.println(user.toString());
+                
                 if (user==null){throw new UsernameNotFoundException("No such user: " + username);
               }else if(user.getRoles().isEmpty()){
                  throw new UsernameNotFoundException("User" + username + "has no authorities");

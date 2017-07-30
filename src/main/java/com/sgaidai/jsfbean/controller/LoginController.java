@@ -27,11 +27,12 @@ public class LoginController implements Serializable {
     public void login() throws ServletException, IOException { 
                 
         ExternalContext context = FacesContext.getCurrentInstance().getExternalContext();     
-       username = context.getRequestParameterMap().get("username");
-       System.out.println("Login controller username is :-" + username);
+        username = context.getRequestParameterMap().get("username");
+        System.out.println("Login controller username is :-" + username);
         RequestDispatcher dispatcher = ((ServletRequest) context.getRequest()).getRequestDispatcher("/login");
         dispatcher.forward((ServletRequest) context.getRequest(), (ServletResponse) context.getResponse());
         FacesContext.getCurrentInstance().responseComplete();
+        
     }   
     
     

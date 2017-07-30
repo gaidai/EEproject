@@ -14,29 +14,28 @@
        
         <h:form id="form1">
             <p:outputLabel value="Welcome User "></p:outputLabel>
-    <h:outputLabel value="#{loginController.username} "></h:outputLabel>
-        
-    <h:outputLink value="#{request.contextPath}/logout">logout</h:outputLink> 
-      <a style="color: #FF0000" href="#{request.contextPath}/View/Secured/User/personuser.xhtml"> PersonUserLink</a>                               
+            <h:outputLabel value="#{loginController.username} "></h:outputLabel>        
+            <h:outputLink value="#{request.contextPath}/logout">logout</h:outputLink> 
+            <a style="color: #FF0000" href="#{request.contextPath}/View/Secured/User/personuser.xhtml"> PersonUserLink</a>                               
 
-         <p:spacer height="1px"></p:spacer>
-        <center><h2>User Manager</h2></center>     
+            <p:spacer height="1px"></p:spacer>
+            <center><h2>User Manager</h2></center>     
                                  
-           <center><h3>Users</h3></center>    
-     <p:dataTable  value="#{userBean.userList}" var="user" editable="true" rowKey="#{user[0]}"  paginator="true" rows="5" id="userTable">
-      <p:column selectionMode="multiple" headerText="Select" style="width:6%" />
+            <center><h3>Users</h3></center>    
+            <p:dataTable  value="#{userBean.userList}" var="user" editable="true" rowKey="#{user[0]}"  paginator="true" rows="5" id="userTable">
+                <p:column selectionMode="multiple" headerText="Select" style="width:6%" />
                 <p:column headerText="UserId" style="text-align: left;">
                     <h:outputText value="#{user[0]}"/>
                 </p:column>
                 
-      <p:column filterBy="#{user.firstName}"  filterOptions=""  filterMatchMode="startsWith" headerText="First Name">
-                     <h:outputText value="#{user[1]}"/>
-                    </p:column>
-            
-                    <p:column headerText="Last Name">
-                        <h:outputText value="#{user[2]}"/>
-                    </p:column>
-               
+                <p:column filterBy="#{user.firstName}"  filterOptions=""  filterMatchMode="startsWith" headerText="First Name">
+                    <h:outputText value="#{user[1]}"/>
+                </p:column>
+
+                <p:column headerText="Last Name">
+                    <h:outputText value="#{user[2]}"/>
+                </p:column>
+
                 <p:column headerText="UserName">
                     <h:outputText value="#{user[3]}"/>
                     </p:column>

@@ -18,9 +18,10 @@
             } 
         </style>
  </h:head>
-<body style="padding-top: 30px; background-color: #add;">
+<h:body style="padding-top: 30px; background-color: #add;">
+    <ui:include src="/resources/navbar2.xhtml" />
+    <p:spacer height="35px" width="100%"/>
     <b:button href="#{request.contextPath}/View/UnSecured/register.xhtml" value="Register" look="primary" icon="chevron-right" size="lg" iconAlign="right"></b:button>
-    <p:spacer height="15px"/>
     <c:if test="${'fail' eq param.auth}">
         <div style="color:red">
             Login Failed!!!<br/>
@@ -55,5 +56,5 @@
             <p:menuitem value="Contact" icon="/resources/images/png/Contact.png" url="http://sgaidai.com/contacts.html"/>
         </p:stack>
     </h:form>
-</body>
+</h:body>
 </html>

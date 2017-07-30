@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+        xmlns:p="http://primefaces.org/ui"
+        xmlns:b="http://bootsfaces.net/ui"
+        xmlns:f="http://xmlns.jcp.org/jsf/core">
+<h:head>
+        <title>My profile</title>
+        
+</h:head>
+    <h:body>
+    <b:container >  
+        <ui:include src="/resources/navbar2.xhtml" />
+        <p:spacer height="70px" width="100%"/>
+         <h:form id="form1">
+                                         
+
+        
+            <center><h2>User Manager</h2></center>     
+                                 
+            <center><h3>Users</h3></center>    
+            <h:outputText value="#{userBean.userProfile.firstName}"/> 
+            <h:outputText value="#{userBean.userProfile.lastName}"/>  
+            <h:outputText value="#{userBean.userProfile.email}"/>
+   
+
+        </h:form>
+    </b:container>
+    </h:body>
+</html>

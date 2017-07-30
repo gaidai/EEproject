@@ -14,6 +14,7 @@ public interface UserService {
     public List<User> findAll();   
     public User findById(Integer id);
     public  int CreateNewUserId();
+    public User getUserProfile(String login); 
     
     
 }

@@ -15,11 +15,14 @@ import com.sgaidai.security.entities.model.Role;
 import com.sgaidai.security.service.RoleService;
 import com.sgaidai.security.service.UserService;
 import javax.inject.Named;
+import lombok.Getter;
+import lombok.Setter;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.DataAccessException;
 
 
-
+@Getter
+@Setter
 @Named 
 @ManagedBean(name="userBean")
 @SessionScoped
@@ -28,23 +31,18 @@ public class UserBean implements Serializable {
     private static final long serialVersionUID = 1L;
     
 
-   @Autowired//@Inject or #(ManagedProperty) can also be used		   
+    @Autowired//@Inject or #(ManagedProperty) can also be used		   
     private UserService userService;
     //Spring User Service is injected...
-     @Autowired//@Inject or #(ManagedProperty) can also be used	
-     private RoleService roleService;    
+    @Autowired//@Inject or #(ManagedProperty) can also be used	
+    private RoleService roleService;    
 
-    private String ConfirmPassword;
     List<User> userList;
     private   User user = new User();
+    private   User userProfile;
+    public static User log;
 
     
-
-    /**
-     * Add User
-     *
-     * @return String - Response Message
-     */
     public String addUser() {
         try {
 //            this.validateUser();
@@ -85,111 +83,16 @@ public class UserBean implements Serializable {
         }     
             
     }
-    public  void loginValidator() {
+    public User getUserProfile() {
         
-        
-    }
-    
-    /**
-     * Validate input data in registering user
-     *
-     */
-//    public void validateUser() { 
-//        System.out.println(getConfirmPassword());
-//        System.out.println(user.getPassword());
-//       if (!(user.getPassword().equals(getConfirmPassword())) ){ 
-//                
-//            FacesMessage message = new FacesMessage(FacesMessage.SEVERITY_INFO, "Password","Password and confirm password does not match");
-//            RequestContext.getCurrentInstance().showMessageInDialog(message); 
-//            return;
-//            }
-//         
-//    }
-
-    /**
-     * Reset Fields
-     *
-     */
-    public void reset() {
-        user.reset();
-        this.ConfirmPassword="";
+        this.userProfile = log;
+        return userProfile;
     }
 
-    /**
-     * Get User List
-     *
-     * @return List - User List
-     */
     public List<User> getUserList() {
         userList = new ArrayList<User>();
         userList.addAll(getUserService().findAll());
         return userList;
     }
-
-    /**
-     * Get User Service
-     *
-     * @return UserServiceImpl - User Service
-     */
-    public UserService getUserService() {
-        return userService;
-    }
-
-    /**
-     * Set User Service
-     *
-     * @param userService UserServiceImpl - User Service
-     */
-    public void setUserService(UserService userService) {
-        this.userService = userService;
-    }
-    
-    /**
-     * Get Role Service
-     *
-     * @return RoleServiceImpl - Role Service
-     */
-    
-     public RoleService getRoleService() {
-        return roleService;
-    }
-     
-     /**
-     * Set Role Service
-     *
-     * @param roleService RoleServiceImpl - User Service
-     */
-
-    public void setRoleService(RoleService roleService) {
-        this.roleService = roleService;
-    }
-
-    /**
-     * Set  User List
-     *
-     * @param userList List - User List
-     */
-    public void setUserList(List<User> userList) {
-        this.userList = userList;
-    }
-    
-     public User getUser() {
-        return user;
-    }
-
-    public void setUser(User user) {
-        this.user = user;
-    }
-    
-    
-    public String getConfirmPassword() {
-        return ConfirmPassword;
-    }
-
-    public void setConfirmPassword(String ConfirmPassword) {
-        this.ConfirmPassword = ConfirmPassword;
-    }
-
-
 
 }

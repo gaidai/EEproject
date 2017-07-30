@@ -5,11 +5,9 @@ import javax.annotation.Resource;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import com.sgaidai.security.entities.model.User;
-import com.sgaidai.security.service.UserService;
-;
 import com.sgaidai.springdatajpa.dao.repositories.UserRepository;
-import com.sgaidai.springdatajpa.dao.repositories.UserRepository;
-import com.sgaidai.springdatajpa.exception.UserNotFoundException;
+import javax.persistence.EntityManager;
+import org.springframework.beans.factory.annotation.Autowired;
 
 /**
  *
@@ -18,6 +16,8 @@ import com.sgaidai.springdatajpa.exception.UserNotFoundException;
 @Service
 public class UserServiceImpl implements UserService {
     
+    @Autowired
+    private EntityManager em;
     @Resource
     private UserRepository userRepository;
  
@@ -51,7 +51,11 @@ public class UserServiceImpl implements UserService {
         System.out.println("I am Inside User Service");
         return userRepository.getAllUser();
     }
- 
     
-    
+    @Override
+    @Transactional
+    public User getUserProfile(String login) {
+          return (User)this.em.createQuery("SELECT u FROM User u WHERE u.login ="+login).getSingleResult();
+    }
+     
 }
