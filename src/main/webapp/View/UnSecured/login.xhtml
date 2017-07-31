@@ -19,9 +19,10 @@
         </style>
  </h:head>
 <h:body style="padding-top: 30px; background-color: #add;">
-    <ui:include src="/resources/navbar2.xhtml" />
+    <ui:include src="/resources/navbar.xhtml" />
     <p:spacer height="35px" width="100%"/>
     <b:button href="#{request.contextPath}/View/UnSecured/register.xhtml" value="Register" look="primary" icon="chevron-right" size="lg" iconAlign="right"></b:button>
+    
     <c:if test="${'fail' eq param.auth}">
         <div style="color:red">
             Login Failed!!!<br/>
@@ -40,11 +41,17 @@
                 <p:password value="#{loginController.password}" id="password" required="true" requiredMessage="Password is required" placeholder="Password"/>
             </b:row>
             <b:row> 
-                <b:selectBooleanCheckbox id="remember-me" value="true" caption="remember me"/> &nbsp; &nbsp; &nbsp;
-                <b:commandButton action="#{loginController.login()}" value="Login" ajax="false" look="primary " icon="log-in"  size="lg"/>
+                <b:selectBooleanCheckbox id="remember-me" value="true" caption="remember me"/>
+                <p class="wrapper-x">
+                    <h:commandLink action="#{loginController.login()}"   class="btn-x">Login <b:iconAwesome name="fa-unlock "/></h:commandLink >
+                </p>
             </b:row> 
         </h:form>
-    <br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/>
+    <br/><br/><br/><br/>
+           
+    
+    <h:outputStylesheet library="css" name="style.css" />
+    <br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/>&nbsp; <br/>
     
     <b:button href="http://sgaidai.com" look="info"  value="sgaidai.com" icon="bookmark" />
     <p:spacer height="30px"/>

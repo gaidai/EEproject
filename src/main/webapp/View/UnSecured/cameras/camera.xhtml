@@ -8,23 +8,25 @@
         xmlns:p="http://primefaces.org/ui"
         xmlns:b="http://bootsfaces.net/ui"
         xmlns:f="http://xmlns.jcp.org/jsf/core">
-<ui:composition template="/resources/navbar.xhtml">
-    <ui:define name="title">#{cameraService.camera.brand} #{cameraService.camera.model}</ui:define>
-    <ui:define name="content">
-    <p:spacer height="40px"></p:spacer>
+<h:head>
+        <title>#{cameraService.camera.brand} #{cameraService.camera.model}</title>
+        <style type="text/css"></style>
+</h:head>   
+<h:body style="padding-top: 30px; padding-bottom: 20px; background-color: #add;">
+    <p:spacer height="40px" width="100%"></p:spacer>
+    <ui:include src="/resources/navbar.xhtml" />
     <f:metadata>
         <f:viewParam name="id" value="#{cameraService.camera.id}"/>
         <f:viewAction  action="#{cameraService.getcamerabyid}"/>       
     </f:metadata>
-        <b:container>
-            <p:breadCrumb >
-               
-                <p:menuitem   rendered="false" ></p:menuitem>
-                <p:menuitem value="Home" url="/View/UnSecured/home.xhtml" />
-                <p:menuitem value="All cameras" url="all.xhtml" />
-                <p:menuitem value="#{cameraService.camera.brand}" url="list.xhtml?brand='#{cameraService.camera.brand}'" />
-                
-            </p:breadCrumb>
+    <b:container style="margin-right: 20%; margin-left: 20%; background-color: #f4feff ; border-radius: 20px ; min-height: 800px">
+        <p:spacer height="30px" width="100%"></p:spacer>
+        <p:breadCrumb >            
+            <p:menuitem   rendered="false" ></p:menuitem>
+            <p:menuitem value="Home" url="/View/UnSecured/home.xhtml" />
+            <p:menuitem value="All cameras" url="all.xhtml" />
+            <p:menuitem value="#{cameraService.camera.brand}" url="list.xhtml?brand='#{cameraService.camera.brand}'" />                
+        </p:breadCrumb>
             
             <b:row> <h1 align="center" > #{cameraService.camera.brand} #{cameraService.camera.model} </h1> </b:row> 
              <p:spacer height="20"/>
@@ -37,7 +39,7 @@
                 </b:column>
                 <b:column   col-lg="3"  >
                     <p:spacer height="80px" width="500px" ></p:spacer>
-                    <h3> Price: #{cameraService.camera.price} UAH </h3> 
+                    <h3 style="color: #A40F0F"> Price: #{cameraService.camera.price} UAH </h3> 
               
                 </b:column>
             </b:row> 
@@ -61,6 +63,5 @@
 
             </b:tabView>
         </b:container>
-    </ui:define>
-</ui:composition>
+</h:body>
 </html>

@@ -10,12 +10,7 @@
         xmlns:b="http://bootsfaces.net/ui"
         xmlns:sec="http://www.springframework.org/security/tags"
         xmlns:p="http://primefaces.org/ui">
-<h:head>
-	<title><ui:insert name="title">Название по умолчанию</ui:insert></title>
-	<style type="text/css"></style>
-        
-</h:head>
-<h:body style="padding-top: 30px; padding-bottom: 20px; background-color: #add;">
+
 
         <b:navBar brand="Home" brandHref="#{request.contextPath}/View/UnSecured/home.xhtml" inverse="true" fixed="top" >
             <b:navbarLinks>
@@ -50,9 +45,5 @@
             </b:navbarLinks>
         </b:navBar>
       
-    <ui:insert name="content">content по умолчанию</ui:insert>
-    <hr/>
-    <h:outputText  value="S.Gaidai" style="font-style:italic"/>                           
-    <h:outputStylesheet library="webjars" name="font-awesome/4.7.0/css/font-awesome-jsf.css" />
-</h:body>
+    
 </html>

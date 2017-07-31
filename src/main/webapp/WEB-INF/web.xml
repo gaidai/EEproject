@@ -48,6 +48,11 @@
 		<param-name>javax.faces.PROJECT_STAGE</param-name>
 		<param-value>Development</param-value>
 	</context-param>
+        <!--Use scss-->
+        <context-param>
+                <param-name>com.bc.sass.faces.COMPASS_ENABLED</param-name>
+                <param-value>true</param-value>
+        </context-param>
 
 	<!-- JSF Servlet is defined to container -->
         <!-- JSF mapping -->

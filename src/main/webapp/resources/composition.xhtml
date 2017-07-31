@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+        xmlns:c="http://java.sun.com/jsp/jstl/core"
+        xmlns:f="http://xmlns.jcp.org/jsf/core"
+        xmlns:b="http://bootsfaces.net/ui"
+        xmlns:sec="http://www.springframework.org/security/tags"
+        xmlns:p="http://primefaces.org/ui">
+<h:head>
+	<title><ui:insert name="title">Название по умолчанию</ui:insert></title>
+	<style type="text/css"></style>
+        
+</h:head>
+<h:body style="padding-top: 30px; padding-bottom: 20px; background-color: #add;">
+
+    <ui:include src="/resources/navbar.xhtml" />      
+    <ui:insert name="content">content по умолчанию</ui:insert>
+    <br/>
+    <ui:include src="/resources/footer.xhtml" /> 
+     
+    <h:outputStylesheet library="webjars" name="font-awesome/4.7.0/css/font-awesome-jsf.css" />
+</h:body>
+</html>

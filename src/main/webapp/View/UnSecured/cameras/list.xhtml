@@ -8,29 +8,54 @@
         xmlns:p="http://primefaces.org/ui"
         xmlns:b="http://bootsfaces.net/ui"
         xmlns:f="http://xmlns.jcp.org/jsf/core">
-<ui:composition template="/resources/navbar.xhtml">
-    <ui:define name="title">Digital Cameras</ui:define>
-    <ui:define name="content">Cameras!!!! 
-    <p:spacer height="40px"></p:spacer>
+<h:head>
+        <title>Cameras by #{cameraService.camera.brand}</title>
+        <style type="text/css"></style>
+</h:head>   
+<h:body style="padding-top: 30px; padding-bottom: 20px; background-color:  #add;;">
+    <p:spacer height="40px" width="100%"></p:spacer>
+    <ui:include src="/resources/navbar.xhtml" />
     <f:metadata>
          <f:viewParam name="brand" value="#{cameraService.camera.brand}"/>
         <f:viewAction  action="#{cameraService.listCamerasByBrand}"/>      
     </f:metadata>
-        <b:container>
-                <b:column  span="1" col-lg="7"  >
-                    <h:form>
-                        <b:dataTable value="#{cameraService.list}" var="c" >
-                            <b:dataTableColumn value="#{c.id}" label="ID" />
-                            <b:dataTableColumn value="#{c.brand} #{c.model}" label="Model" />
-                            <b:dataTableColumn value="#{c.price}" label="Price"/>
-                            <b:dataTableColumn value="#{c.color}" label="Color"/>
-                            <b:dataTableColumn value="#{c.resolution}" label="Resolution"/>
+    <b:container style="background: #f4feff; border-radius: 10px" >
+        <p:spacer height="20px" width="100%"></p:spacer>
+        <p:breadCrumb >               
+            <p:menuitem   rendered="false" ></p:menuitem>
+            <p:menuitem value="Home" url="/View/UnSecured/home.xhtml" />
+            <p:menuitem value="All cameras" url="all.xhtml" />                
+        </p:breadCrumb>
+        <p:spacer height="30px" width="100%"></p:spacer>
+        <b:column   col-lg="10"  >            
+            <h:form> 
+                <p:dataScroller value="#{cameraService.list}"  var="c" chunkSize="10">
+                    <f:facet name="header" >  Scroll Down to Load More Cameras </f:facet>
+                    <h:panelGrid  columns="3" style="width:100%" columnClasses="logo,detail,button">
+                        <p:graphicImage value="/resources/products/cameras/#{c.id}/1.png" width="200" ><br/></p:graphicImage> 
 
+                        <p:outputPanel >
+                            <h:panelGrid columns="3" cellpadding="20"  >
+                                <h:outputText value="Model:" /> 
+                                &nbsp;&nbsp;&nbsp;&nbsp;
+                                <h:outputText value="#{c.brand} #{c.model}" style="font-weight: bold"/>
 
-                        </b:dataTable>
-                    </h:form>   
-                </b:column>
-        </b:container>
-    </ui:define>
-</ui:composition>
+                                <h:outputText value="Resolution:" />
+                                &nbsp;&nbsp;&nbsp;&nbsp;
+                                <h:outputText value="#{c.resolution} Mp" style="font-weight: bold"/>
+
+                                <h:outputText value="Price:" />
+                                &nbsp;&nbsp;&nbsp;&nbsp;
+                                <h:outputText value="#{c.price} UAH" style="font-weight: bold; color: #A40F0F"/>
+                            </h:panelGrid>
+                        </p:outputPanel>
+                        <b:button href="camera.xhtml?id=#{c.id}" icon=" glyphicon glyphicon-chevron-right" look="info"  size="md"/>
+                        <!--<b:button href="camera.xhtml?id=#{c.id}" icon="shopping-cart" look="success"  size="md"/>-->
+                    </h:panelGrid>
+                </p:dataScroller>
+            </h:form>
+        </b:column>
+        <p:spacer height="100px" width="100%"></p:spacer>
+    </b:container>
+</h:body>
 </html>

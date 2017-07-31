@@ -11,23 +11,26 @@
         <title>My profile</title>
         
 </h:head>
-    <h:body>
+<h:body>
+    <p:spacer height="90px" width="100%"/>
+    
     <b:container >  
         <ui:include src="/resources/navbar2.xhtml" />
-        <p:spacer height="70px" width="100%"/>
-         <h:form id="form1">
-                                         
-
-        
-            <center><h2>User Manager</h2></center>     
-                                 
-            <center><h3>Users</h3></center>    
-            <h:outputText value="#{userBean.userProfile.firstName}"/> 
-            <h:outputText value="#{userBean.userProfile.lastName}"/>  
-            <h:outputText value="#{userBean.userProfile.email}"/>
-   
+        <h:form id="form1" style="font-size: 20px"> 
+            <b:row><b:column col-lg="3"  offset-lg="4"><h2>User Information</h2></b:column></b:row><br/><br/>
+                
+            <b:column col-lg="3"  offset-lg="3"> 
+                <b:row><h:outputText value="First name: "/></b:row>
+                <b:row><h:outputText value="Last name:" /></b:row>
+                <b:row><h:outputText value="Email:" /></b:row>                            
+            </b:column>
+            <b:column col-lg="3" >  
+                <b:row><h:outputText value="#{userBean.userProfile.firstName}" /></b:row>
+                <b:row><h:outputText value="#{userBean.userProfile.lastName}" /></b:row>
+                <b:row><h:outputText value="#{userBean.userProfile.email}" /></b:row>                            
+            </b:column>  
 
         </h:form>
     </b:container>
-    </h:body>
+</h:body>
 </html>

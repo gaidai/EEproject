@@ -7,12 +7,12 @@
 	xmlns:ui="http://java.sun.com/jsf/facelets"
         xmlns:p="http://primefaces.org/ui"
         xmlns:b="http://bootsfaces.net/ui">
-<ui:composition template="/resources/navbar.xhtml">
+<ui:composition template="/resources/composition.xhtml">
     <ui:define name="title">Home page</ui:define>
-    <ui:define name="content"> 
-    <p:spacer height="5px"></p:spacer>
-    <div style="margin-left: 10% ">
-        <h:form>
+<ui:define name="content">
+    <p:spacer height="40px" width="100%"></p:spacer>
+ 
+    <b:column col-lg="2" style=" margin-left: 7%" >
         <p:megaMenu orientation="vertical" style="margin-top:20px">
             <p:submenu label="Smartphones" icon="ui-icon-check">
                 <p:column>
@@ -210,30 +210,16 @@
                     </p:submenu>
                 </p:column>
             </p:submenu>
-        </p:megaMenu>  
-        </h:form>
-        <b:carousel id="rioja" styleClass="riojaPseudoClass" style="width:700px">
-            <b:carouselItem style="padding-left:150px">
-                <img src="carousel/rioja1.jpg" alt="Rioja 1" />
-            </b:carouselItem>
-            <b:carouselItem style="padding-left:150px">
-                <img src="carousel/rioja2.jpg" alt="Rioja 2" />
-            </b:carouselItem>
-            <b:carouselItem style="padding-left:150px">
-                <img src="carousel/rioja3.jpg" alt="Rioja 3" />
-            </b:carouselItem>
-            <b:carouselControl direction="right">
-                <div class="left carousel-control">
-                    <b:button value="Previous image" onclick="$('.riojaPseudoClass').carousel('prev');" style="margin-top:140px" look="info"/>
-                </div>
-            </b:carouselControl>
-            <b:carouselControl direction="left">
-                <div class="right carousel-control">
-                    <b:button value="Next image" onclick="$('.riojaPseudoClass').carousel('next');" style="margin-top:140px" look="success"/>
-                </div>
-            </b:carouselControl>
-        </b:carousel>
-    </div>    
+        </p:megaMenu>
+    </b:column>
+   
+    <b:container style="margin-right: 20%;  background-color: #f4feff ; border-radius: 20px ; min-height: 800px"  >    
+   
+
+    </b:container>      
+      
+      
+ 
     </ui:define>
 </ui:composition>
 </html>
