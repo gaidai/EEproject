@@ -19,7 +19,7 @@
         <f:viewParam name="id" value="#{cameraService.camera.id}"/>
         <f:viewAction  action="#{cameraService.getcamerabyid}"/>       
     </f:metadata>
-    <b:container style="margin-right: 20%; margin-left: 20%; background-color: #f4feff ; border-radius: 20px ; min-height: 800px">
+    <b:container style="margin-right: 20%; margin-left: 20%; background-color: #f4feff ; border-radius: 20px ; min-height: 800px">        
         <p:spacer height="30px" width="100%"></p:spacer>
         <p:breadCrumb >            
             <p:menuitem   rendered="false" ></p:menuitem>
@@ -31,12 +31,15 @@
             <b:row> <h1 align="center" > #{cameraService.camera.brand} #{cameraService.camera.model} </h1> </b:row> 
              <p:spacer height="20"/>
              <b:row>  
-                 <b:column   col-lg="5"  >                    
-                    <p:graphicImage value="/resources/products/cameras/#{cameraService.camera.id}/1.png" width="250"/>
-                    <p:spacer height="20"/>
-                   
-              
+                <b:column   col-lg="7"  >  
+                    <p:imageSwitch effect="shuffle" >
+                        <ui:repeat value="#{cameraService.image('cameras')}" var="i" >                           
+                           <p:graphicImage value="/resources/products/cameras/#{cameraService.camera.id}/#{i}" height="350"/>
+                        </ui:repeat>
+                    </p:imageSwitch>
+                    <p:spacer height="20"/>     
                 </b:column>
+                 
                 <b:column   col-lg="3"  >
                     <p:spacer height="80px" width="500px" ></p:spacer>
                     <h3 style="color: #A40F0F"> Price: #{cameraService.camera.price} UAH </h3> 
@@ -44,17 +47,22 @@
                 </b:column>
             </b:row> 
              <p:spacer height="60px" />
+            <h:form>
             <b:tabView activeIndex="1">
                 <b:tab title="Descriptions" >
-                    <ui:include src="/resources/products/cameras/#{cameraService.camera.id}/1.xhtml" />
+                    <ui:include src="/resources/products/cameras/#{cameraService.camera.id}/Description/1.xhtml" />
 <!--                    <ui:composition template="/resources/products/cameras/#{cameraService.camera.id}/1.xhtml"></ui:composition>-->
                 </b:tab>
                 <b:tab title="Another Tab">
                     <p>This is the second tab.</p>
                 </b:tab>
                 <!-- The next tab shows tabs aren't limited to text. You can put anything in a tab. -->
-                <b:tab title="Image Tab">
-                  ...
+                <b:tab title="Image Tab" >
+                      <p:spacer height="20"/>
+             
+                    <p:galleria value="#{cameraService.image('cameras')}" var="i" panelWidth="500" panelHeight="313" showCaption="true">
+                        <p:graphicImage value="/resources/products/cameras/#{cameraService.camera.id}/#{i}" />
+                    </p:galleria>
                 </b:tab>
                 <b:tab title="Reviews">
                     <f:facet name="anchor"><b:iconAwesome name="cog" spin="true" /></f:facet>
@@ -62,6 +70,9 @@
                 </b:tab>
 
             </b:tabView>
+              </h:form>
         </b:container>
+     <p:spacer height="20"/>   
+    
 </h:body>
 </html>

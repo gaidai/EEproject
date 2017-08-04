@@ -13,41 +13,33 @@
     <ui:define name="content">Cameras!!!! 
     <p:spacer height="40px"></p:spacer>
         <b:container>
-                <b:column  span="2" col-lg="10"  >
-                    <b:button href="list.xhtml?brand='Canon'" icon=" glyphicon glyphicon-chevron-right" look="info"  size="md" value="Canon"/>
-                   <b:button href="list.xhtml?brand='Nikon'" icon=" glyphicon glyphicon-chevron-right" look="info"  size="md" value="Nikon"/>
-                   <b:button href="list.xhtml?brand='Konica'" icon=" glyphicon glyphicon-chevron-right" look="info"  size="md" value="Konica"/>
-                    <h:form> 
-                        <p:dataScroller value="#{cameraService.listCamerasbyPrice()}"  var="c" chunkSize="10">
-                            <f:facet name="header" >
-                                
-                                Scroll Down to Load More Cameras
-                            </f:facet>
+            <b:column  span="2" col-lg="10"  >
+                <b:button href="list.xhtml?brand='Canon'" icon=" glyphicon glyphicon-chevron-right" look="info"  size="md" value="Canon"/>
+                <b:button href="list.xhtml?brand='Nikon'" icon=" glyphicon glyphicon-chevron-right" look="info"  size="md" value="Nikon"/>
+                <b:button href="list.xhtml?brand='Konica'" icon=" glyphicon glyphicon-chevron-right" look="info"  size="md" value="Konica"/>
+                <h:form id="form">
+                    <p:dataGrid var="c" value="#{cameraService.listCamerasbyPrice()}"   columns="3" layout="grid"
+                        rows="12" paginator="true" id="cameras"
+                        paginatorTemplate="{CurrentPageReport}  {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
+                        rowsPerPageTemplate="12,18,36">
 
-                            <h:panelGrid columns="3" style="width:100%" columnClasses="logo,detail,button">
-                                <p:graphicImage value="/resources/products/cameras/#{c.id}/1.png" width="200" /> 
+                        <f:facet name="header">
+                            Digital cameras
+                        </f:facet>
 
-                                <p:outputPanel>
-                                    <h:panelGrid columns="3" bgcolor="" cellpadding="20">
-                                        <h:outputText value="Model:" /> 
-                                        &nbsp;&nbsp;&nbsp;&nbsp;
-                                        <h:outputText value="#{c.brand} #{c.model}" style="font-weight: bold"/>
-                                        
-                                        <h:outputText value="Resolution:" />
-                                        &nbsp;&nbsp;&nbsp;&nbsp;
-                                        <h:outputText value="#{c.resolution} Mp" style="font-weight: bold"/>
-                                        
-                                        <h:outputText value="Price:" />
-                                        &nbsp;&nbsp;&nbsp;&nbsp;
-                                        <h:outputText value="#{c.price} UAH" style="font-weight: bold; color: #A40F0F"/>
-                                    </h:panelGrid>
-                                </p:outputPanel>
-                                <b:button href="camera.xhtml?id=#{c.id}" icon=" glyphicon glyphicon-chevron-right" look="info"  size="md"/>
-                                <!--<b:button href="camera.xhtml?id=#{c.id}" icon="shopping-cart" look="success"  size="md"/>-->
+                        <a href="camera.xhtml?id=#{c.id}"><p:panel header="#{c.brand} #{c.model}" style="text-align:center" >
+                            <h:panelGrid columns="1" style="width:100%">
+                                <p:graphicImage value="/resources/products/cameras/#{c.id}/1.png" height="150"/> 
+                                <p:graphicImage value="/resources/products/cameras/#{c.id}/1.jpg" height="150"/> 
+                                <hr/>
+                                <h:outputText value="#{c.price} UAH" style="color: red; font-weight: bold"/>                                
                             </h:panelGrid>
-                        </p:dataScroller>
-                    </h:form>
-                </b:column>
+                           </p:panel>
+                        </a>
+
+                    </p:dataGrid>                    
+                </h:form>
+            </b:column>
         </b:container>
     </ui:define>
 </ui:composition>

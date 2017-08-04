@@ -38,6 +38,12 @@ public class CameraService implements Serializable{
 	public void deleteCamera(Camera c) {
                 this.cameraDAO.deleteCamera(c);
 	}
+        public List<String> image (String category ) {
+                Images g = new Images();
+               return g.init(this.camera.getId(),category);
+                
+	}
+        
         public void listCamerasByBrand (){
             System.out.println(this.camera.getBrand()+"-----");
             list = this.cameraDAO.listCamerasByBrand(this.camera.getBrand());
