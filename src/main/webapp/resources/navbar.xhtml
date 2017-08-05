@@ -26,7 +26,10 @@
                 </b:dropMenu>                
             </b:navbarLinks> 
             <b:navbarLinks pull="right" >
-                <sec:authorize access="!isAuthenticated()">
+                <h:form styleClass="navbar-form navbar-right">
+                    <b:button href="#{request.contextPath}/View/UnSecured/cart.xhtml" value="My Cart" look="danger" icon-awesome="fa-shopping-cart" icon-size="lg" ></b:button>
+                </h:form>
+               <sec:authorize access="!isAuthenticated()">
                      <h:form styleClass="navbar-form navbar-right">
                         &nbsp; &nbsp;&nbsp; &nbsp;
                         <b:button href="#{request.contextPath}/View/UnSecured/login.xhtml" value="Login" look="info" icon="chevron-right" iconAlign="right"></b:button>

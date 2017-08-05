@@ -1,6 +1,7 @@
 package com.sgaidai.jsfbean.controller;
 
 
+import com.sgaidai.secondary.Images;
 import com.sgaidai.security.entities.model.product.Camera;
 import com.sgaidai.springdatajpa.dao.CameraDAO;
 import java.io.Serializable;
@@ -47,7 +48,6 @@ public class CameraService implements Serializable{
         public void listCamerasByBrand (){
             System.out.println(this.camera.getBrand()+"-----");
             list = this.cameraDAO.listCamerasByBrand(this.camera.getBrand());
-            System.out.println("-----"+ list.size());
 		
 	}
         

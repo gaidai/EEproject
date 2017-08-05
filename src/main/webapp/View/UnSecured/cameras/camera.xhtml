@@ -8,15 +8,13 @@
         xmlns:p="http://primefaces.org/ui"
         xmlns:b="http://bootsfaces.net/ui"
         xmlns:f="http://xmlns.jcp.org/jsf/core">
-<h:head>
-        <title>#{cameraService.camera.brand} #{cameraService.camera.model}</title>
-        <style type="text/css"></style>
-</h:head>   
-<h:body style="padding-top: 30px; padding-bottom: 20px; background-color: #add;">
+<ui:composition template="/resources/composition.xhtml">
+    <ui:define name="title">#{cameraService.camera.brand} #{cameraService.camera.model}</ui:define>
+    <ui:define name="content">
     <p:spacer height="40px" width="100%"></p:spacer>
-    <ui:include src="/resources/navbar.xhtml" />
     <f:metadata>
         <f:viewParam name="id" value="#{cameraService.camera.id}"/>
+        <f:viewParam name="price" value="#{cameraService.camera.price}"/>
         <f:viewAction  action="#{cameraService.getcamerabyid}"/>       
     </f:metadata>
     <b:container style="margin-right: 20%; margin-left: 20%; background-color: #f4feff ; border-radius: 20px ; min-height: 800px">        
@@ -40,15 +38,21 @@
                     <p:spacer height="20"/>     
                 </b:column>
                  
-                <b:column   col-lg="3"  >
-                    <p:spacer height="80px" width="500px" ></p:spacer>
-                    <h3 style="color: #A40F0F"> Price: #{cameraService.camera.price} UAH </h3> 
-              
+                <b:column  col-lg="3">
+                    <p:spacer height="80px" width="200px" ></p:spacer>
+                    <h3 style="color: #A40F0F"> Price: #{cameraService.camera.price} UAH </h3> <br/>
+                    <h:form>
+                        <b:commandButton action="#{cart.AddtoCart()}" value="Add to Cart" look="info"  icon-awesome="fa-shopping-cart" icon-size="lg" size="lg" iconAlign="right">
+                            <f:param value="#{cameraService.camera.id}" name="id" />
+                            <f:param value="camera"  name="category" />
+                            <f:param value="#{cameraService.camera.price}"  name="price" />
+                        </b:commandButton>
+                    </h:form>
                 </b:column>
             </b:row> 
              <p:spacer height="60px" />
             <h:form>
-            <b:tabView activeIndex="1">
+            <b:tabView activeIndex="0">
                 <b:tab title="Descriptions" >
                     <ui:include src="/resources/products/cameras/#{cameraService.camera.id}/Description/1.xhtml" />
 <!--                    <ui:composition template="/resources/products/cameras/#{cameraService.camera.id}/1.xhtml"></ui:composition>-->
@@ -74,5 +78,6 @@
         </b:container>
      <p:spacer height="20"/>   
     
-</h:body>
+   </ui:define>
+</ui:composition>
 </html>
