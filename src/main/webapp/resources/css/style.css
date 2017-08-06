@@ -4,6 +4,13 @@
   clear: both;
 }
 
+.ui-growl {
+  right:40px;
+  top: 50px;
+  
+
+}
+
 .tomottoWrap-footer{
   font: 12pt Georgia;
   position: relative;

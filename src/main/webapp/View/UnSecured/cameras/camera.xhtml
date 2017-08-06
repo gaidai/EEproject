@@ -42,11 +42,13 @@
                     <p:spacer height="80px" width="200px" ></p:spacer>
                     <h3 style="color: #A40F0F"> Price: #{cameraService.camera.price} UAH </h3> <br/>
                     <h:form>
-                        <b:commandButton action="#{cart.AddtoCart()}" value="Add to Cart" look="info"  icon-awesome="fa-shopping-cart" icon-size="lg" size="lg" iconAlign="right">
+                        <b:commandButton id="add"  action="#{cart.AddtoCart()}" value="Add to Cart" look="info"  icon-awesome="fa-shopping-cart" icon-size="lg" size="lg" iconAlign="right">
                             <f:param value="#{cameraService.camera.id}" name="id" />
                             <f:param value="camera"  name="category" />
                             <f:param value="#{cameraService.camera.price}"  name="price" />
                         </b:commandButton>
+                        <b:growl for="add" globalOnly="true" placementFrom="bottom" show-detail="true" 
+                                 show-summary="false" allowDismiss="true" delay="4000" escape="true"  />
                     </h:form>
                 </b:column>
             </b:row> 
