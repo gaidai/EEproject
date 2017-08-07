@@ -5,8 +5,7 @@
 	xmlns:h="http://java.sun.com/jsf/html"
 	xmlns:ui="http://java.sun.com/jsf/facelets"
         xmlns:p="http://primefaces.org/ui"
-        xmlns:b="http://bootsfaces.net/ui"
-        xmlns:f="http://xmlns.jcp.org/jsf/core">
+        xmlns:b="http://bootsfaces.net/ui">
 <ui:composition template="/resources/composition.xhtml">
     <ui:define name="title">My shopping cart </ui:define>
     <ui:define name="content">
@@ -15,12 +14,14 @@
         <h:form id="form1" style="font-size: 20px"> 
             <b:row><b:column col-lg="3"  offset-lg="4"><h2>User Information</h2></b:column></b:row><br/><br/>
                 
-            <b:column col-lg="3"  offset-lg="3"> 
+            <b:column col-lg="2"  offset-lg="4" class="tomotto" style="text-align: left"> 
+                <b:row><h:outputText value="Login: "/></b:row>
                 <b:row><h:outputText value="First name: "/></b:row>
                 <b:row><h:outputText value="Last name:" /></b:row>
                 <b:row><h:outputText value="Email:" /></b:row>                            
             </b:column>
-            <b:column col-lg="3" >  
+            <b:column col-lg="3" class="tomotto"  style="text-align: left ; color: #215A6D" >  
+                <b:row><h:outputText value="#{userBean.userProfile.username}"   /></b:row>
                 <b:row><h:outputText value="#{userBean.userProfile.firstName}" /></b:row>
                 <b:row><h:outputText value="#{userBean.userProfile.lastName}" /></b:row>
                 <b:row><h:outputText value="#{userBean.userProfile.email}" /></b:row>                            

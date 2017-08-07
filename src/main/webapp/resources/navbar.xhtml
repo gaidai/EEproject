@@ -4,19 +4,14 @@
 
 <html xmlns="http://www.w3.org/1999/xhtml"
 	xmlns:h="http://java.sun.com/jsf/html"
-	xmlns:ui="http://java.sun.com/jsf/facelets"
-        xmlns:c="http://java.sun.com/jsp/jstl/core"
-        xmlns:f="http://xmlns.jcp.org/jsf/core"
         xmlns:b="http://bootsfaces.net/ui"
-        xmlns:sec="http://www.springframework.org/security/tags"
-        xmlns:p="http://primefaces.org/ui">
-
-
-        <b:navBar brand="Home" brandHref="#{request.contextPath}/View/UnSecured/home.xhtml" inverse="true" fixed="top" >
+        xmlns:sec="http://www.springframework.org/security/tags">
+ 
+    <b:navBar brand="Home" brandHref="#{request.contextPath}/View/UnSecured/home.xhtml" class="navlink" inverse="true" fixed="top" >
             <b:navbarLinks>
                 <b:navLink value="Delivery" href="#"></b:navLink>
                 <b:navLink value="Link" href="#"></b:navLink>
-                <b:dropMenu value="Promotions">
+                <b:dropMenu value="Promotions" class="navmenu">
                     <b:navLink value="Action" href="#"></b:navLink>
                     <b:navLink value="Another action" href="#"></b:navLink>
                     <b:navLink value="Something else here" href="#"></b:navLink>

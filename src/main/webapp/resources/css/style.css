@@ -1,4 +1,25 @@
-
+.price{
+    color: red;
+    font: 15pt italic;
+    font-weight: 600;
+}
+/*megamenu*/
+.megamenu{
+  font: 12pt Georgia; 
+  letter-spacing: 0.8px;
+  text-shadow: 1px 1px 2px rgba(0, 55, 60, 0.5);  
+}
+/*navbar*/
+.navlink{
+  letter-spacing: 2px;
+  text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.5);
+}
+.navmenu{
+    
+  letter-spacing: 1px;
+  text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.5);
+}
+/*footer*/
 #footer{
   margin-bottom: -150px;
   clear: both;
@@ -7,8 +28,6 @@
 .ui-growl {
   right:40px;
   top: 50px;
-  
-
 }
 
 .tomottoWrap-footer{
