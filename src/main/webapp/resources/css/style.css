@@ -3,6 +3,14 @@
     font: 15pt italic;
     font-weight: 600;
 }
+/*steps in order page*/
+.ui-steps .ui-steps-item {
+    width: 25%;    
+}
+ 
+.ui-state-highlight {
+    text-shadow: none !important;
+}
 /*megamenu*/
 .megamenu{
   font: 12pt Georgia; 

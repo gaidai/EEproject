@@ -28,38 +28,65 @@
                     </p:confirmDialog>
                 </b:form >                 
             </b:column >
-             <b:column col-lg="3" >
-                 <h:outputText class="price" id ="totalprice" value=" Total Price : #{cart.totalPrice()} UAH" rendered="#{cart.totalPrice() gt 0}" />
+             <b:column col-lg="3" rendered="#{cart.totalPrice() gt 0}" >
+                 <h:outputText class="price" id ="totalprice" value=" Total Price : #{cart.totalPrice()} UAH"  />
+                 <b:button href="order.xhtml" value="Buy All"/>
             </b:column>
         </b:row>
         
             <p:spacer height="20px" width="100%"/>
-            
-            <p:dataGrid id="list" value="#{cart.mycart}" var="p" emptyMessage="Your Shopping cart is clear !" >
-                
-                <p:outputPanel>
-                    <h:panelGrid columns="3" cellpadding="5" >
-                        <h:column>
-                            <h:outputText value="Id:" />
-                            <h:outputText value="Price" />
-                            <h:outputText value="Category:" />
-                        </h:column>
-                        <h:column>
-                            <h:outputText value="#{p.id}" style="font-weight: bold"/>
-                            <h:outputText value="#{p.price}" style="font-weight: bold"/>
-                            <h:outputText value="#{p.category}" style="font-weight: bold"/>
-                        </h:column>
-                        <h:column>
-                             <b:form >
-                                 <p:commandLink ajax="true" update="growl, navcart, main-container" action="#{cart.deletfromCart(p)}" ><i class="fa  fa-trash fa-lg " /></p:commandLink>
-                            </b:form> 
-                        </h:column>
+                                    
+            <p:dataScroller id="list" value="#{cart.mycart}" var="p" >
+                    <f:facet name="header">
+                        List of items
+                    </f:facet>    
+                    <h:panelGrid columns="2" style="width:100%" columnClasses="detail">
+                        <p:outputPanel>
+                            <h:panelGrid columns="2" >
+                                <h:outputText value="Id:" />
+                                <h:outputText value="#{p.id}" style="font-weight: bold"/>
+
+                                <h:outputText value="Category:" />
+                                <h:outputText value="#{p.category}" style="font-weight: bold"/>
+
+                                <h:outputText value="Price:" />
+                                <h:outputText value="#{p.price} UAH" style="font-weight: bold"/>
+                            </h:panelGrid>
+                        </p:outputPanel>
+                        <b:form >
+                            <p:commandLink ajax="true" update="growl, navcart, main-container" action="#{cart.deletfromCart(p)}" ><i class="fa  fa-trash fa-lg " /></p:commandLink>
+                        </b:form> 
                     </h:panelGrid>
-                </p:outputPanel>
-            </p:dataGrid>      
-    
+                    <hr/>
+                    
+                </p:dataScroller>
+<!--                <p:repeat value="#{dataListView.cars1}" var="car">
+                            <h:panelGrid columns="2" style="width:100%" columnClasses="logo,detail">
+                          <p:commandLink update=":form:carDetail" oncomplete="PF('carDialog').show()">
+                              <f:setPropertyActionListener value="#{car}" target="#{dataListView.selectedCar}" />
+                              <p:graphicImage name="demo/images/car/#{car.brand}-big.gif" /> 
+                          </p:commandLink>
+
+                          <p:outputPanel>
+                              <h:panelGrid columns="2" cellpadding="5">
+                                  <h:outputText value="Id:" />
+                                  <h:outputText value="#{car.id}" style="font-weight: bold"/>
+
+                                  <h:outputText value="Year:" />
+                                  <h:outputText value="#{car.year}" style="font-weight: bold"/>
+
+                                  <h:outputText value="Color:" />
+                                  <h:outputText value="#{car.color}" style="font-weight: bold"/>
+                              </h:panelGrid>
+                          </p:outputPanel>
+                      </h:panelGrid>
+                      <hr />
+                </p:repeat>-->
+             <p:spacer height="20"/>  
+             <b:button href="order.xhtml" value="Buy All" rendered="#{cart.totalPrice() gt 0}"/>
     </b:container>
-    <p:spacer height="20"/>   
+    <p:spacer height="20"/> 
+   
     
    </ui:define>
 </ui:composition>

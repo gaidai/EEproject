@@ -1,0 +1,27 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+        xmlns:p="http://primefaces.org/ui"
+        xmlns:b="http://bootsfaces.net/ui"
+        xmlns:f="http://xmlns.jcp.org/jsf/core"
+        xmlns:c="http://xmlns.jcp.org/jsp/jstl/core">
+<ui:composition template="/resources/composition.xhtml">
+    <ui:define name="title">My shopping cart </ui:define>
+    <ui:define name="content">
+    <p:spacer height="40px" width="100%"/>
+    <b:container id="main-container" style="margin-right: 20%; margin-left: 20%; background-color: #f4feff ; border-radius: 20px ; min-height: 800px"> 
+        <p:steps activeIndex="0" >
+            <p:menuitem value="Personal" />
+            <p:menuitem value="Seat Selection" />
+            <p:menuitem value="Payment" />
+            <p:menuitem value="Confirmation" />
+        </p:steps>
+ 
+        </b:container>
+        <p:spacer height="20"/>         
+    </ui:define>
+</ui:composition>
+</html>
