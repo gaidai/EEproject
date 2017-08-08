@@ -9,17 +9,50 @@
         xmlns:f="http://xmlns.jcp.org/jsf/core"
         xmlns:c="http://xmlns.jcp.org/jsp/jstl/core">
 <ui:composition template="/resources/composition.xhtml">
-    <ui:define name="title">My shopping cart </ui:define>
+    <ui:define name="title"> Confirmation </ui:define>
     <ui:define name="content">
-    <p:spacer height="40px" width="100%"/>
-    <b:container id="main-container" style="margin-right: 20%; margin-left: 20%; background-color: #f4feff ; border-radius: 20px ; min-height: 800px"> 
-        <p:steps activeIndex="0" >
-            <p:menuitem value="Personal" />
-            <p:menuitem value="Seat Selection" />
-            <p:menuitem value="Payment" />
-            <p:menuitem value="Confirmation" />
-        </p:steps>
- 
+    <h:outputStylesheet library="css" name="steps.css"  />
+    <p:spacer height="40px" width="100%" />
+    <h:outputScript library="js" name="main.js" />
+    <script src="http://code.jquery.com/jquery-latest.js"></script>
+    <b:container  id="main-container" style="margin-right: 20%; margin-left: 20%; background-color: #f4feff ; border-radius: 20px ; min-height: 800px"> 
+        <p:spacer height="15px" width="100%" />
+        <center>
+            <ul class="steps" >
+                <li id="step1"  class="step active">Personal</li>
+                <li id="step2" class="step ">Shipping</li>
+                <li id="step3" class="step ">Payment</li>
+                <li id="step4" class="step ">Confirmation</li>
+            </ul>
+            <br/><br/><br/><br/>
+            <div style="height:450px; width: 90% ">
+                <div id="block1">
+                    <p> First</p>
+                </div>
+
+                <div id="block2" style="display: none">
+                    <p> Second</p>
+                </div>
+
+                <div id="block3" style="display: none">
+                    <p> Third</p>
+                </div>
+
+                <div id="block4" style="display: none">
+                    <p> Fourth</p>
+                </div>
+            </div>
+        </center>   
+        <br/>
+        <b:row>
+            <b:column col-lg="6">
+                <center><button  class="gradbtnback"  id = "back-btn" style="display: none" onclick="backstep()"  >Back</button> </center>
+            </b:column>
+            <b:column col-lg="6">
+                <center><button class="gradbtnnext" id = "next-btn"  onclick="nextstep()"  >Next</button></center>
+            </b:column>
+        </b:row>
+        
         </b:container>
         <p:spacer height="20"/>         
     </ui:define>
