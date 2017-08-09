@@ -41,11 +41,17 @@ public class UserBean implements Serializable {
     private   User user = new User();
     private   User userProfile;
     public static User log;
+    private String ConfirmPassword;
 
     
     public String addUser() {
         try {
-//            this.validateUser();
+            if (!(user.getPassword().equals(getConfirmPassword())) ){ 
+                
+            FacesMessage message = new FacesMessage(FacesMessage.SEVERITY_INFO, "Password","Password and confirm password does not match");
+            RequestContext.getCurrentInstance().showMessageInDialog(message); 
+            return null;
+            }
             int newid = userService.CreateNewUserId();
             User newuser = new User();             
            String cryptedPassword = new BCryptPasswordEncoder().encode(user.getPassword());            
@@ -74,6 +80,7 @@ public class UserBean implements Serializable {
             getRoleService().create(newrole);
             FacesMessage message= new FacesMessage(FacesMessage.SEVERITY_INFO, "Save ","User Information saved successfully.");
             RequestContext.getCurrentInstance().showMessageInDialog(message); 
+            user = null;
             return "login";
         } catch (DataAccessException e) {
             e.printStackTrace();
@@ -94,5 +101,7 @@ public class UserBean implements Serializable {
         userList.addAll(getUserService().findAll());
         return userList;
     }
+    
+    
 
 }
