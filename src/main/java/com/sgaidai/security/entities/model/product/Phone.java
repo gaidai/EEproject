@@ -7,11 +7,16 @@ package com.sgaidai.security.entities.model.product;
 
 import java.io.Serializable;
 import javax.faces.bean.ManagedBean;
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToOne;
+import javax.persistence.PrimaryKeyJoinColumn;
 import javax.persistence.Table;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -35,35 +40,42 @@ public class Phone implements Serializable {
     @GeneratedValue(strategy=GenerationType.IDENTITY)
     private int id;
     
-    @Column(name="model")
-    private String model ;
+  
+    @OneToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name="product_id")
+    private Product product ;       
     
-    @Column(name="price")
-    private int price;
+    @Column(name="os")
+    private String os;
     
-    @Column(name="count")
-    private int count;
-    
-    @Column(name="camera")
-    private int camera;
+    @Column(name="diagonal")
+    private String diagonal;
     
     @Column(name="simcount")
     private int simcount;
     
     @Column(name="ram")
-    private int ram;
+    private String ram;
     
     @Column(name="rom")
-    private int rom;
+    private String rom;
     
-    @Column(name="brand")
-    private String brand ;
+    @Column(name="cores")
+    private int cores;
+    
+    @Column(name="cpu")
+    private String cpu ;
      
     @Column(name="simtype")
     private String simtype ;
+    
+    @Column(name="resolution")
+    private String resolution ;
+    
+    @Column(name="description")
+    private String description ;
       
-    @Column(name="color")
-    private String color ;
+    
     
        
     

@@ -29,11 +29,11 @@ public class PhoneDAOImpl implements PhoneDAO {
         @Autowired
 	private EntityManager em;
         
-        @Transactional
-        @Override
-	public void addPhone(Phone p) {
-		this.em.persist(p);
-	}
+//        @Transactional
+//        @Override
+//	public void addPhone(Phone p) {
+//		this.em.persist(p);
+//	}
         
         @Transactional 
         @Override
@@ -41,31 +41,31 @@ public class PhoneDAOImpl implements PhoneDAO {
 		return this.em.createQuery("SELECT c FROM Phone c").getResultList();
 	}
         
-        @Transactional
-        @Override
-        public void deletePhone(Phone p) {
-            Phone del = new Phone();
-            del = p;
-		del = em.merge(del);
-            this.em.remove(del);
-
-	}
+//        @Transactional
+//        @Override
+//        public void deletePhone(Phone p) {
+//            Phone del = new Phone();
+//            del = p;
+//		del = em.merge(del);
+//            this.em.remove(del);
+//
+//	}
         
-        @Transactional 
-        @Override
-        public List<Phone> listPhonesByBrand(String b){
-            CriteriaBuilder cb = em.getCriteriaBuilder();
-            CriteriaQuery<Phone> criteriaQuery = cb.createQuery(Phone.class);
-            Root<Phone> phoneEntityRoot = criteriaQuery.from(Phone.class);
-
-            criteriaQuery.select(phoneEntityRoot).distinct(true);
-
-            Predicate criteria = cb.conjunction();
-            Predicate p = cb.equal(phoneEntityRoot.get(Phone_.brand), b);
-            criteria = cb.and(criteria, p);
-            criteriaQuery.where(criteria);
-            List<Phone> result = em.createQuery(criteriaQuery).getResultList();
-            return result;
-        }
+//        @Transactional 
+//        @Override
+//        public List<Phone> listPhonesByBrand(String b){
+//            CriteriaBuilder cb = em.getCriteriaBuilder();
+//            CriteriaQuery<Phone> criteriaQuery = cb.createQuery(Phone.class);
+//            Root<Phone> phoneEntityRoot = criteriaQuery.from(Phone.class);
+//
+//            criteriaQuery.select(phoneEntityRoot).distinct(true);
+//
+//            Predicate criteria = cb.conjunction();
+//            Predicate p = cb.equal(phoneEntityRoot.get(Phone_.brand), b);
+//            criteria = cb.and(criteria, p);
+//            criteriaQuery.where(criteria);
+//            List<Phone> result = em.createQuery(criteriaQuery).getResultList();
+//            return result;
+//        }
         
 }

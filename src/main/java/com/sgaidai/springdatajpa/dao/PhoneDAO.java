@@ -14,12 +14,12 @@ import javax.inject.Named;
 @Named
 public interface PhoneDAO {
     
-    public void addPhone(Phone p) ;      
+//    public void addPhone(Phone p) ;      
        
     public List<Phone> listPhones();
                
-    public void deletePhone(Phone p);
-    
-    public List<Phone> listPhonesByBrand(String b);
+//    public void deletePhone(Phone p);
+//    
+//    public List<Phone> listPhonesByBrand(String b);
     
 }
