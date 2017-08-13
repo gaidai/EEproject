@@ -4,13 +4,18 @@ package com.sgaidai.secondary;
 import java.util.ArrayList;
 import java.util.List;
 import java.io.File;
+import java.io.Serializable;
 
-public class Images {
 
-    public List<String> init(int id, String c){
+public class Images implements Serializable{
+
+
+    
+    public List<String> getImages(String category, int id){
+        System.out.println("com.sgaidai.jsfbean.controller.Images.getImages()" +id);
         List<String> images = new ArrayList(); 
         ClassLoader classLoader = getClass().getClassLoader();
-        File file = new File(classLoader.getResource("products/"+c+"/"+id).getFile());
+        File file = new File(classLoader.getResource("products/"+category+"/"+id).getFile());
         File[] files = file.listFiles();
         for(File f: files){
             if(f.isFile()){
@@ -18,5 +23,6 @@ public class Images {
             }
         }
         return  images;
+
     }    
 }

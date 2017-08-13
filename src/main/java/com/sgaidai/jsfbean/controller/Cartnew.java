@@ -2,7 +2,8 @@
 package com.sgaidai.jsfbean.controller;
 
 import com.sgaidai.secondary.Growl;
-import com.sgaidai.secondary.Product;
+import com.sgaidai.security.entities.model.product.Product;
+import com.sgaidai.springdatajpa.dao.ProductDAO;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
@@ -10,26 +11,31 @@ import java.util.Map;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ApplicationScoped;
 import javax.faces.context.FacesContext;
+import javax.persistence.EntityManager;
 import lombok.Getter;
-import lombok.NoArgsConstructor;
 import lombok.Setter;
 import lombok.ToString;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Repository;
+import org.springframework.stereotype.Service;
 
-
+@Service
+@Repository
 @ApplicationScoped
 @Getter
 @Setter
 @ToString
-@ManagedBean(name="cart")
-public class Cart implements  Serializable {
+@ManagedBean(name="cartnew")
+public class Cartnew implements  Serializable {
     
-    private  List <Product> mycart ;
-    private int price;
-    private int id;
-    private String category ;
+    
+    private  List <Product> mycart;
+    Product item;
     int total;
+    @Autowired
+    ProductDAO productDAO ;
     
-    public Cart(){
+    public Cartnew(){
         this.mycart = new ArrayList();
     }
     
@@ -42,21 +48,22 @@ public class Cart implements  Serializable {
     }
     
     public void AddtoCart(){
+          
         FacesContext fc = FacesContext.getCurrentInstance();
-        Map<String,String> params = fc.getExternalContext().getRequestParameterMap();
-	this.category = params.get("category");
-        this.id = Integer.parseInt(params.get("id"));
-        this.price = Integer.parseInt(params.get("price"));
-        System.out.println( "Added to MyCart :" + category + "...."+ id+"...."+price);
-        Product product = new Product();
-        product.setCategory(category);
-        product.setId(id);
-        product.setPrice(price);
-    //    System.out.println(product.toString());
-        mycart.add(product);
-        System.out.println( mycart.size() + " items in cart");
-        Growl growl = new Growl();
-        growl.saveMessage("Added to cart !!!");
+        Map<String,String> params = fc.getExternalContext().getRequestParameterMap();	
+        int product_id = Integer.parseInt(params.get("product_id"));
+        item = this.productDAO.getProductbyid(product_id);
+        
+        if(item.getQuantity()<1 ){
+            Growl growl = new Growl();
+            growl.saveMessage("Sorry, but this model was sold out !!!");
+        } else{
+            System.out.println( "Added to MyCart New :" + item.getCategory() + "...."+ item.getModel()+"...." + item.getPrice());        
+            mycart.add(item);
+            System.out.println( mycart.size() + " Items in new cart");
+            Growl growl = new Growl();
+            growl.saveMessage("Added to cart !!!");
+        }
     }
     
     public int totalPrice(){
@@ -86,9 +93,9 @@ public class Cart implements  Serializable {
 //         after ordering;
         mycart.clear();
     }
-    public void buyOne(int index){
+    public void buyOne(Product p){
         
         // after ordering;
-        mycart.remove(mycart.indexOf(index));
+        mycart.remove(p);
     }   
 }

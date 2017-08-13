@@ -1,6 +1,7 @@
 package com.sgaidai.jsfbean.controller;
 
 
+import com.sgaidai.secondary.Images;
 import com.sgaidai.security.entities.model.product.Phone;
 import com.sgaidai.springdatajpa.dao.PhoneDAO;
 import java.io.Serializable;
@@ -20,15 +21,21 @@ import org.springframework.beans.factory.annotation.Autowired;
 @ManagedBean(name="phoneService")
 @SessionScoped
 public class PhoneService implements Serializable{
-        
-        
+                
 	@Autowired
 	private PhoneDAO phoneDAO;
         private Phone phone = new Phone();
         private List <Phone> list = new ArrayList();
         	
-	public List<Phone> listPhones() {
-		return this.phoneDAO.listPhones();                
+	public List<Phone> listPhones() {            
+		return this.phoneDAO.listPhones();
+                
+	}
+        
+        public List<String> image () {
+                Images g = new Images();
+                List <String> pics = g.getImages( "phones", phone.getId());   
+               return pics ;                
 	}
        
 //	public void addCamera(Camera c) {
@@ -38,22 +45,17 @@ public class PhoneService implements Serializable{
 //	public void deleteCamera(Camera c) {
 //                this.cameraDAO.deleteCamera(c);
 //	}
-//        public List<String> image (String category ) {
-//                Images g = new Images();
-//               return g.init(this.camera.getId(),category);
-//                
-//	}
-//        
+//              
 //        public void listCamerasByBrand (){
-//            System.out.println(this.camera.getBrand()+"-----");
-//            list = this.cameraDAO.listCamerasByBrand(this.camera.getBrand());
+//            System.out.println(this.phone.getProduct().getBrand() + "-----");
+//            list = this.phoneDAO.listProductsByBrand(this.phone.getProduct().getBrand());
 //		
 //	}
-//        
-//        public void getcamerabyid() {
-//                camera = this.cameraDAO.getcamerabyid(this.camera.getId());
-//               
-//	}
+////        
+        public void getPhoneById() {
+                phone = this.phoneDAO.getPhoneById(this.phone.getId());
+               
+	}
 //        public List<Camera> listCamerasbyPrice() {
 //		return this.cameraDAO.listCamerasbyPrice();
 //	}
