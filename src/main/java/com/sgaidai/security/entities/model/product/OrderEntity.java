@@ -1,4 +1,9 @@
-package com.sgaidai.security.entities.model;
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
+package com.sgaidai.security.entities.model.product;
 
 import java.io.Serializable;
 import javax.faces.bean.ManagedBean;
@@ -9,36 +14,32 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 import lombok.AllArgsConstructor;
-import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 import lombok.ToString;
 
-@EqualsAndHashCode(exclude={"id"})
+
+@Getter
+@Setter
 @AllArgsConstructor
 @NoArgsConstructor
 @ToString
-@ManagedBean(name="person")
-@Table(name="Person")
+@ManagedBean(name="order")
+@Table(name="order")
 @Entity
-public class Person implements Serializable {
-
-    @Getter
-    @Setter
+public class OrderEntity implements Serializable {
+    
     @Id
     @Column(name="id")
     @GeneratedValue(strategy=GenerationType.IDENTITY)
     private int id;
     
-    @Getter
-    @Setter
-    @Column(name="name")
-    private String name;
+    @Column(name="buyer_id")
+    private int buyer_id;
+        
+    @Column(name="total")
+    private int total;
     
-    @Getter
-    @Setter
-    @Column(name="country")
-    private String country;
-	
+    
 }
