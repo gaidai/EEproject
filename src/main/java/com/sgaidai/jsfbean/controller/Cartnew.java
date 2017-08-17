@@ -2,7 +2,10 @@
 package com.sgaidai.jsfbean.controller;
 
 import com.sgaidai.secondary.Growl;
+import com.sgaidai.secondary.Ordering;
+import com.sgaidai.security.entities.model.product.Orders;
 import com.sgaidai.security.entities.model.product.Product;
+import com.sgaidai.springdatajpa.dao.OrderEntityDAO;
 import com.sgaidai.springdatajpa.dao.ProductDAO;
 import java.io.Serializable;
 import java.util.ArrayList;
@@ -11,7 +14,6 @@ import java.util.Map;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ApplicationScoped;
 import javax.faces.context.FacesContext;
-import javax.persistence.EntityManager;
 import lombok.Getter;
 import lombok.Setter;
 import lombok.ToString;
@@ -35,10 +37,26 @@ public class Cartnew implements  Serializable {
     @Autowired
     ProductDAO productDAO ;
     
+    
     public Cartnew(){
         this.mycart = new ArrayList();
     }
     
+    public void buyAll(){
+        
+        Ordering order = new Ordering();
+        order.createOrder(mycart,total); 
+//         after ordering;
+        mycart.clear();
+    }
+    
+    public void buyOne(Product p){
+        
+        Ordering order = new Ordering();
+        order.createOrder(p);  
+        mycart.remove(p);
+    }    
+     
     public String getSize(){        
         if ( mycart.isEmpty()){
             return "";   
@@ -89,13 +107,5 @@ public class Cartnew implements  Serializable {
         totalPrice();
     }
     
-    public void buyAll(){
-//         after ordering;
-        mycart.clear();
-    }
-    public void buyOne(Product p){
-        
-        // after ordering;
-        mycart.remove(p);
-    }   
+  
 }

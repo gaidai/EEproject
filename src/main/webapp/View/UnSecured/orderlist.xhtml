@@ -1,0 +1,44 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:c="http://java.sun.com/jsp/jstl/core"
+      xmlns:p="http://primefaces.org/ui" 
+      xmlns:b="http://bootsfaces.net/ui">
+
+   
+<ui:composition template="/resources/composition.xhtml">
+    <ui:define name="title">Register page</ui:define>
+<ui:define name="content">
+    <p:spacer height="40px" width="100%"></p:spacer>
+      <b:container style="margin-right: 20%;  background-color: #f4feff ; border-radius: 20px ; min-height: 800px"  >    
+        <center><h2>Register User</h2></center>      
+        <center>
+            <h:form prependId="false" id="form">
+                <p:dataScroller id="list" value="#{ordering.getAllorders()}" var="o" >
+                    <f:facet name="header">
+                        List of orders
+                    </f:facet>    
+                    <h:panelGrid columns="1" style="width:100%" columnClasses="detail">
+                        <p:outputPanel>
+                            <h:panelGrid  columns="2" >
+                                <h:outputText value="Id:" />
+                                <h:outputText value="#{o.id}" style="font-weight: bold"/>
+
+                                <h:outputText value="Total" />
+                                <h:outputText value="#{o.total}" style="font-weight: bold"/>
+
+                                <h:outputText value="Price:" />
+                                <h:outputText value="#{o.buyer_id} UAH" style="font-weight: bold"/>
+                            </h:panelGrid>
+                        </p:outputPanel>                           
+                    </h:panelGrid>
+                    <hr/>                    
+                </p:dataScroller>                  
+            </h:form >
+        </center>
+    </b:container>    
+</ui:define>
+</ui:composition>
+</html>

@@ -3,7 +3,7 @@
 package com.sgaidai.springdatajpa.dao;
 
 
-import com.sgaidai.security.entities.model.product.OrderEntity;
+import com.sgaidai.security.entities.model.product.Orders;
 import java.util.List;
 import javax.inject.Named;
 
@@ -11,14 +11,14 @@ import javax.inject.Named;
 @Named
 public interface OrderEntityDAO {
     
-    public void addOrder(OrderEntity o) ;      
+    public int addOrder(Orders o);      
        
-    public List<OrderEntity> listAllOrders();
+    public List<Orders> listAllOrders();
                    
-    public void deleteOrder(OrderEntity o);
+    public void deleteOrder(Orders o);
     
-    public List<OrderEntity> listOrdersByBuyerId(int id);
+    public List<Orders> listOrdersByBuyerId(int id);
     
-    public OrderEntity getOrderById(int id) ;
+    public Orders getOrderById(int id);
     
 }

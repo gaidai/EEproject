@@ -7,11 +7,13 @@ import javax.faces.bean.ManagedBean;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -31,16 +33,20 @@ import lombok.ToString;
 public class Order_detail implements Serializable {
     
     @Id
-    @Column(name="id")
+    @Column(name="order_detail_id")
     @GeneratedValue(strategy=GenerationType.IDENTITY)
     private int id;
     
-    @ManyToOne(cascade = CascadeType.ALL)
+    @ManyToOne(  )
     @JoinColumn(name="order_id")
-    private OrderEntity order ; 
+    private Orders order_id ; 
   
-    @ManyToOne(cascade = CascadeType.ALL)
+    @ManyToOne( fetch = FetchType.EAGER)
     @JoinColumn(name="product_id")
-    private Product product ;      
+    private Product product_id ;
+    
+    @Column(name="price")
+    private int fixed_price;
+    
     
 }
