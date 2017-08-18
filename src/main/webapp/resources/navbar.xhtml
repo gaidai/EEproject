@@ -10,7 +10,7 @@
     <b:navBar brand="Home" brandHref="#{request.contextPath}/View/UnSecured/home.xhtml" class="navlink" inverse="true" fixed="top" >
             <b:navbarLinks>
                 <b:navLink value="Delivery" href="#"></b:navLink>
-                <b:navLink value="Link" href="#"></b:navLink>
+                <b:navLink value="All Orders" href="orderlist.xhtml"></b:navLink>
                 <b:dropMenu value="Promotions" class="navmenu">
                     <b:navLink value="Action" href="#"></b:navLink>
                     <b:navLink value="Another action" href="#"></b:navLink>
@@ -22,7 +22,7 @@
             </b:navbarLinks> 
             <b:navbarLinks pull="right" >
                 <h:form styleClass="navbar-form navbar-right" id="navcart">
-                    <b:button href="#{request.contextPath}/View/UnSecured/cartnew.xhtml" value="My Cart #{cartnew.getSize()}" look="danger" icon-awesome="fa-shopping-cart" icon-size="lg" ></b:button>
+                    <b:button href="#{request.contextPath}/View/UnSecured/cart.xhtml" value="My Cart #{cart.getSize()}" look="danger" icon-awesome="fa-shopping-cart" icon-size="lg" ></b:button>
                 </h:form>
                <sec:authorize access="!isAuthenticated()">
                      <h:form styleClass="navbar-form navbar-right">

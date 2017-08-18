@@ -34,7 +34,8 @@ public class PhoneService implements Serializable{
         
         public List<String> image () {
                 Images g = new Images();
-                List <String> pics = g.getImages( "phones", phone.getId());   
+               System.out.println( phone.getProduct().getId() );
+                List <String> pics = g.getImages( "phones", phone.getProduct().getId());   
                return pics ;                
 	}
        

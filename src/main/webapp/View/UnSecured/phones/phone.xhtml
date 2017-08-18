@@ -31,7 +31,7 @@
                 <b:column   col-lg="7"  >  
                     <p:imageSwitch effect="shuffle" >
                         <ui:repeat value="#{phoneService.image()}" var="i" > 
-                            <p:graphicImage value="/resources/products/phones/#{phoneService.phone.id}/#{i}" height="350"/>
+                            <p:graphicImage value="/resources/products/phones/#{phoneService.phone.product.id}/#{i}" height="350"/>
                         </ui:repeat>
                     </p:imageSwitch>
                     <p:spacer height="20"/>     
@@ -41,7 +41,7 @@
                     <p:spacer height="80px" width="200px" ></p:spacer>
                     <h3 style="color: #A40F0F"> Price: #{phoneService.phone.product.price} UAH </h3> <br/>
                     <h:form>
-                        <b:commandButton id="add"  action="#{cartnew.AddtoCart()}" value="Add to Cart" look="info"  icon-awesome="fa-shopping-cart" icon-size="lg" size="lg" iconAlign="right">
+                        <b:commandButton id="add"  action="#{cart.AddtoCart()}" value="Add to Cart" look="info"  icon-awesome="fa-shopping-cart" icon-size="lg" size="lg" iconAlign="right">
                             <f:param value="#{phoneService.phone.product.id}" name="product_id" />
                         </b:commandButton>
                         <b:growl for="add" globalOnly="true" placementFrom="bottom" show-detail="true" 
@@ -53,8 +53,7 @@
             <h:form>
             <b:tabView activeIndex="0">
                 <b:tab title="Descriptions" >
-                    <ui:include src="/resources/products/phones/1/Description/1.xhtml" />
-<!--                    <ui:composition template="/resources/products/cameras/#{cameraService.camera.id}/1.xhtml"></ui:composition>-->
+                    <ui:include src="/resources/products/phones/#{phoneService.phone.product.id}/Description/1.xhtml" />
                 </b:tab>
                 <b:tab title="Another Tab">
                     <p>This is the second tab.</p>

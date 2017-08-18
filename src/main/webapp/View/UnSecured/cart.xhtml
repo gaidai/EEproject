@@ -10,7 +10,7 @@
         xmlns:f="http://xmlns.jcp.org/jsf/core"
         xmlns:c="http://xmlns.jcp.org/jsp/jstl/core">
 <ui:composition template="/resources/composition.xhtml">
-    <ui:define name="title">My shopping cart </ui:define>
+    <ui:define name="title">My NEW shopping cart </ui:define>
     <ui:define name="content">
     <p:spacer height="40px" width="100%"/>
     <b:container id="main-container" style="margin-right: 20%; margin-left: 20%; background-color: #f4feff ; border-radius: 20px ; min-height: 800px"> 
@@ -47,7 +47,7 @@
                                 <h:outputText value="#{p.id}" style="font-weight: bold"/>
 
                                 <h:outputText value="Category:" />
-                                <h:outputText value="#{p.category}" style="font-weight: bold"/>
+                                <h:outputText value="#{p.category} #{p.brand} #{p.model}" style="font-weight: bold"/>
 
                                 <h:outputText value="Price:" />
                                 <h:outputText value="#{p.price} UAH" style="font-weight: bold"/>
@@ -82,8 +82,11 @@
                       </h:panelGrid>
                       <hr />
                 </p:repeat>-->
-             <p:spacer height="20"/>  
-             <b:button href="order.xhtml" value="Buy All" rendered="#{cart.totalPrice() gt 0}"/>
+             <p:spacer height="20"/>
+            <h:form>
+                <b:commandButton  action="#{cart.buyAll()}" value="Buy All" look="info"   rendered="#{cart.totalPrice() gt 0}"/>
+            </h:form> 
+                
     </b:container>
     <p:spacer height="20"/> 
    

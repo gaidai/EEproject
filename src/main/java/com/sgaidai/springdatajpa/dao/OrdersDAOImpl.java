@@ -20,17 +20,20 @@ import org.springframework.transaction.annotation.Transactional;
 @Service
 @Repository
 @RequestScoped
-public class OrderEntityDAOImpl implements OrderEntityDAO {
+public class OrdersDAOImpl implements OrdersDAO {
     
         @Autowired
 	private EntityManager em;
         
         @Transactional
         @Override
-	public int addOrder(Orders o) {
-		this.em.persist(o);
-                em.flush();
-                return o.getId();
+	public Orders addOrder(Orders o) {
+            Orders del = o;
+	    del = em.merge(del);
+            System.out.println("com.sgaidai.springdatajpa.dao.OrdersDAOImpl.addOrder()*** "+ o.getTotal()+ " *** total***" + o.getBuyer_id());
+            this.em.persist(del);
+            em.flush();
+            return del;
 	}
         
         @Transactional 

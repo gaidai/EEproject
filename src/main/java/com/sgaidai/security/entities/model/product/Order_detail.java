@@ -37,16 +37,17 @@ public class Order_detail implements Serializable {
     @GeneratedValue(strategy=GenerationType.IDENTITY)
     private int id;
     
-    @ManyToOne(  )
-    @JoinColumn(name="order_id")
-    private Orders order_id ; 
-  
-    @ManyToOne( fetch = FetchType.EAGER)
+    @ManyToOne( fetch = FetchType.EAGER, cascade= {CascadeType.REFRESH})
     @JoinColumn(name="product_id")
     private Product product_id ;
     
-    @Column(name="price")
-    private int fixed_price;
+    @ManyToOne( cascade= {CascadeType.REFRESH}, fetch = FetchType.EAGER )
+    @JoinColumn(name="order_id")
+    private Orders order_id ; 
+  
     
+    
+    @Column(name="price")
+    private int fixed_price;    
     
 }

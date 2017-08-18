@@ -8,10 +8,10 @@ import java.util.List;
 import javax.inject.Named;
 
 
-@Named
-public interface OrderEntityDAO {
+
+public interface OrdersDAO {
     
-    public int addOrder(Orders o);      
+    public Orders addOrder(Orders o);      
        
     public List<Orders> listAllOrders();
                    
