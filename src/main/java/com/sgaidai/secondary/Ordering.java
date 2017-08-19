@@ -1,7 +1,7 @@
 package com.sgaidai.secondary;
 
-import com.sgaidai.security.entities.model.product.Order_Detail;
 import com.sgaidai.security.entities.model.product.Orders;
+import com.sgaidai.security.entities.model.product.Orders_Detail;
 import java.util.List;
 import javax.faces.bean.ManagedBean;
 import lombok.Getter;
@@ -31,8 +31,8 @@ public class Ordering {
         
         for(Orders o: allorders ){
             System.out.println( "Order Id: "+ o.getId() + " Total: " + o.getTotal());
-            List <Order_Detail> od =  o.getOrder_details();
-                for(Order_Detail d: od ){
+            List <Orders_Detail> od =  o.getOrder_details();
+                for(Orders_Detail d: od ){
                     System.out.println("Detail product_id: " + d.getProduct_id().getCategory() + " "+ d.getProduct_id().getId() + " Fixed price: " + d.getFixed_price());
                 }  
         }

@@ -2,12 +2,11 @@
 package com.sgaidai.jsfbean.controller;
 
 import com.sgaidai.secondary.Growl;
-import com.sgaidai.secondary.Ordering;
-import com.sgaidai.security.entities.model.product.Order_Detail;
 import com.sgaidai.security.entities.model.product.Orders;
+import com.sgaidai.security.entities.model.product.Orders_Detail;
 import com.sgaidai.security.entities.model.product.Product;
-import com.sgaidai.springdatajpa.dao.Order_DetailDAO;
 import com.sgaidai.springdatajpa.dao.OrdersDAO;
+import com.sgaidai.springdatajpa.dao.Orders_DetailDAO;
 import com.sgaidai.springdatajpa.dao.ProductDAO;
 import java.io.Serializable;
 import java.util.ArrayList;
@@ -42,7 +41,7 @@ public class Cart implements  Serializable {
     @Autowired
     private OrdersDAO orderDAO ;    
     @Autowired
-    private Order_DetailDAO order_DetailDAO ;
+    private Orders_DetailDAO order_DetailDAO ;
     
     public Cart(){
         this.mycart = new ArrayList();
@@ -55,9 +54,9 @@ public class Cart implements  Serializable {
         neworder.setBuyer_id(buyer_id);
         neworder.setTotal(total);
         Orders creatrdorder = this.orderDAO.addOrder(neworder);
-        List <Order_Detail> odlist = new ArrayList();
+        List <Orders_Detail> odlist = new ArrayList();
         for (Product p: mycart){
-            Order_Detail od = new Order_Detail();
+            Orders_Detail od = new Orders_Detail();
             od.setFixed_price(p.getPrice());
             od.setProduct_id(p);
             od.setOrder_id(creatrdorder);
@@ -76,8 +75,8 @@ public class Cart implements  Serializable {
         neworder.setBuyer_id(buyer_id);
         neworder.setTotal(total);
         Orders creatrdorder = this.orderDAO.addOrder(neworder);
-        List <Order_Detail> odlist = new ArrayList();        
-        Order_Detail od = new Order_Detail();
+        List <Orders_Detail> odlist = new ArrayList();        
+        Orders_Detail od = new Orders_Detail();
         od.setFixed_price(p.getPrice());
         od.setProduct_id(p);
         od.setOrder_id(creatrdorder);
