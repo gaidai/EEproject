@@ -10,29 +10,32 @@
         xmlns:f="http://xmlns.jcp.org/jsf/core">
 <ui:composition template="/resources/composition.xhtml">
     <ui:define name="title">Digital Cameras</ui:define>
-    <ui:define name="content">Cameras!!!! 
+    <ui:define name="content">
+    <f:metadata>
+        <f:viewAction action="#{cameraService.listCameras()}" />
+    </f:metadata>    
     <p:spacer height="40px"></p:spacer>
         <b:container>
             <b:column  span="2" col-lg="10"  >
-                <b:button href="list.xhtml?brand='Canon'" icon=" glyphicon glyphicon-chevron-right" look="info"  size="md" value="Canon"/>
+<!--                <b:button href="list.xhtml?brand='Canon'" icon=" glyphicon glyphicon-chevron-right" look="info"  size="md" value="Canon"/>
                 <b:button href="list.xhtml?brand='Nikon'" icon=" glyphicon glyphicon-chevron-right" look="info"  size="md" value="Nikon"/>
-                <b:button href="list.xhtml?brand='Konica'" icon=" glyphicon glyphicon-chevron-right" look="info"  size="md" value="Konica"/>
+                <b:button href="list.xhtml?brand='Konica'" icon=" glyphicon glyphicon-chevron-right" look="info"  size="md" value="Konica"/>-->
                 <h:form id="form">
-                    <p:dataGrid var="c" value="#{cameraService.listCamerasbyPrice()}"   columns="3" layout="grid"
+                    <p:dataGrid lazy="true" var="p" value="#{cameraService.list}" transient="false" columns="3" layout="grid"
                         rows="12" paginator="true" id="cameras"
                         paginatorTemplate="{CurrentPageReport}  {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
                         rowsPerPageTemplate="12,18,36">
 
                         <f:facet name="header">
-                            Digital cameras
+                            Smartphones
                         </f:facet>
 
-                        <a href="camera.xhtml?id=#{c.id}"><p:panel header="#{c.brand} #{c.model}" style="text-align:center" >
+                        <a href="camera.xhtml?id=#{p.id}"><p:panel header="#{p.product.brand} #{p.product.model}" style="text-align:center" >
                             <h:panelGrid columns="1" style="width:100%">
-                                <p:graphicImage value="/resources/products/cameras/#{c.id}/1.png" height="150"/> 
-                                <p:graphicImage value="/resources/products/cameras/#{c.id}/1.jpg" height="150"/> 
+                                <p:graphicImage value="/resources/products/#{p.product.category}s/#{p.product.id}/1.png" height="150"/> 
+                                <p:graphicImage value="/resources/products/#{p.product.category}s/#{p.product.id}/1.jpg" height="150"/> 
                                 <hr/>
-                                <h:outputText value="#{c.price} UAH" style="color: red; font-weight: bold"/>                                
+                                <h:outputText value="#{p.product.price} UAH" style="color: red; font-weight: bold"/>                                
                             </h:panelGrid>
                            </p:panel>
                         </a>

@@ -121,7 +121,6 @@ public class CameraDAOImpl implements CameraDAO {
             criteriaQuery.where(cb.equal(cameraEntityRoot.get("id"), id));
             Camera result = new Camera();
             result = em.createQuery(criteriaQuery).getSingleResult();
-            System.out.println("***********"+result.getModel());
             
             return result;
         }

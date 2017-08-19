@@ -1,6 +1,7 @@
 package com.sgaidai.jsfbean.controller;
 
 
+import com.sgaidai.secondary.Images;
 import com.sgaidai.security.entities.model.product.Camera;
 import com.sgaidai.springdatajpa.dao.CameraDAO;
 import java.io.Serializable;
@@ -27,29 +28,36 @@ public class CameraService implements Serializable{
         private Camera camera = new Camera();
         private List <Camera> list = new ArrayList();
         	
-	public List<Camera> listCameras() {
-		return this.cameraDAO.listCameras();
-	}
-       
-	public void addCamera(Camera c) {
-		this.cameraDAO.addCamera(c);
+	public void listCameras() {
+		list = this.cameraDAO.listCameras();
 	}
         
-	public void deleteCamera(Camera c) {
-                this.cameraDAO.deleteCamera(c);
+        public List<String> image () {
+                Images g = new Images();
+               System.out.println( camera.getProduct().getId() );
+                List <String> pics = g.getImages( "cameras", camera.getProduct().getId());   
+               return pics ;                
 	}
-             
-        public void listCamerasByBrand (){
-            System.out.println(this.camera.getBrand()+"-----");
-            list = this.cameraDAO.listCamerasByBrand(this.camera.getBrand());
-		
-	}
+       
+//	public void addCamera(Camera c) {
+//		this.cameraDAO.addCamera(c);
+//	}
+//        
+//	public void deleteCamera(Camera c) {
+//                this.cameraDAO.deleteCamera(c);
+//	}
+//             
+//        public void listCamerasByBrand (){
+//            System.out.println(this.camera.getBrand()+"-----");
+//            list = this.cameraDAO.listCamerasByBrand(this.camera.getBrand());
+//		
+//	}
         
         public void getcamerabyid() {
                 camera = this.cameraDAO.getcamerabyid(this.camera.getId());
                
 	}
-        public List<Camera> listCamerasbyPrice() {
-		return this.cameraDAO.listCamerasbyPrice();
-	}
+//        public List<Camera> listCamerasbyPrice() {
+//		return this.cameraDAO.listCamerasbyPrice();
+//	}
 }

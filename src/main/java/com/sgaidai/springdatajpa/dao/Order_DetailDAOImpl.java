@@ -3,7 +3,7 @@ package com.sgaidai.springdatajpa.dao;
 
 
 
-import com.sgaidai.security.entities.model.product.Order_detail;
+import com.sgaidai.security.entities.model.product.Order_Detail;
 import com.sgaidai.security.entities.model.product.Orders;
 import java.util.List;
 import javax.enterprise.context.RequestScoped;
@@ -29,9 +29,9 @@ public class Order_DetailDAOImpl implements Order_DetailDAO {
         
         @Transactional
         @Override
-	public void addOrder_Detail(List <Order_detail> list) { 
+	public void addOrder_Detail(List <Order_Detail> list) { 
             int i = 0;
-            for (Order_detail od: list){
+            for (Order_Detail od: list){
                 this.em.persist(od);
                 if(++i % 10 == 0) {
                     em.flush();

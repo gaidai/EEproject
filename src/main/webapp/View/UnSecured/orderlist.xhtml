@@ -20,17 +20,17 @@
                     <f:facet name="header">
                         List of orders
                     </f:facet>    
-                    <h:panelGrid columns="1" style="width:100%" columnClasses="detail">
+                    <h:panelGrid columns="1" style="width:100%" >
                         <p:outputPanel>
                             <h:panelGrid  columns="2" >
-                                <h:outputText value="Id:" />
+                                <h:outputText value="Id: " />
                                 <h:outputText value="#{o.id}" style="font-weight: bold"/>
 
-                                <h:outputText value="Total" />
-                                <h:outputText value="#{o.total}" style="font-weight: bold"/>
+                                <h:outputText value="Total Price: " />
+                                <h:outputText value="#{o.total} UAH" style="font-weight: bold"/>
 
-                                <h:outputText value="Price:" />
-                                <h:outputText value="#{o.buyer_id} UAH" style="font-weight: bold"/>
+                                <h:outputText value="Buyer Id: " />
+                                <h:outputText value="#{o.buyer_id} " style="font-weight: bold"/>
                             </h:panelGrid>
                         </p:outputPanel>                           
                     </h:panelGrid>

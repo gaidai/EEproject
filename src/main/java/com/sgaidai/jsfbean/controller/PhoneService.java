@@ -27,8 +27,8 @@ public class PhoneService implements Serializable{
         private Phone phone = new Phone();
         private List <Phone> list = new ArrayList();
         	
-	public List<Phone> listPhones() {            
-		return this.phoneDAO.listPhones();
+	public void listPhones() {            
+		list = this.phoneDAO.listPhones();
                 
 	}
         

@@ -45,13 +45,13 @@ public class Orders implements Serializable {
     private int total; 
     
     @OneToMany(mappedBy = "order_id",fetch = FetchType.EAGER)     
-    private List<Order_detail> order_details;
+    private List<Order_Detail> order_details;
     
-    public List<Order_detail> getOrder_details() {
+    public List<Order_Detail> getOrder_details() {
         return order_details;
     }
 
-    public void setOrder_details(List<Order_detail> order_details) {
+    public void setOrder_details(List<Order_Detail> order_details) {
         this.order_details = order_details;
     }
     

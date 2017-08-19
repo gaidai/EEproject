@@ -1,9 +1,6 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+
 package com.sgaidai.security.entities.model.product;
+
 
 import java.io.Serializable;
 import javax.faces.bean.ManagedBean;
@@ -15,6 +12,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import lombok.AllArgsConstructor;
@@ -23,29 +21,33 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 import lombok.ToString;
 
+
 @Getter
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
 @ToString
-@ManagedBean(name="camera")
-@Table(name="camera")
+@ManagedBean(name="order_detail")
+@Table(name="Order_detail")
 @Entity
-public class Camera implements Serializable {
-
+public class Order_Detail implements Serializable {
+    
     @Id
-    @Column(name="id")
+    @Column(name="order_detail_id")
     @GeneratedValue(strategy=GenerationType.IDENTITY)
     private int id;
     
-    @OneToOne(fetch = FetchType.EAGER)
+    @ManyToOne( fetch = FetchType.EAGER)
     @JoinColumn(name="product_id")
-    private Product product ;  
-        
-    @Column(name="resolution")
-    private int resolution;      
-        
-    @Column(name="description")
-    private String desc ;
-	
+    private Product product_id ;
+//    cascade= {CascadeType.REFRESH},
+    @ManyToOne(  fetch = FetchType.EAGER )
+    @JoinColumn(name="order_id")
+    private Orders order_id ; 
+  
+    
+    
+    @Column(name="price")
+    private int fixed_price;    
+    
 }

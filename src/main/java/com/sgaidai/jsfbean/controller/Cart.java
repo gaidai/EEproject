@@ -3,7 +3,7 @@ package com.sgaidai.jsfbean.controller;
 
 import com.sgaidai.secondary.Growl;
 import com.sgaidai.secondary.Ordering;
-import com.sgaidai.security.entities.model.product.Order_detail;
+import com.sgaidai.security.entities.model.product.Order_Detail;
 import com.sgaidai.security.entities.model.product.Orders;
 import com.sgaidai.security.entities.model.product.Product;
 import com.sgaidai.springdatajpa.dao.Order_DetailDAO;
@@ -55,30 +55,38 @@ public class Cart implements  Serializable {
         neworder.setBuyer_id(buyer_id);
         neworder.setTotal(total);
         Orders creatrdorder = this.orderDAO.addOrder(neworder);
-        System.out.println(creatrdorder.getId()+"#############");
-        List <Order_detail> odlist = new ArrayList();
+        List <Order_Detail> odlist = new ArrayList();
         for (Product p: mycart){
-            Order_detail od = new Order_detail();
+            Order_Detail od = new Order_Detail();
             od.setFixed_price(p.getPrice());
             od.setProduct_id(p);
             od.setOrder_id(creatrdorder);
             odlist.add(od);
-        }
-        
-        
+        }        
         this.order_DetailDAO.addOrder_Detail(odlist);
-        System.out.println("Order Created : " );
-//         after ordering;
+//         after ordering clear the shopping cart
         mycart.clear();
         return "home";
     }
     
-    public void buyOne(Product p){
+    public String buyOne(Product p){
         
-        Ordering order = new Ordering();
-//        List <Product> one_product = new ArrayList();
-//        order.createOrder(one_product,p.getPrice());  
+        Orders neworder = new Orders();
+        int buyer_id = 12;
+        neworder.setBuyer_id(buyer_id);
+        neworder.setTotal(total);
+        Orders creatrdorder = this.orderDAO.addOrder(neworder);
+        List <Order_Detail> odlist = new ArrayList();        
+        Order_Detail od = new Order_Detail();
+        od.setFixed_price(p.getPrice());
+        od.setProduct_id(p);
+        od.setOrder_id(creatrdorder);
+        odlist.add(od);
+                
+        this.order_DetailDAO.addOrder_Detail(odlist);
+  //     delet ordered product from the shopping cart  
         mycart.remove(p);
+        return "home";
     }    
      
     public String getSize(){        
