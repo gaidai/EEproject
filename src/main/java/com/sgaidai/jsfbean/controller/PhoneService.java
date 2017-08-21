@@ -13,6 +13,7 @@ import javax.inject.Named;
 import lombok.Getter;
 import lombok.Setter;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.cache.annotation.Cacheable;
 
 
 @Getter
@@ -26,7 +27,8 @@ public class PhoneService implements Serializable{
 	private PhoneDAO phoneDAO;
         private Phone phone = new Phone();
         private List <Phone> list = new ArrayList();
-        	
+        
+        @Cacheable("phonelist")	
 	public void listPhones() {            
 		list = this.phoneDAO.listPhones();
                 

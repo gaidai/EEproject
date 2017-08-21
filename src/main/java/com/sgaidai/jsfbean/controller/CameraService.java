@@ -13,6 +13,7 @@ import javax.inject.Named;
 import lombok.Getter;
 import lombok.Setter;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.cache.annotation.Cacheable;
 
 
 @Getter
@@ -27,7 +28,8 @@ public class CameraService implements Serializable{
 	private CameraDAO cameraDAO;
         private Camera camera = new Camera();
         private List <Camera> list = new ArrayList();
-        	
+        
+        @Cacheable("cameralist")
 	public void listCameras() {
 		list = this.cameraDAO.listCameras();
 	}

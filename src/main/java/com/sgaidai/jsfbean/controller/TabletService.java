@@ -12,6 +12,7 @@ import javax.inject.Named;
 import lombok.Getter;
 import lombok.Setter;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.cache.annotation.Cacheable;
 
 
 @Getter
@@ -26,7 +27,8 @@ public class TabletService implements Serializable{
 	private TabletDAO tabletDAO;
         private Tablet tablet = new Tablet();
         private List <Tablet> list = new ArrayList();
-        	
+        
+        @Cacheable("tabletlist")
 	public void listTablets() {
 		list = this.tabletDAO.listTablets();
 	}

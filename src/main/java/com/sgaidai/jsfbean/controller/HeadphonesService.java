@@ -15,6 +15,7 @@ import javax.inject.Named;
 import lombok.Getter;
 import lombok.Setter;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.cache.annotation.Cacheable;
 
 
 @Getter
@@ -29,7 +30,8 @@ public class HeadphonesService implements Serializable {
 	private HeadphonesDAO headphonesDAO;
         private Headphones headphones = new Headphones();
         private List <Headphones> list = new ArrayList();
-        	
+        
+        @Cacheable("headphoneslist")	
 	public void listHeadphones() {
 		list = this.headphonesDAO.listHeadphones();
                 Collections.sort(list, this.COMPARE_BY_PRICE);
