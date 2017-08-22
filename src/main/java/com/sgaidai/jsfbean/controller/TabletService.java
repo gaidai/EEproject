@@ -28,15 +28,15 @@ public class TabletService implements Serializable{
         private Tablet tablet = new Tablet();
         private List <Tablet> list = new ArrayList();
         
-        @Cacheable("tabletlist")
-	public void listTablets() {
+        @Cacheable(value="itemlist", key="#name")
+	public void listTablets(String name) {
 		list = this.tabletDAO.listTablets();
 	}
         
         public List<String> image () {
                 Images g = new Images();
                System.out.println( tablet.getProduct().getId() );
-                List <String> pics = g.getImages( "tablets", tablet.getProduct().getId());   
+                List <String> pics = g.getImages( "tablet", tablet.getProduct().getId());   
                return pics ;                
 	}
        

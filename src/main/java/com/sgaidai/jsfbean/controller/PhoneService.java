@@ -28,8 +28,8 @@ public class PhoneService implements Serializable{
         private Phone phone = new Phone();
         private List <Phone> list = new ArrayList();
         
-        @Cacheable("phonelist")	
-	public void listPhones() {            
+        @Cacheable(value="itemlist", key="#name")
+	public void listPhones(String name) {            
 		list = this.phoneDAO.listPhones();
                 
 	}
@@ -37,7 +37,7 @@ public class PhoneService implements Serializable{
         public List<String> image () {
                 Images g = new Images();
                System.out.println( phone.getProduct().getId() );
-                List <String> pics = g.getImages( "phones", phone.getProduct().getId());   
+                List <String> pics = g.getImages( "phone", phone.getProduct().getId());   
                return pics ;                
 	}
        

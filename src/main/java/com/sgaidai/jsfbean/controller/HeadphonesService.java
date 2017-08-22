@@ -31,8 +31,8 @@ public class HeadphonesService implements Serializable {
         private Headphones headphones = new Headphones();
         private List <Headphones> list = new ArrayList();
         
-        @Cacheable("headphoneslist")	
-	public void listHeadphones() {
+        @Cacheable(value="itemlist", key="#name")
+	public void listHeadphones(String name) {
 		list = this.headphonesDAO.listHeadphones();
                 Collections.sort(list, this.COMPARE_BY_PRICE);
 	}

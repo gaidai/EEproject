@@ -14,7 +14,6 @@ public class Images implements Serializable{
 
     
     public List<String> getImages(String category, int id){
-        System.out.println("com.sgaidai.jsfbean.controller.Images.getImages()" +id);
         List<String> images = new ArrayList(); 
         ClassLoader classLoader = getClass().getClassLoader();
         File file = new File(classLoader.getResource("products/"+category+"/"+id).getFile());

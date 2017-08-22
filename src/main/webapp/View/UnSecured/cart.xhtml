@@ -40,23 +40,25 @@
                     <f:facet name="header">
                         List of items
                     </f:facet>    
-                    <h:panelGrid columns="2" style="width:100%" columnClasses="detail">
-                        <p:outputPanel>
-                            <h:panelGrid columns="2" >
-                                <h:outputText value="Id:" />
-                                <h:outputText value="#{p.id}" style="font-weight: bold"/>
-
-                                <h:outputText value="Category:" />
-                                <h:outputText value="#{p.category} #{p.brand} #{p.model}" style="font-weight: bold"/>
-
-                                <h:outputText value="Price:" />
-                                <h:outputText value="#{p.price} UAH" style="font-weight: bold"/>
-                            </h:panelGrid>
-                        </p:outputPanel>
-                        <b:form >
-                            <p:commandLink ajax="true" update="growl, navcart, main-container" action="#{cart.deletfromCart(p)}" ><i class="fa  fa-trash fa-lg " /></p:commandLink>
-                        </b:form> 
-                    </h:panelGrid>
+                    
+                <b:row style="height: 100px">
+                        <b:column style="width:40% ; height: 100">
+                            <p:graphicImage value="/resources/products/#{p.category}/#{p.id}/1.png" height="90px" /> 
+                            <p:graphicImage value="/resources/products/#{p.category}/#{p.id}/1.jpg" height="90px"/>
+                        </b:column>
+                                               
+                        <b:column style="width:50% ; height: 90px">                          
+                            <br/><h:outputText value="#{p.brand} #{p.model}" style="font-weight: bold"/><br/>
+                                <h:outputText value="Price: " />
+                                <h:outputText value="#{p.price}" style="color: red; font-weight: 600 " />
+                                <h:outputText value=" UAH" style="color: red " />
+                        </b:column >
+                        <b:column  style="width: 5% ; height: 80px" >
+                            <b:form ><br/>
+                                <p:commandLink ajax="true" update="growl, navcart, main-container" action="#{cart.deletfromCart(p)}" ><i class="fa  fa-trash fa-lg " /></p:commandLink>
+                            </b:form> 
+                        </b:column >
+                    </b:row>
                     <hr/>
                     
                 </p:dataScroller>

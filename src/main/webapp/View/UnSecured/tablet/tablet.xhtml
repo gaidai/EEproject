@@ -31,7 +31,7 @@
                 <b:column   col-lg="7"  >  
                     <p:imageSwitch effect="shuffle" >
                         <ui:repeat value="#{tabletService.image()}" var="i" > 
-                            <p:graphicImage value="/resources/products/#{tabletService.tablet.product.category}s/#{tabletService.tablet.product.id}/#{i}" height="350"/>
+                            <p:graphicImage value="/resources/products/#{tabletService.tablet.product.category}/#{tabletService.tablet.product.id}/#{i}" height="350"/>
                         </ui:repeat>
                     </p:imageSwitch>
                     <p:spacer height="20"/>     
@@ -53,7 +53,7 @@
             <h:form>
             <b:tabView activeIndex="0">
                 <b:tab title="Descriptions" >
-                    <ui:include src="/resources/products/#{tabletService.tablet.product.category}s/#{tabletService.tablet.product.id}/Description/1.xhtml" />
+                    <ui:include src="/resources/products/#{tabletService.tablet.product.category}/#{tabletService.tablet.product.id}/Description/1.xhtml" />
                 </b:tab>
                 <b:tab title="Another Tab">
                     <p>This is the second tab.</p>

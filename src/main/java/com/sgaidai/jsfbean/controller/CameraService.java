@@ -29,15 +29,15 @@ public class CameraService implements Serializable{
         private Camera camera = new Camera();
         private List <Camera> list = new ArrayList();
         
-        @Cacheable("cameralist")
-	public void listCameras() {
+        @Cacheable(value="itemlist", key="#name")
+	public void listCameras(String name) {
 		list = this.cameraDAO.listCameras();
 	}
         
         public List<String> image () {
                 Images g = new Images();
                System.out.println( camera.getProduct().getId() );
-                List <String> pics = g.getImages( "cameras", camera.getProduct().getId());   
+                List <String> pics = g.getImages( "camera", camera.getProduct().getId());   
                return pics ;                
 	}
        
