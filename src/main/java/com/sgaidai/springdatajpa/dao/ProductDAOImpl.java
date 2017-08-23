@@ -31,6 +31,15 @@ public class ProductDAOImpl implements ProductDAO {
         
         @Transactional 
         @Override
+        public List<Product> getTop(String top){
+            List<Product>  result ;
+            result = this.em.createQuery("SELECT p FROM Product p WHERE p.description ='"+top+"'").getResultList();
+            System.out.println(result.size() + " ++++ from DaoImpl top product");
+            return result;
+        }
+        
+        @Transactional 
+        @Override
 	public List<Product> listProductsByCategory(String category) {
 		return this.em.createQuery("SELECT p FROM Product p WHERE p.brand ="+category).getResultList();
 	}

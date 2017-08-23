@@ -9,8 +9,8 @@
  
     <b:navBar brand="Home" brandHref="#{request.contextPath}/View/UnSecured/home.xhtml" class="navlink" inverse="true" fixed="top" >
             <b:navbarLinks>
-                <b:navLink value="Delivery" href="#"></b:navLink>
-                <b:navLink value="All Orders" href="orderlist.xhtml"></b:navLink>
+                <b:navLink value="Delivery" href="#{request.contextPath}/View/UnSecured/delivery.xhtml"></b:navLink>
+                <b:navLink value="All Orders" href="#{request.contextPath}/View/UnSecured/orderlist.xhtml"></b:navLink>
                 <b:dropMenu value="Promotions" class="navmenu">
                     <b:navLink value="Action" href="#"></b:navLink>
                     <b:navLink value="Another action" href="#"></b:navLink>

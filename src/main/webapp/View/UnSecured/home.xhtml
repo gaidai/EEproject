@@ -6,10 +6,14 @@
 	xmlns:h="http://java.sun.com/jsf/html"
 	xmlns:ui="http://java.sun.com/jsf/facelets"
         xmlns:p="http://primefaces.org/ui"
-        xmlns:b="http://bootsfaces.net/ui">
-<ui:composition template="/resources/composition.xhtml">
+        xmlns:b="http://bootsfaces.net/ui"
+        xmlns:f="http://xmlns.jcp.org/jsf/core">
+<ui:composition template="/resources/composition.xhtml">     
     <ui:define name="title">Home page</ui:define>
 <ui:define name="content">
+    <f:metadata>
+        <f:viewAction action="#{checkedService.listTop()}" />
+    </f:metadata>  
     <p:spacer height="40px" width="100%"></p:spacer>
  
     <b:column col-lg="2" style=" margin-left: 7%" >
@@ -232,13 +236,40 @@
              
                 </b:carousel>
         </center>
-        
-   
+        <br/><p:spacer height="30px" width="100%"></p:spacer>
+        <div class="carousel sale right">
+            <div class="indicator"></div>
+            <div class="wrap">
+                <ul>
+                    <ui:repeat var="p" value="#{checkedService.list}" > 
+                        <li>
+                            <a href="#{p.category}/#{p.category}.xhtml?id=#{p.id}">
+                                <div style=" width: 200px; margin:2px 2px 2px 2px ; background: white"  >                                
+                                    <center>                                         
+                                        <h:outputText value="#{p.brand} #{p.model}"  style="color:black; font-size: 20px; margin-bottom: 5px" />
+                                    </center>   <p:spacer height="8px" width="100%"/>         
+                                     <center>
+                                         <div style="height:160px">                                      
+                                            <p:graphicImage value="/resources/products/#{p.category}/#{p.id}/1.png"  style="max-width: 180px; max-height: 160px" /> 
+                                            <p:graphicImage value="/resources/products/#{p.category}/#{p.id}/1.jpg"  style="max-width: 180px; max-height: 160px "/>                                  
 
-    </b:container>      
-      
-      
- 
+                                        </div>     
+                                        <div style="margin-bottom: 10px; margin-top: 6px" > 
+                                            <h:outputText value="#{p.price} UAH" style="color: red; font-weight: bold ; font-size: 20px" />   
+                                        </div>    
+                                    </center>                                   
+
+                                </div> 
+                            </a>    
+                        </li>
+                    </ui:repeat>    
+                </ul>
+            </div>
+        </div> 
+
+    </b:container>             
+   <h:outputStylesheet library="css" name="carousel_sale.css"  />
+   <h:outputScript library="js" name="carousel_sale.js" />
     </ui:define>
 </ui:composition>
 </html>

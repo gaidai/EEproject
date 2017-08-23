@@ -50,6 +50,6 @@ public class Product implements Serializable {
     private String color ;
     
     @Column(name="description")
-    private String desc ;
+    private String description ;
 	
 }

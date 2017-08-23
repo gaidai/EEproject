@@ -25,4 +25,6 @@ public interface ProductDAO {
     
     public Product getProductbyid(int id) ;
     
+    public List<Product> getTop(String top);
+    
 }

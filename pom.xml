@@ -8,7 +8,7 @@
     <packaging>war</packaging>
 
 
-    <name>Login</name>
+    <name>EEproject</name>
 
     <properties>
         <endorsed.dir>${project.build.directory}/endorsed</endorsed.dir>

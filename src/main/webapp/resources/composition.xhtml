@@ -13,7 +13,7 @@
 <h:head>
 	<title><ui:insert name="title">Название по умолчанию</ui:insert></title>
 	<style type="text/css"></style>
-        
+        <h:outputScript library="js" name="main.js" />
 </h:head>
 <h:body style="padding-top: 30px; padding-bottom: 20px; background-color: #add">
 
@@ -21,6 +21,5 @@
     <ui:insert name="content">content по умолчанию</ui:insert>
     <br/>
     <ui:include src="/resources/footer.xhtml" /> 
-     
 </h:body>
 </html>
