@@ -42,16 +42,20 @@
                     </f:facet>    
                     
                 <b:row style="height: 100px">
-                        <b:column style="width:40% ; height: 100">
-                            <p:graphicImage value="/resources/products/#{p.category}/#{p.id}/1.png" height="90px" /> 
-                            <p:graphicImage value="/resources/products/#{p.category}/#{p.id}/1.jpg" height="90px"/>
+                        <b:column style="width:40% ; height: 100px">
+                            <a href="#{p.category}/#{p.category}.xhtml?id=#{p.id}">
+                                <p:graphicImage value="/resources/products/#{p.category}/#{p.id}/1.png" height="90px" /> 
+                                <p:graphicImage value="/resources/products/#{p.category}/#{p.id}/1.jpg" height="90px"/>
+                            </a>
                         </b:column>
                                                
-                        <b:column style="width:50% ; height: 90px">                          
+                        <b:column style="width:50% ; height: 90px"> 
+                            <a href="#{p.category}/#{p.category}.xhtml?id=#{p.id}">
                             <br/><h:outputText value="#{p.brand} #{p.model}" style="font-weight: bold"/><br/>
                                 <h:outputText value="Price: " />
                                 <h:outputText value="#{p.price}" style="color: red; font-weight: 600 " />
                                 <h:outputText value=" UAH" style="color: red " />
+                            </a>
                         </b:column >
                         <b:column  style="width: 5% ; height: 80px" >
                             <b:form ><br/>

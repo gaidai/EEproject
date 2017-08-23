@@ -7,8 +7,8 @@ import com.sgaidai.springdatajpa.dao.CameraDAO;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
-import javax.enterprise.context.SessionScoped;
 import javax.faces.bean.ManagedBean;
+import javax.faces.bean.ViewScoped;
 import javax.inject.Named;
 import lombok.Getter;
 import lombok.Setter;
@@ -20,9 +20,8 @@ import org.springframework.cache.annotation.Cacheable;
 @Setter
 @Named 
 @ManagedBean(name="cameraService")
-@SessionScoped
-public class CameraService implements Serializable{
-        
+@ViewScoped
+public class CameraService implements Serializable{        
         
 	@Autowired
 	private CameraDAO cameraDAO;
@@ -56,7 +55,7 @@ public class CameraService implements Serializable{
 //	}
         
         public void getcamerabyid() {
-                camera = this.cameraDAO.getcamerabyid(this.camera.getId());
+            this.camera = this.cameraDAO.getcamerabyid( this.camera.getId());
                
 	}
 //        public List<Camera> listCamerasbyPrice() {

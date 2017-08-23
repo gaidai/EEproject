@@ -29,13 +29,12 @@ public class Ordering {
         
         List <Orders> allorders = this.orderDAO.listAllOrders();
         
-        for(Orders o: allorders ){
-            System.out.println( "Order Id: "+ o.getId() + " Total: " + o.getTotal());
-            List <Orders_Detail> od =  o.getOrder_details();
-                for(Orders_Detail d: od ){
-                    System.out.println("Detail product_id: " + d.getProduct_id().getCategory() + " "+ d.getProduct_id().getId() + " Fixed price: " + d.getFixed_price());
-                }  
-        }
+//        for(Orders o: allorders ){
+//            List <Orders_Detail> od =  o.getOrder_details();
+//                for(Orders_Detail d: od ){
+//                    System.out.println("Detail product_id: " + d.getProduct_id().getCategory() + " "+ d.getProduct_id().getId() + " Fixed price: " + d.getFixed_price());
+//                }  
+//        }
         return allorders;
         
     }

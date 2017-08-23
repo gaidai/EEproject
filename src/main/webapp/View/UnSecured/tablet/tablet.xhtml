@@ -41,10 +41,10 @@
                     <p:spacer height="80px" width="200px" ></p:spacer>
                     <h3 style="color: #A40F0F"> Price: #{tabletService.tablet.product.price} UAH </h3> <br/>
                     <h:form>
-                        <b:commandButton id="add"  action="#{cart.AddtoCart()}" value="Add to Cart" look="info"  icon-awesome="fa-shopping-cart" icon-size="lg" size="lg" iconAlign="right">
+                        <b:commandButton id="add"  update="navcart,growl,add" action="#{cart.AddtoCart()}" value="Add to Cart" look="info"  icon-awesome="fa-shopping-cart" icon-size="lg" size="lg" iconAlign="right">
                             <f:param value="#{tabletService.tablet.product.id}" name="product_id" />
                         </b:commandButton>
-                        <b:growl for="add" globalOnly="true" placementFrom="bottom" show-detail="true" 
+                        <b:growl for="add" id="growl" globalOnly="true" placementFrom="bottom" show-detail="true" 
                                  show-summary="false" allowDismiss="true" delay="4000" escape="true"  />
                     </h:form>
                 </b:column>

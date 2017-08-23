@@ -40,6 +40,7 @@ public class CameraDAOImpl implements CameraDAO {
 		return this.em.createQuery("SELECT c FROM Camera c").getResultList();
 	}
         @Transactional 
+        @Override
 	public List<Camera> listCamerasbyPrice() {
 		return this.em.createQuery("SELECT c FROM Camera c ORDER BY c.price").getResultList();
 	}
@@ -106,23 +107,8 @@ public class CameraDAOImpl implements CameraDAO {
         @Transactional 
         @Override
         public Camera getcamerabyid(int id){
-            System.out.println(id +"******getcamerabyid*******");
-            CriteriaBuilder cb = em.getCriteriaBuilder();
-            CriteriaQuery<Camera> criteriaQuery = cb.createQuery(Camera.class);
-            Root<Camera> cameraEntityRoot = criteriaQuery.from(Camera.class);
-
-            criteriaQuery.select(cameraEntityRoot).distinct(true);
-//        }
-
-//            Predicate criteria = cb.conjunction();
-//            Predicate p = cb.equal(cameraEntityRoot.get(Camera_.brand), b);
-//            criteria = cb.and(criteria, p);
-
-            criteriaQuery.where(cb.equal(cameraEntityRoot.get("id"), id));
-            Camera result = new Camera();
-            result = em.createQuery(criteriaQuery).getSingleResult();
             
+            Camera result =(Camera) this.em.createQuery("SELECT c FROM Camera c WHERE c.product.id ="+id).getSingleResult();            
             return result;
-        }
-        
+        }        
 }
