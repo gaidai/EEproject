@@ -34,7 +34,6 @@ public class ProductDAOImpl implements ProductDAO {
         public List<Product> getTop(String top){
             List<Product>  result ;
             result = this.em.createQuery("SELECT p FROM Product p WHERE p.description ='"+top+"'").getResultList();
-            System.out.println(result.size() + " ++++ from DaoImpl top product");
             return result;
         }
         
@@ -110,12 +109,8 @@ public class ProductDAOImpl implements ProductDAO {
         
         @Transactional 
         @Override
-        public Product getProductbyid(int id){
-            
-            System.out.println("com.sgaidai.springdatajpa.dao.ProductDAOImpl.getProductbyid()"+ "---"+id);
-            Product result ;
-            result = (Product) this.em.createQuery("SELECT p FROM Product p WHERE p.id ="+id).getSingleResult();
-            
+        public Product getProductbyid(int id){            
+            Product result =(Product) this.em.createQuery("SELECT p FROM Product p WHERE p.id ="+id).getSingleResult();            
             return result;
         }
         

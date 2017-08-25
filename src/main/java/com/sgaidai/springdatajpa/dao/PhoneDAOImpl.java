@@ -2,15 +2,14 @@ package com.sgaidai.springdatajpa.dao;
 
 
 
-
 import com.sgaidai.security.entities.model.product.Phone;
+import com.sgaidai.security.entities.model.product.Phone_;
 import java.util.List;
 import javax.enterprise.context.RequestScoped;
 import javax.inject.Named;
 import javax.persistence.EntityManager;
 import javax.persistence.criteria.CriteriaBuilder;
 import javax.persistence.criteria.CriteriaQuery;
-import javax.persistence.criteria.Predicate;
 import javax.persistence.criteria.Root;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
@@ -51,7 +50,6 @@ public class PhoneDAOImpl implements PhoneDAO {
         @Transactional 
         @Override
         public Phone getPhoneById(int id){
-            System.out.println(id +"******getphonebyid*******");
             CriteriaBuilder cb = em.getCriteriaBuilder();
             CriteriaQuery<Phone> criteriaQuery = cb.createQuery(Phone.class);
             Root<Phone> phoneEntityRoot = criteriaQuery.from(Phone.class);
@@ -63,7 +61,7 @@ public class PhoneDAOImpl implements PhoneDAO {
 //            Predicate p = cb.equal(cameraEntityRoot.get(Camera_.brand), b);
 //            criteria = cb.and(criteria, p);
 
-            criteriaQuery.where(cb.equal(phoneEntityRoot.get("id"), id));
+            criteriaQuery.where(cb.equal(phoneEntityRoot.get(Phone_.product), id));
             Phone result = em.createQuery(criteriaQuery).getSingleResult();
             
             return result;

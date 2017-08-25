@@ -35,7 +35,6 @@ public class CameraService implements Serializable{
         
         public List<String> image () {
                 Images g = new Images();
-               System.out.println( camera.getProduct().getId() );
                 List <String> pics = g.getImages( "camera", camera.getProduct().getId());   
                return pics ;                
 	}

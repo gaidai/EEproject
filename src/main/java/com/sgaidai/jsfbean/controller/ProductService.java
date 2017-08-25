@@ -1,9 +1,7 @@
 package com.sgaidai.jsfbean.controller;
 
 
-import com.sgaidai.security.entities.model.product.Camera;
 import com.sgaidai.security.entities.model.product.Product;
-import com.sgaidai.springdatajpa.dao.CameraDAO;
 import com.sgaidai.springdatajpa.dao.ProductDAO;
 import java.io.Serializable;
 import java.util.ArrayList;

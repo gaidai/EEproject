@@ -2,20 +2,13 @@ package com.sgaidai.springdatajpa.dao;
 
 
 
-
 import com.sgaidai.security.entities.model.product.Camera;
-
 import java.util.List;
 import javax.enterprise.context.RequestScoped;
 import javax.inject.Named;
-
 import javax.persistence.EntityManager;
-import javax.persistence.criteria.CriteriaBuilder;
-import javax.persistence.criteria.CriteriaQuery;
-import javax.persistence.criteria.Root;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
-
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -79,30 +72,7 @@ public class CameraDAOImpl implements CameraDAO {
 //            }
 //            return result;
         }
-//        @Transactional 
-//        public List<Camera> listCamerasByPrice(String b){
-//            
-//            System.out.println(b +"*************");
-//            CriteriaBuilder cb = em.getCriteriaBuilder();
-//            CriteriaQuery<Camera> criteriaQuery = cb.createQuery(Camera.class);
-//            Root<Camera> cameraEntityRoot = criteriaQuery.from(Camera.class);
-//            
-//        
-//            
-//            criteriaQuery.select(cameraEntityRoot).distinct(true).orderBy(cb.asc(cameraEntityRoot.get("price")));
-////        }
-//
-////            Predicate criteria = cb.conjunction();
-////            Predicate p = cb.equal(cameraEntityRoot.get(Camera_.brand), b);
-////            criteria = cb.and(criteria, p);
-//
-//            criteriaQuery.where(cb.equal(cameraEntityRoot.get("brand"), b));
-//            List<Camera> result = em.createQuery(criteriaQuery).getResultList();
-//            for(Camera r: result){
-//                System.out.println(r);
-//            }
-//            return result;
-//        }
+
         
         @Transactional 
         @Override

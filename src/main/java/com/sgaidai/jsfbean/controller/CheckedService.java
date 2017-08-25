@@ -12,6 +12,7 @@ import javax.inject.Named;
 import lombok.Getter;
 import lombok.Setter;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.cache.annotation.Cacheable;
 
 
 @Getter
@@ -27,9 +28,8 @@ public class CheckedService implements Serializable{
         private List <Product> list = new ArrayList();
         
         
-//        @Cacheable(value="itemlist", key="#name")
-	public void listTop() {
-		list = this.productDAO.getTop("top");
-	    System.out.println(list.size()+"  ---- top products");
+        @Cacheable(value="itemlist", key="#name")
+	public void listTop(String name) {
+		list = this.productDAO.getTop(name);
         }        
 }

@@ -1,13 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-
 <html xmlns="http://www.w3.org/1999/xhtml"
 	xmlns:h="http://java.sun.com/jsf/html"
 	xmlns:ui="http://java.sun.com/jsf/facelets"
         xmlns:p="http://primefaces.org/ui"
+        xmlns:a="http://xmlns.jcp.org/jsf/passthrough"
         xmlns:b="http://bootsfaces.net/ui"
-        xmlns:f="http://xmlns.jcp.org/jsf/core">
+        xmlns:f="http://xmlns.jcp.org/jsf/core"
+        xmlns:jsf="http://xmlns.jcp.org/jsf"
+        xmlns:pt="http://xmlns.jcp.org/jsf/passthrough">
 <ui:composition template="/resources/composition.xhtml">
     <ui:define name="title">#{cameraService.camera.product.brand} #{cameraService.camera.product.model}</ui:define>
     <ui:define name="content">
@@ -65,14 +67,27 @@
                 </b:tab>
                 <b:tab title="Reviews">
                     <f:facet name="anchor"><b:iconAwesome name="cog" spin="true" /></f:facet>
-                    <p>This is fancy tab with a spinning image.</p>
+                    <b:form   >
+                    <div class="cont">
+                        <div class="stars" >
+                            <p:rating id="stars" value="#{reviewService.stars}" />                           
+                            <div class="rev-box">
+                                <b:inputText id="author" label="Author:" value="#{reviewService.review.author}" maxlength="20" labelStyle="width:80px"/>
+                                <p:inputTextarea id="review" class="review" maxlength="550"  value="#{reviewService.review.text}" />
+                            </div>   
+                        </div>
+                    </div>
+                        <b:commandButton id="addReview"  action="#{reviewService.addReview(cameraService.camera.product)}"  update="addReview,author,review,stars" value="Create review" look="info"  icon-size="lg" size="lg" iconAlign="right">
+<!--                                        <f:param value="#{cameraService.camera.product.id}" name="product_id" />-->
+                            </b:commandButton>
+                    </b:form>
+              
                 </b:tab>
 
             </b:tabView>
               </h:form>
         </b:container>
      <p:spacer height="20"/>   
-    
    </ui:define>
 </ui:composition>
 </html>

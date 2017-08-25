@@ -2,23 +2,20 @@ package com.sgaidai.springdatajpa.dao;
 
 
 
-
-import com.sgaidai.security.entities.model.product.Camera;
 import com.sgaidai.security.entities.model.product.Tablet;
-
+import com.sgaidai.security.entities.model.product.Tablet_;
 import java.util.List;
 import javax.enterprise.context.RequestScoped;
 import javax.inject.Named;
-
 import javax.persistence.EntityManager;
 import javax.persistence.criteria.CriteriaBuilder;
 import javax.persistence.criteria.CriteriaQuery;
 import javax.persistence.criteria.Root;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
-
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+
 
 @Named
 @Service
@@ -44,7 +41,6 @@ public class TabletDAOImpl implements TabletDAO {
         @Transactional 
         @Override
         public Tablet getTabletById(int id){
-            System.out.println(id +"******getTabletById*******");
             CriteriaBuilder cb = em.getCriteriaBuilder();
             CriteriaQuery<Tablet> criteriaQuery = cb.createQuery(Tablet.class);
             Root<Tablet> tabletEntityRoot = criteriaQuery.from(Tablet.class);
@@ -56,7 +52,7 @@ public class TabletDAOImpl implements TabletDAO {
 //            Predicate p = cb.equal(cameraEntityRoot.get(Camera_.brand), b);
 //            criteria = cb.and(criteria, p);
 
-            criteriaQuery.where(cb.equal(tabletEntityRoot.get("id"), id));
+            criteriaQuery.where(cb.equal(tabletEntityRoot.get(Tablet_.product), id));
             Tablet result = em.createQuery(criteriaQuery).getSingleResult();
             
             return result;

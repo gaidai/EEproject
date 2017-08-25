@@ -1,9 +1,5 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package com.sgaidai.security.entities.model.product;
+
 
 import java.io.Serializable;
 import java.util.List;
@@ -46,15 +42,5 @@ public class Orders implements Serializable {
     
     @OneToMany(mappedBy = "order_id",fetch = FetchType.EAGER)     
     private List<Orders_Detail> order_details;
-    
-    public List<Orders_Detail> getOrder_details() {
-        return order_details;
-    }
-
-    public void setOrder_details(List<Orders_Detail> order_details) {
-        this.order_details = order_details;
-    }
-    
-  
     
 }

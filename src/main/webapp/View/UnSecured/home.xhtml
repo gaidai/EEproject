@@ -12,7 +12,7 @@
     <ui:define name="title">Home page</ui:define>
 <ui:define name="content">
     <f:metadata>
-        <f:viewAction action="#{checkedService.listTop()}" />
+        <f:viewAction action="#{checkedService.listTop('top')}" />
     </f:metadata>  
     <p:spacer height="40px" width="100%"></p:spacer>
  
@@ -222,16 +222,16 @@
         <p:spacer height="18px" width="300px"></p:spacer>
         <center><b:carousel  id="tiovivo"  style="height: 400px; width: 750px" interval="2500">                
                     <b:carouselItem >
-                      <b:image value="/resources/home/1.jpg"/>               
+                        <a href="tablet/all.xhtml">  <b:image value="/resources/home/tablets.jpg"/></a>                 
                     </b:carouselItem>
                     <b:carouselItem >
-                      <b:image value="/resources/home/2.jpg"/>               
+                        <a href="phone/all.xhtml">  <b:image value="/resources/home/phones.jpg"/></a>                 
                     </b:carouselItem>
                     <b:carouselItem >
-                        <a href="camera/all.xhtml"><b:image value="/resources/home/3.png"/></a>             
+                        <a href="camera/all.xhtml"><b:image value="/resources/home/cameras.png"/></a>             
                     </b:carouselItem>   
                     <b:carouselItem >
-                      <b:image value="/resources/home/4.jpg"/>               
+                        <a href="headphones/all.xhtml">  <b:image value="/resources/home/headphones.jpg"/></a>                 
                     </b:carouselItem>
              
                 </b:carousel>
