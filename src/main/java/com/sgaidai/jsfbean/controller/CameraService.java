@@ -37,8 +37,7 @@ public class CameraService implements Serializable{
                 Images g = new Images();
                 List <String> pics = g.getImages( "camera", camera.getProduct().getId());   
                return pics ;                
-	}
-       
+	}       
 //	public void addCamera(Camera c) {
 //		this.cameraDAO.addCamera(c);
 //	}

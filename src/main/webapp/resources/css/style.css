@@ -144,6 +144,11 @@
   width: 100%;
   height: 100%;
 }
+.center {
+    display:block;
+    text-align:center; 
+    margin:0 auto
+}
 /*review Stars and form*/
 .cont{
   width: 93%;
