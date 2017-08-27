@@ -59,6 +59,7 @@ public class UserBean implements Serializable {
             newuser.setFirstName(user.getFirstName());
             newuser.setLastName(user.getLastName());
             newuser.setUsername(user.getUsername());
+            newuser.setPhone(user.getPhone());
             newuser.setEmail(user.getEmail());
             newuser.setPassword(cryptedPassword);
             newuser.setEnabled(user.getEnabled());

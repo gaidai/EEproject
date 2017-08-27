@@ -30,7 +30,7 @@ public class OrdersDAOImpl implements OrdersDAO {
 	public Orders addOrder(Orders o) {
             Orders del = o;
 	    del = em.merge(del);
-            System.out.println("com.sgaidai.springdatajpa.dao.OrdersDAOImpl.addOrder()*** "+ o.getTotal()+ " *** total***" + o.getBuyer_id());
+            System.out.println("com.sgaidai.springdatajpa.dao.OrdersDAOImpl.addOrder()*** "+ o.getTotal()+ " *** total***" + o.getId());
             this.em.persist(del);
             em.flush();
             return del;

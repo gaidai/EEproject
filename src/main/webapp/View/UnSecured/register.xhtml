@@ -37,6 +37,13 @@
                     </b:inputText> 
                     <b:message for="username" style="color:green" />
                     
+                    <b:inputText value="#{userBean.user.phone}" id="user_phone" required="true"  maxlength="10" requiredMessage="Login is required" placeholder="Phone:" >
+                        <f:facet name="prepend">
+                            <b:icon name="user" />
+                        </f:facet>
+                    </b:inputText> 
+                    <b:message for="user_phone" style="color:green" />
+                    
                     <b:inputText value="#{userBean.user.email}" id="email" required="true" requiredMessage="Email is required" validator="emailValidator" placeholder="Email:" >
                         <f:facet name="prepend">
                             <b:icon name="user" />

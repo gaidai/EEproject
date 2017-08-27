@@ -1,6 +1,9 @@
 package com.sgaidai.security.entities.model;
 
+import com.sgaidai.security.entities.model.product.Orders;
+import java.util.ArrayList;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
@@ -25,6 +28,7 @@ public class User  implements java.io.Serializable {
      private String firstName;
      private String lastName;
      private String email;
+     private int phone;
      private String username;
      private String password;
      private Boolean enabled;    
@@ -51,6 +55,13 @@ public class User  implements java.io.Serializable {
     }   
     public void setLastName(String lastName) {
         this.lastName = lastName;
+    }
+      @Column(name="phone", nullable=false, length=10)
+    public int getPhone() {
+        return this.phone;
+    }   
+    public void setPhone(int phone) {
+        this.phone = phone;
     }
    
     @Column(name="email", nullable=false, length=50)
@@ -84,7 +95,19 @@ public class User  implements java.io.Serializable {
  @OneToMany(cascade=CascadeType.ALL,fetch=FetchType.EAGER, mappedBy="user")
     public Set<Role> getRoles() {
         return this.roles;
-    }   
+    }
+    
+    private List<Orders> orders = new ArrayList();
+    
+    @OneToMany(mappedBy = "userId",fetch = FetchType.EAGER) 
+    public List<Orders> getOrders() {
+        return orders;
+    }  
+    
+    public void setOrders(List<Orders> orders) {
+        this.orders = orders;
+    }
+    
     public void setRoles(Set<Role> roles) {
         this.roles = roles;
     }

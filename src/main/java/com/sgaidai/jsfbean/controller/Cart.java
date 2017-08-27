@@ -51,7 +51,6 @@ public class Cart implements  Serializable {
         
         Orders neworder = new Orders();
         int buyer_id = 55;
-        neworder.setBuyer_id(buyer_id);
         neworder.setTotal(total);
         Orders creatrdorder = this.orderDAO.addOrder(neworder);
         List <Orders_Detail> odlist = new ArrayList();
@@ -72,7 +71,6 @@ public class Cart implements  Serializable {
         
         Orders neworder = new Orders();
         int buyer_id = 12;
-        neworder.setBuyer_id(buyer_id);
         neworder.setTotal(total);
         Orders creatrdorder = this.orderDAO.addOrder(neworder);
         List <Orders_Detail> odlist = new ArrayList();        

@@ -9,14 +9,14 @@
 
    
 <ui:composition template="/resources/composition.xhtml">
-    <ui:define name="title">Register page</ui:define>
+    <ui:define name="title">My orders</ui:define>
 <ui:define name="content">
     <p:spacer height="40px" width="100%"></p:spacer>
       <b:container style="margin-right: 20%;  background-color: #f4feff ; border-radius: 20px ; min-height: 800px"  >    
         <center><h2>Register User</h2></center>      
         <center>
             <h:form prependId="false" id="form">
-                <p:dataScroller id="list" value="#{ordering.getAllorders()}" var="o" >
+                <p:dataScroller id="list" value="#{userBean.userProfile.orders}" var="o" >
                     <f:facet name="header">
                         List of orders
                     </f:facet>    
@@ -29,8 +29,8 @@
                                 <h:outputText value="Total Price: " />
                                 <h:outputText value="#{o.total} UAH" style="font-weight: bold"/>
 
-                                <h:outputText value="Buyer Id: " />
-                                <h:outputText value="#{o.buyer_id} " style="font-weight: bold"/>
+                                <h:outputText value="delivery Id: " />
+                                <h:outputText value="#{o.delivery} " style="font-weight: bold"/>
                             </h:panelGrid>
                         </p:outputPanel>                           
                     </h:panelGrid>
