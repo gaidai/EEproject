@@ -40,8 +40,7 @@ public class Orders implements Serializable {
     @ManyToOne(  fetch = FetchType.EAGER )
     @JoinColumn(name="userId")
     private User userId;
-    
-        
+                
     @Column(name="total")
     private int total; 
     

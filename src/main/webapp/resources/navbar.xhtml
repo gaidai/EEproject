@@ -34,8 +34,8 @@
                     <h:form styleClass="navbar-form navbar-right">
                         <b:dropMenu  value="Hello #{loginController.username} !">
                             <b:navLink value="My profile" href="#{request.contextPath}/View/Secured/User/profile.xhtml"></b:navLink>
-                            <b:navLink value="My favorite" href="#"></b:navLink>
-                            <b:navLink value="All Orders" href="#{request.contextPath}/View/Secured/User/orderlist.xhtml"></b:navLink>
+                            <b:navLink value="My favorite" href="#{request.contextPath}/View/Secured/User/myfavorite.xhtml"></b:navLink>
+                            <b:navLink value="All Orders" href="#{request.contextPath}/View/Secured/User/myorders.xhtml"></b:navLink>
                         </b:dropMenu>&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;
 
                         <b:button href="#{request.contextPath}/logout" value="Logout" look="danger" icon="chevron-right" iconAlign="right"></b:button>

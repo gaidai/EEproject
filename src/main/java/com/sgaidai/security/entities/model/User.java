@@ -1,6 +1,7 @@
 package com.sgaidai.security.entities.model;
 
 import com.sgaidai.security.entities.model.product.Orders;
+import com.sgaidai.security.entities.model.product.Product;
 import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
@@ -10,6 +11,9 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
+import javax.persistence.ManyToMany;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.persistence.UniqueConstraint;
@@ -95,6 +99,20 @@ public class User  implements java.io.Serializable {
  @OneToMany(cascade=CascadeType.ALL,fetch=FetchType.EAGER, mappedBy="user")
     public Set<Role> getRoles() {
         return this.roles;
+    }
+    
+    private Set<Product> favorite = new HashSet(0);;
+    
+    @ManyToMany(cascade = CascadeType.REFRESH, fetch = FetchType.EAGER)
+    @JoinTable(name = "user_favorite",
+    joinColumns = @JoinColumn(name = "userId"),
+    inverseJoinColumns = @JoinColumn(name = "product_id"))
+    public Set<Product> getFavorite() {
+        return favorite;
+    }
+    
+    public void setFavorite(Set<Product> favorite) {
+        this.favorite = favorite;
     }
     
     private List<Orders> orders = new ArrayList();
