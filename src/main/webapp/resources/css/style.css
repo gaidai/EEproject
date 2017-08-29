@@ -165,7 +165,42 @@ div.stars{
   width: 350px;
   display: inline-block;
 }
-
-
-
-
+/*Sale banner*/
+.banner {
+  font-family: Lato;
+  z-index: 1;
+  width: 300px;
+  height: 40px;
+  line-height: 40px;
+  text-align: center;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  font-size: 19px;
+  color: #26D15E;
+  background: #863ECA;
+  left: 50%;
+  margin-left: -150px;
+  position: relative;
+}
+.banner:before,
+.banner:after {
+  z-index: -1;
+  content: "";
+  display: block;
+  top: 5px;
+  position: absolute;
+  border-top: 20px solid #6929A5;
+  border-bottom: 20px solid #6929A5;
+}
+.banner:before {
+  right: 100%;
+  margin-right: 0;
+  border-right: 20px solid #6929A5;
+  border-left: 5px solid transparent;
+}
+.banner:after {
+  left: 100%;
+  margin-left: 0;
+  border-left: 20px solid #6929A5;
+  border-right: 5px solid transparent;
+}

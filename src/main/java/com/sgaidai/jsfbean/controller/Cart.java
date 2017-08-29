@@ -42,14 +42,25 @@ public class Cart implements  Serializable {
     private OrdersDAO orderDAO ;    
     @Autowired
     private Orders_DetailDAO order_DetailDAO ;
+    private Orders neworder = new Orders();
+    
+    private String ln = null;
     
     public Cart(){
         this.mycart = new ArrayList();
     }
+    public void some(){
+        System.out.println(neworder.getFirstname());
+        System.out.println(neworder.getLastname());
+        System.out.println(neworder.getPhone());
+        System.out.println(neworder.getDelivery());
+        System.out.println(neworder.getAdress());
+        System.out.println(neworder.getDescription());
+
+    }
     
     public String buyAll(){
         
-        Orders neworder = new Orders();
         int buyer_id = 55;
         neworder.setTotal(total);
         Orders creatrdorder = this.orderDAO.addOrder(neworder);

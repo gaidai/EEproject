@@ -88,10 +88,9 @@
                       </h:panelGrid>
                       <hr />
                 </p:repeat>-->
-             <p:spacer height="20"/>
-            <h:form>
-                <b:commandButton  action="#{cart.buyAll()}" value="Buy All" look="info"   rendered="#{cart.totalPrice() gt 0}"/>
-            </h:form> 
+            <p:spacer height="20"/>
+            <b:button  href="order.xhtml" value="Buy All" look="info"   rendered="#{cart.totalPrice() gt 0}"/>
+           
             <br/>
             <div>
                 <p:clock   pattern="HH:mm:ss dd.MM.yyyy"  />

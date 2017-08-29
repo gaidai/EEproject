@@ -7,7 +7,8 @@
         xmlns:p="http://primefaces.org/ui"
         xmlns:b="http://bootsfaces.net/ui"
         xmlns:f="http://xmlns.jcp.org/jsf/core"
-        xmlns:c="http://xmlns.jcp.org/jsp/jstl/core">
+        xmlns:c="http://xmlns.jcp.org/jsp/jstl/core"
+        xmlns:jsf="http://xmlns.jcp.org/jsf">
 <ui:composition template="/resources/composition.xhtml">
     <ui:define name="title"> Confirmation </ui:define>
     <ui:define name="content">
@@ -22,25 +23,58 @@
                 <li id="step3" class="step ">Payment</li>
                 <li id="step4" class="step ">Confirmation</li>
             </ul>
-            <br/><br/><br/><br/>
-            <div style="height:450px; width: 90% ">
-                <div id="block1">
-                    <p> First</p>
-                    
-                </div>
+            <br/>
+            <p:fieldset legend="Items:" toggleable="true" toggleSpeed="500">
+                <ui:repeat value="#{cart.mycart}" var="p"  >
+                    <b:row>   
+                        <b:column col-lg="3">
+                            <a href="#{p.category}/#{p.category}.xhtml?id=#{p.id}" target="_blank">
+                                <h:outputText style="display:block; text-align:left ; margin-left: 20px; color: darkblue ; font-size:18px " value="#{p.brand } #{p.model } (#{p.color })" />
+                            </a>
+                        </b:column> 
+                        <b:column offset-lg="5" col-lg="3">
+                            <a href="#{p.category}/#{p.category}.xhtml?id=#{p.id}" target="_blank">
+                                <h:outputText  value="#{p.price } UAH" style="color: red ; font-size:18px ; font-family: cursive" />
+                            </a>
+                        </b:column>   
+                    </b:row>
+                </ui:repeat>
+                <hr/>
+                <h2 style="color: red ; font-family: cursive">Total: #{cart.total} UAH</h2>
+            </p:fieldset>
+            <hr/>
+            <form jsf:id="form1">
+                <div style="height:450px; width: 90% ">
+                    <div id="block1" style="height:400px; width: 100% ">
+                        <h3>Receiver name </h3>
+                        <input type="text" placeholder="Firstname" required="required" jsf:id="firstname"  jsf:value="#{cart.neworder.firstname}"/>
+                        <input type="text" placeholder="Lastname" required="required" jsf:id="lastname"  jsf:value="#{cart.neworder.lastname}"/>    
+                        <input type="text" placeholder="Phone" required="required" jsf:id="phone" jsf:value="#{cart.neworder.phone}"/> 
+                    </div>
 
-                <div id="block2" style="display: none">
-                    <p> Second</p>
-                </div>
+                    <div id="block2" style="display: none">
+                        <h3> Shipping</h3>
+                        <input type="text" placeholder="Delivery method" required="required" jsf:id="delivery"  jsf:value="#{cart.neworder.delivery}"/>
+                        <input type="text" placeholder="Adress" required="required" jsf:id="adress" jsf:value="#{cart.neworder.adress}"/>   
+                    </div>
+                    <div id="block3" style="display: none">
+                        
+                        <h3>Payment method </h3>
+                        <select jsf:id="payment" required="required" size="0" jsf:value="#{cart.neworder.description}"  style="width:125px">  
+                            <f:selectItem itemValue="" itemLabel=""/>
+                            <f:selectItem itemValue="Cash money" itemLabel="Cash money"/>
+                            <f:selectItem itemValue="MasterCard/VISA" itemLabel="MasterCard/VISA"/>
+                            <f:selectItem itemValue="PayPal" itemLabel="PayPal"/>
+                        </select >
+                       
+                    </div>
 
-                <div id="block3" style="display: none">
-                    <p> Third</p>
+                    <div id="block4" style="display: none">
+                        <h3> Confirmation</h3>
+                        <button jsf:action="#{cart.some}">Save</button>
+                    </div>
                 </div>
-
-                <div id="block4" style="display: none">
-                    <p> Fourth</p>
-                </div>
-            </div>
+            </form>
         </center>   
         <br/>
         <b:row>
@@ -51,7 +85,7 @@
                 <center><button class="gradbtnnext" id = "next-btn"  onclick="nextstep()"  >Next</button></center>
             </b:column>
         </b:row>
-        
+        <p:spacer height="20"/>   
         </b:container>
         <p:spacer height="20"/>         
     </ui:define>

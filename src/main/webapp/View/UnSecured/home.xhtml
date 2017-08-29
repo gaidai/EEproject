@@ -218,7 +218,7 @@
         </p:megaMenu>
     </b:column>
    
-    <b:container style=" margin-right: 20%;  background-color: #f4feff ; border-radius: 20px ; min-height: 800px"  >  
+    <b:container style=" margin-right: 20%;  background-color: #f4feff ; border-radius: 20px ; min-height: 900px"  class="center" >  
         <p:spacer height="18px" width="300px"></p:spacer>
         <center><b:carousel  id="tiovivo"  style="height: 400px; width: 750px" interval="2500">                
                     <b:carouselItem >
@@ -237,6 +237,12 @@
                 </b:carousel>
         </center>
         <br/><p:spacer height="30px" width="100%"></p:spacer>
+        
+        <div class="banner">
+            Hot products !
+        </div>
+        <p:spacer height="20px" width="100%"></p:spacer>
+
         <div class="carousel sale right">
             <div class="indicator"></div>
             <div class="wrap">
@@ -270,6 +276,7 @@
     </b:container>             
    <h:outputStylesheet library="css" name="carousel_sale.css"  />
    <h:outputScript library="js" name="carousel_sale.js" />
+    <link rel='stylesheet prefetch' href='https://fonts.googleapis.com/css?family=Lato:700'/>
     </ui:define>
 </ui:composition>
 </html>
