@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+        xmlns:p="http://primefaces.org/ui"
+        xmlns:b="http://bootsfaces.net/ui">
+<ui:composition template="/resources/composition.xhtml">
+    <ui:define name="title">Found mistake ?</ui:define>
+    <ui:define name="content">
+    <p:spacer height="40px" width="100%"/>
+    <script src='http://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js'></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/meyer-reset/2.0/reset.min.css"></link>    
+   
+    <h:outputScript library="js" name="main.js" />   
+   
+    <b:container style="margin-right: 20%; margin-left: 20%; background-color: #f4feff ; border-radius: 20px ; min-height: 800px" >
+        <b:panel title="Copy link from page with mistake and write the description " class="center" col-lg="8" style="margin-top:25px; background:#F6FFE0" look="info">
+            <h:form  > 
+                
+                <b:inputText id="author" value="#{supportService.mistake.link}" placeholder="Link to page"  required="true" maxlength="250" />
+                <br/>
+                <p:inputTextarea  id="review" rows="10" cols="72" class="review" placeholder="Descriptions of mistake" maxlength="300" required="true" 
+                                  value="#{supportService.mistake.description}" counterTemplate="{0} characters remaining." />
+                <br/> <br/>
+                <b:commandButton action="#{supportService.addMistake()}"  icon-size="lg" value="Send " look="info" size="lg" iconAlign="right"/>
+                            
+            </h:form> 
+        </b:panel>                
+    </b:container> 
+   </ui:define>
+</ui:composition>
+</html>

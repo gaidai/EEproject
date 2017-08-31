@@ -40,7 +40,6 @@ public class ProductService implements Serializable{
 	}
                         
         public void listProductsByBrand (){
-            System.out.println(this.product.getBrand()+"-----");
             list = this.productDAO.listProductsByBrand(this.product.getBrand());		
 	}
         

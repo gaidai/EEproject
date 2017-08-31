@@ -1,3 +1,15 @@
+$(document).ready(function() {
+    
+    $('#l11').on('click', function(e) {
+        document.getElementById('form1:address').placeholder='NP №';
+    });
+    $('#l22').on('click', function(e) {
+        document.getElementById('form1:address').placeholder='Address line';
+    });
+    $('#l33').on('click', function(e) {
+        document.getElementById('form1:address').placeholder='Post index';
+    });
+});
 var index = 1;
 function nextstep() {
     if(index===3){
@@ -5,16 +17,17 @@ function nextstep() {
         if( payment==="" ){
             alert('Choose your Payment method !');
         }else{
-            stepto();        
+            stepto();
         }
     }    
-    if(index===2){
-        var delivery = document.getElementById('form1:delivery').value;
-        var adress = document.getElementById('form1:adress').value;
-        if( delivery==="" || adress===""){
-            alert('Choose your Delivery method and write your adress!');
+    if(index===2){ 
+//        var delivery = document.getElementById('form1:delivery').value;
+        var address = document.getElementById('form1:address').value;
+        var city = document.getElementById('form1:city').value;
+        if(  address.length <2 || city.length<3 ){
+            alert('Choose your Delivery method and write your address!');
         }else{
-            stepto();        
+            stepto(); 
         }
     }
     
@@ -26,8 +39,8 @@ function nextstep() {
             || phone.length !== 10  ){
                  alert('Write your contact information!\n\ Firstname and Lastname must contain from 3 to 15 symbols \n\ Phone - 10 symbols ');
         }else{
-            stepto();        
-        }
+            stepto();            
+            }
     }
 };
 function stepto() {
@@ -46,6 +59,7 @@ function stepto() {
     	$("#next-btn").hide();
     };
 }
+
 
 function backstep() {
     document.getElementById("step"+index).className = "step";

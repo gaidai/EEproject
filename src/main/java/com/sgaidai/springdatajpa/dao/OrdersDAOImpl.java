@@ -30,7 +30,6 @@ public class OrdersDAOImpl implements OrdersDAO {
 	public Orders addOrder(Orders o) {
             Orders del = o;
 	    del = em.merge(del);
-            System.out.println("com.sgaidai.springdatajpa.dao.OrdersDAOImpl.addOrder()*** "+ o.getTotal()+ " *** total***" + o.getId());
             this.em.persist(del);
             em.flush();
             return del;
@@ -39,10 +38,7 @@ public class OrdersDAOImpl implements OrdersDAO {
         @Transactional 
         @Override
 	 public List<Orders> listAllOrders() { 
-         
-
-            List<Orders> result = this.em.createQuery("SELECT o FROM Orders o").getResultList();
-            
+            List<Orders> result = this.em.createQuery("SELECT o FROM Orders o").getResultList();            
             return result;
 	}
         
@@ -58,7 +54,6 @@ public class OrdersDAOImpl implements OrdersDAO {
         @Transactional 
         @Override
         public Orders getOrderById(int id){
-            System.out.println(id +"******getOrderEntitybyid*******");
             CriteriaBuilder cb = em.getCriteriaBuilder();
             CriteriaQuery<Orders> criteriaQuery = cb.createQuery(Orders.class);
             Root<Orders> orderEntityRoot = criteriaQuery.from(Orders.class);
@@ -79,7 +74,6 @@ public class OrdersDAOImpl implements OrdersDAO {
         @Transactional
         @Override
         public List<Orders> listOrdersByBuyerId(int buyer_id) {
-                System.out.println(buyer_id +"******listOrdersByBuyerId*******");
             CriteriaBuilder cb = em.getCriteriaBuilder();
             CriteriaQuery<Orders> criteriaQuery = cb.createQuery(Orders.class);
             Root<Orders> orderEntityRoot = criteriaQuery.from(Orders.class);

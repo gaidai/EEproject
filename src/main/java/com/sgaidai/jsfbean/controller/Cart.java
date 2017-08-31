@@ -54,6 +54,7 @@ public class Cart implements  Serializable {
         System.out.println(neworder.getLastname());
         System.out.println(neworder.getPhone());
         System.out.println(neworder.getDelivery());
+        System.out.println(neworder.getCity());
         System.out.println(neworder.getAdress());
         System.out.println(neworder.getDescription());
 

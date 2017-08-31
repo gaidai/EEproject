@@ -32,7 +32,7 @@ public class User  implements java.io.Serializable {
      private String firstName;
      private String lastName;
      private String email;
-     private int phone;
+     private String phone;
      private String username;
      private String password;
      private Boolean enabled;    
@@ -61,10 +61,10 @@ public class User  implements java.io.Serializable {
         this.lastName = lastName;
     }
       @Column(name="phone", nullable=false, length=10)
-    public int getPhone() {
+    public String getPhone() {
         return this.phone;
     }   
-    public void setPhone(int phone) {
+    public void setPhone(String phone) {
         this.phone = phone;
     }
    

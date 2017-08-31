@@ -45,7 +45,7 @@ public class Orders implements Serializable {
     private int total; 
     
     @Column(name="phone")
-    private int phone; 
+    private String phone; 
     
     @Column(name="firstname")
     private String firstname; 
@@ -64,6 +64,9 @@ public class Orders implements Serializable {
      
     @Column(name="adress")
     private String adress; 
+    
+    @Column(name="city")
+    private String city;
     
     @OneToMany(mappedBy = "order_id",fetch = FetchType.EAGER)     
     private List<Orders_Detail> order_details;

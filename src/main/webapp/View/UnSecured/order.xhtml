@@ -5,6 +5,7 @@
 	xmlns:h="http://java.sun.com/jsf/html"
 	xmlns:ui="http://java.sun.com/jsf/facelets"
         xmlns:p="http://primefaces.org/ui"
+        xmlns:pt="http://xmlns.jcp.org/jsf/passthrough"
         xmlns:b="http://bootsfaces.net/ui"
         xmlns:f="http://xmlns.jcp.org/jsf/core"
         xmlns:c="http://xmlns.jcp.org/jsp/jstl/core"
@@ -54,8 +55,30 @@
 
                     <div id="block2" style="display: none">
                         <h3> Shipping</h3>
-                        <input type="text" placeholder="Delivery method" required="required" jsf:id="delivery"  jsf:value="#{cart.neworder.delivery}"/>
-                        <input type="text" placeholder="Adress" required="required" jsf:id="adress" jsf:value="#{cart.neworder.adress}"/>   
+                        <div onload="">
+                            <f:metadata>
+                                <f:viewParam name="a-radio"  value="#{cart.neworder.delivery}"/>
+                            </f:metadata>
+
+                            <label for="form1:delivery-1" id="l11">
+                              <input type="radio" jsf:id="delivery-1" checked="checked" pt:name="a-radio" value="NP"/>
+                              <span>NP</span>
+                            </label> <br/>
+
+                            <label for="form1:delivery-2" id="l22">
+                              <input type="radio" jsf:id="delivery-2" pt:name="a-radio" value="MistExpress"/>
+                              <span>MistExpress</span>
+                            </label > <br/>
+                            
+                            <label for="form1:delivery-3" id="l33">
+                                <input type="radio" jsf:id="delivery-3" pt:name="a-radio" value="UkrPost"/>
+                              <span>UkrPost</span>
+                            </label>
+                        </div>
+                        <br/>
+                        <input type="text" placeholder="City" required="required" maxlength="45" jsf:id="city" jsf:value="#{cart.neworder.city}"/>   
+                        <br/>
+                        <input type="text" placeholder="NP" required="required" maxlength="45" jsf:id="address" jsf:value="#{cart.neworder.adress}"/>   
                     </div>
                     <div id="block3" style="display: none">
                         
