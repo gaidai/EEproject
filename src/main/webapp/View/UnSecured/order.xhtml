@@ -83,7 +83,7 @@
                     <div id="block3" style="display: none">
                         
                         <h3>Payment method </h3>
-                        <select jsf:id="payment" required="required" size="0" jsf:value="#{cart.neworder.description}"  style="width:125px">  
+                        <select jsf:id="payment" required="required" size="0" jsf:value="#{cart.neworder.payment_method}"  style="width:125px">  
                             <f:selectItem itemValue="" itemLabel=""/>
                             <f:selectItem itemValue="Cash money" itemLabel="Cash money"/>
                             <f:selectItem itemValue="MasterCard/VISA" itemLabel="MasterCard/VISA"/>
@@ -94,7 +94,7 @@
 
                     <div id="block4" style="display: none">
                         <h3> Confirmation</h3>
-                        <button jsf:action="#{cart.some}">Save</button>
+                        <button jsf:action="#{cart.buyAll()}">Save</button>
                     </div>
                 </div>
             </form>

@@ -47,6 +47,9 @@ public class Orders implements Serializable {
     @Column(name="phone")
     private String phone; 
     
+    @Column(name="payment_method")
+    private String payment_method;         
+    
     @Column(name="firstname")
     private String firstname; 
     

@@ -43,40 +43,33 @@ public class Cart implements  Serializable {
     @Autowired
     private Orders_DetailDAO order_DetailDAO ;
     private Orders neworder = new Orders();
-    
+     private Orders createdorder = new Orders();
     private String ln = null;
     
     public Cart(){
         this.mycart = new ArrayList();
     }
-    public void some(){
-        System.out.println(neworder.getFirstname());
-        System.out.println(neworder.getLastname());
-        System.out.println(neworder.getPhone());
-        System.out.println(neworder.getDelivery());
-        System.out.println(neworder.getCity());
-        System.out.println(neworder.getAdress());
-        System.out.println(neworder.getDescription());
-
-    }
-    
+            
     public String buyAll(){
         
-        int buyer_id = 55;
         neworder.setTotal(total);
-        Orders creatrdorder = this.orderDAO.addOrder(neworder);
+        neworder.setStatus("created");
+        Orders creatorder = this.orderDAO.addOrder(neworder);
+        int created_id= creatorder.getId();
         List <Orders_Detail> odlist = new ArrayList();
         for (Product p: mycart){
             Orders_Detail od = new Orders_Detail();
             od.setFixed_price(p.getPrice());
             od.setProduct_id(p);
-            od.setOrder_id(creatrdorder);
+            od.setOrder_id(creatorder);
             odlist.add(od);
         }        
         this.order_DetailDAO.addOrder_Detail(odlist);
-//         after ordering clear the shopping cart
+        createdorder =  this.orderDAO.getOrderById(created_id);
+        neworder = new Orders();
+//         after ordering clear the shopping cart created_order.xhtml?id="+created_id
         mycart.clear();
-        return "home";
+        return "created_order";
     }
     
     public String buyOne(Product p){

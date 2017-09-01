@@ -17,18 +17,20 @@
     <h:outputScript library="js" name="main.js" />   
    
     <b:container style="margin-right: 20%; margin-left: 20%; background-color: #f4feff ; border-radius: 20px ; min-height: 800px" >
-        <b:panel title="Copy link from page with mistake and write the description " class="center" col-lg="8" style="margin-top:25px; background:#F6FFE0" look="info">
-            <h:form  > 
-                
-                <b:inputText id="author" value="#{supportService.mistake.link}" placeholder="Link to page"  required="true" maxlength="250" />
-                <br/>
-                <p:inputTextarea  id="review" rows="10" cols="72" class="review" placeholder="Descriptions of mistake" maxlength="300" required="true" 
-                                  value="#{supportService.mistake.description}" counterTemplate="{0} characters remaining." />
-                <br/> <br/>
-                <b:commandButton action="#{supportService.addMistake()}"  icon-size="lg" value="Send " look="info" size="lg" iconAlign="right"/>
-                            
-            </h:form> 
-        </b:panel>                
+        <div style="width: 70%; margin-left: 15%; margin-right: 15%">
+            <b:panel title="Copy link from page with mistake and write the description " collapsible="false" class="center" col-lg="8" style="margin-top:25px; background:#F6FFE0" look="info">
+                <h:form  > 
+
+                    <b:inputText id="author" value="#{supportService.mistake.link}" placeholder="Link to page"  required="true" maxlength="250" />
+                    <br/>
+                    <p:inputTextarea  id="review" rows="10" cols="72" class="review" placeholder="Descriptions of mistake" maxlength="300" required="true" 
+                                      value="#{supportService.mistake.description}" counterTemplate="{0} characters remaining." />
+                    <br/> <br/>
+                    <b:commandButton action="#{supportService.addMistake()}"  icon-size="lg" value="Send " look="info" size="lg" iconAlign="right"/>
+
+                </h:form> 
+            </b:panel>  
+        </div>     
     </b:container> 
    </ui:define>
 </ui:composition>

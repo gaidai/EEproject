@@ -10,7 +10,10 @@ $(document).ready(function() {
         document.getElementById('form1:address').placeholder='Post index';
     });
 });
+
 var index = 1;
+
+
 function nextstep() {
     if(index===3){
         var payment = document.getElementById('form1:payment').value;

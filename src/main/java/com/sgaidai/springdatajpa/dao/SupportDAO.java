@@ -12,7 +12,7 @@ import javax.inject.Named;
 @Named
 public interface SupportDAO {
     
-   public void addMistake(Mistake m) ;    
+   public void addMistake(Mistake m) ;     
 //       
 //    public List<Camera> listCameras();
 //    
