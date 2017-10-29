@@ -3,6 +3,7 @@ package com.sgaidai.jsfbean.controller;
 
 import com.sgaidai.security.entities.model.product.Mistake;
 import com.sgaidai.security.entities.model.product.Orders;
+import com.sgaidai.security.entities.model.product.Product;
 import com.sgaidai.springdatajpa.dao.OrdersDAO;
 import com.sgaidai.springdatajpa.dao.SupportDAO;
 import java.io.Serializable;
@@ -40,6 +41,11 @@ public class SupportService implements Serializable{
             }
             mistake = new Mistake();
             return "thanks.xhtml";
+	}
+        public void addToWishList(Product p) {
+            System.out.println(p.getBrand());
+            System.out.println(p.getModel());
+            System.out.println(p.getPrice());
 	}
         
        

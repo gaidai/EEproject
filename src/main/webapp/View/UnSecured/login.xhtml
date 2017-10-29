@@ -18,10 +18,11 @@
             } 
         </style>
  </h:head>
-<h:body style="padding-top: 30px; background-color: #add;">
+    <h:body style="padding-top: 30px; min-height: 100vh" class="grad-background">
     <ui:include src="/resources/navbar.xhtml" />
     <p:spacer height="35px" width="100%"/>
-    <b:button href="#{request.contextPath}/View/UnSecured/register.xhtml" value="Register" look="primary" icon="chevron-right" size="lg" iconAlign="right"></b:button>
+    <b:button href="#{request.contextPath}/View/UnSecured/register.xhtml" id="registerlink" value="Register" look="primary" icon="chevron-right" size="lg" iconAlign="right"></b:button>
+    <p:tooltip  for="registerlink" value="click to register new account !" hideEffect="explode" position="right"/>
     
     <c:if test="${'fail' eq param.auth}">
         <div style="color:red">
@@ -34,11 +35,13 @@
           
             <b:row> 
                 <b:icon name="user" /> &nbsp;
-                <p:inputText value="#{loginController.username}" id="username" required="true" size="20" requiredMessage="UserName is required"/>
+                <p:inputText value="#{loginController.username}" id="username" required="true" size="20" placeholder="Login" requiredMessage="UserName is required"/>
+                <p:tooltip  for="username" value="Enter your Login !" position="right"/>
             </b:row>
             <b:row> 
                 <b:iconAwesome name="key" /> &nbsp;
                 <p:password value="#{loginController.password}" id="password" required="true" requiredMessage="Password is required" placeholder="Password"/>
+                <p:tooltip  for="password" value="Enter your password !" position="right"/>
             </b:row>
             <b:row> 
                 <b:selectBooleanCheckbox id="remember-me" value="true" caption="remember me"/>
@@ -51,10 +54,10 @@
            
     
     <h:outputStylesheet library="css" name="style.css" />
-    <br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/>&nbsp; <br/>
     
-    <b:button href="http://sgaidai.com" look="info"  value="sgaidai.com" icon="bookmark" />
-    <p:spacer height="30px"/>
+    <b:button href="http://sgaidai.com" look="info" id="gaidai"  value="sgaidai.com" icon="bookmark" style="position: absolute; bottom: 2vh" />
+    <p:tooltip  for="gaidai" value="Click to look created with Bootstrap test website !" trackMouse="true" position="right"/>
+  
     
     <h:form>
         <p:stack icon="/resources/images/png/Basket.png" expanded="true">
