@@ -11,7 +11,15 @@
   height: 250px;
   margin: auto;
   font-size: 0;
-  background: #8FCECC;
+  /* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#e1ffff+0,d8c036+20,ce10a8+33,e2e542+47,e0f76c+61,961515+74,efdf4a+90,ef4cc6+100 */
+  background: rgb(225,255,255); /* Old browsers */
+  background: -moz-linear-gradient(-45deg, rgba(225,255,255,1) 0%, rgba(216,192,54,1) 20%, rgba(206,16,168,1) 33%, rgba(226,229,66,1) 47%, rgba(224,247,108,1) 61%, rgba(150,21,21,1) 74%, rgba(239,223,74,1) 90%, rgba(239,76,198,1) 100%); /* FF3.6-15 */
+  background: -webkit-gradient(linear, left top, right bottom, color-stop(0%,rgba(225,255,255,1)), color-stop(20%,rgba(216,192,54,1)), color-stop(33%,rgba(206,16,168,1)), color-stop(47%,rgba(226,229,66,1)), color-stop(61%,rgba(224,247,108,1)), color-stop(74%,rgba(150,21,21,1)), color-stop(90%,rgba(239,223,74,1)), color-stop(100%,rgba(239,76,198,1))); /* Chrome4-9,Safari4-5 */
+  background: -webkit-linear-gradient(-45deg, rgba(225,255,255,1) 0%,rgba(216,192,54,1) 20%,rgba(206,16,168,1) 33%,rgba(226,229,66,1) 47%,rgba(224,247,108,1) 61%,rgba(150,21,21,1) 74%,rgba(239,223,74,1) 90%,rgba(239,76,198,1) 100%); /* Chrome10-25,Safari5.1-6 */
+  background: -o-linear-gradient(-45deg, rgba(225,255,255,1) 0%,rgba(216,192,54,1) 20%,rgba(206,16,168,1) 33%,rgba(226,229,66,1) 47%,rgba(224,247,108,1) 61%,rgba(150,21,21,1) 74%,rgba(239,223,74,1) 90%,rgba(239,76,198,1) 100%); /* Opera 11.10-11.50 */
+  background: -ms-linear-gradient(-45deg, rgba(225,255,255,1) 0%,rgba(216,192,54,1) 20%,rgba(206,16,168,1) 33%,rgba(226,229,66,1) 47%,rgba(224,247,108,1) 61%,rgba(150,21,21,1) 74%,rgba(239,223,74,1) 90%,rgba(239,76,198,1) 100%); /* IE10 preview */
+  background: linear-gradient(135deg, rgba(225,255,255,1) 0%,rgba(216,192,54,1) 20%,rgba(206,16,168,1) 33%,rgba(226,229,66,1) 47%,rgba(224,247,108,1) 61%,rgba(150,21,21,1) 74%,rgba(239,223,74,1) 90%,rgba(239,76,198,1) 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#e1ffff', endColorstr='#ef4cc6',GradientType=1 ); /* IE6-9 fallback on horizontal gradient */
   padding: 8px;
   border-radius: 6px;
   box-shadow: 0 4px 10px #000;

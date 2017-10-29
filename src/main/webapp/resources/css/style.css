@@ -193,7 +193,15 @@ div.stars{
   letter-spacing: 1px;
   font-size: 19px;
   color: #26D15E;
-  background: #863ECA;
+  /* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#863eca+0,bc1476+51,863eca+100 */
+    background: #863eca; /* Old browsers */
+    background: -moz-linear-gradient(left, #863eca 0%, #bc1476 51%, #863eca 100%); /* FF3.6-15 */
+    background: -webkit-gradient(linear, left top, right top, color-stop(0%,#863eca), color-stop(51%,#bc1476), color-stop(100%,#863eca)); /* Chrome4-9,Safari4-5 */
+    background: -webkit-linear-gradient(left, #863eca 0%,#bc1476 51%,#863eca 100%); /* Chrome10-25,Safari5.1-6 */
+    background: -o-linear-gradient(left, #863eca 0%,#bc1476 51%,#863eca 100%); /* Opera 11.10-11.50 */
+    background: -ms-linear-gradient(left, #863eca 0%,#bc1476 51%,#863eca 100%); /* IE10 preview */
+    background: linear-gradient(to right, #863eca 0%,#bc1476 51%,#863eca 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#863eca', endColorstr='#863eca',GradientType=1 ); /* IE6-9 */
   left: 50%;
   margin-left: -150px;
   position: relative;
@@ -219,4 +227,61 @@ div.stars{
   margin-left: 0;
   border-left: 20px solid #6929A5;
   border-right: 5px solid transparent;
+}
+
+/*Shipping information*/
+.faq.responses > ol > li {
+    border-top: 1px solid #a5a5a5;
+    padding: 25px 0;
+}
+.faq.responses > ol > li:first-of-type {
+    border-top: medium none;
+}
+.faq.responses h4 {
+    padding: 0;
+}
+.faq.responses .return, .faq.responses p {
+    margin-left: 20px;
+}
+.faq.responses p {
+    margin-bottom: 5px;
+}
+.faq.responses abbr {
+    float: left;
+    font-weight: 700;
+    padding-right: 8px;
+}
+.faq.responses dd ul {
+    margin: 10px 40px;
+}
+.faq.responses dd ul li {
+    list-style-type: disc;
+}
+.faq {
+    margin: auto;
+    max-width: 1000px;
+    padding: 1em 0.5em;
+}
+.faq > ol {
+    list-style: outside none decimal;
+}
+.faq > ol li {
+    margin: 0 17px;
+}
+.faq h3 {
+    padding: 1em 0;
+}
+.faq h4 {
+    padding: 0.5em 0;
+}
+.faq a {
+    text-decoration: underline;
+}
+#main-container {
+    margin-right: 20%;
+    margin-left: 20%;
+    background-color: #f4feff ;
+    border-radius: 20px ; 
+    min-height: 800px
+    
 }
