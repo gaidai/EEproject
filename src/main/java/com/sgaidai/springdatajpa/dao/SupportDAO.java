@@ -6,13 +6,15 @@
 package com.sgaidai.springdatajpa.dao;
 
 import com.sgaidai.security.entities.model.product.Mistake;
+import com.sgaidai.security.entities.model.product.Product;
 import javax.inject.Named;
 
 
 @Named
 public interface SupportDAO {
     
-   public void addMistake(Mistake m) ;     
+    void addMistake(Mistake m) ; 
+    void addToWishList(Product p) ;  
 //       
 //    public List<Camera> listCameras();
 //    

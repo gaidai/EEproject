@@ -43,9 +43,7 @@ public class SupportService implements Serializable{
             return "thanks.xhtml";
 	}
         public void addToWishList(Product p) {
-            System.out.println(p.getBrand());
-            System.out.println(p.getModel());
-            System.out.println(p.getPrice());
+            this.supportDAO.addToWishList(p);
 	}
         
        

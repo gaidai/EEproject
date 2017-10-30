@@ -2,7 +2,11 @@ package com.sgaidai.springdatajpa.dao;
 
 
 
+import com.sgaidai.jsfbean.controller.UserBean;
 import com.sgaidai.security.entities.model.product.Mistake;
+import com.sgaidai.security.entities.model.product.Product;
+import java.util.HashSet;
+import java.util.Set;
 import javax.enterprise.context.RequestScoped;
 import javax.inject.Named;
 import javax.persistence.EntityManager;
@@ -26,58 +30,17 @@ public class SupportDAOImpl implements SupportDAO {
 		this.em.persist(m);
 	}
         
-//        @Transactional 
-//        @Override
-//	public List<Camera> listCameras() {
-//		return this.em.createQuery("SELECT c FROM Camera c").getResultList();
-//	}
-//        @Transactional 
-//        @Override
-//	public List<Camera> listCamerasbyPrice() {
-//		return this.em.createQuery("SELECT c FROM Camera c ORDER BY c.price").getResultList();
-//	}
-//        
-//        @Transactional
-//        @Override
-//        public void deleteCamera(Camera c  ) {
-//            Camera del = new Camera();
-//            del = c;
-//		del = em.merge(del);
-//            this.em.remove(del);
-//
-//	}
-//        
-//        @Transactional 
-//        @Override
-//        public List<Camera> listCamerasByBrand(String b){
-//            System.out.println(b +"*************");
-//            return this.em.createQuery("SELECT c FROM Camera c WHERE c.brand ="+b).getResultList();
-//            
-//            CriteriaBuilder cb = em.getCriteriaBuilder();
-//            CriteriaQuery<Camera> criteriaQuery = cb.createQuery(Camera.class);
-//            Root<Camera> cameraEntityRoot = criteriaQuery.from(Camera.class);
-//
-//            criteriaQuery.select(cameraEntityRoot).distinct(true);
-////        }
-//
-////            Predicate criteria = cb.conjunction();
-////            Predicate p = cb.equal(cameraEntityRoot.get(Camera_.brand), b);
-////            criteria = cb.and(criteria, p);
-//
-//            criteriaQuery.where(cb.equal(cameraEntityRoot.get(Camera_.brand), b));
-//            List<Camera> result = em.createQuery(criteriaQuery).getResultList();
-//            for(Camera r: result){
-//                System.out.println(r.getId() + " "+ r.getModel());
-//            }
-//            return result;
-//        }
-
-//        
-//        @Transactional 
-//        @Override
-//        public Camera getcamerabyid(int id){
-//            
-//            Camera result =(Camera) this.em.createQuery("SELECT c FROM Camera c WHERE c.product.id ="+id).getSingleResult();            
-//            return result;
-//        }        
+        @Transactional
+        @Override
+	public void addToWishList(Product p) {
+            HashSet <Product> wishlist =   new HashSet();             
+            wishlist.addAll(UserBean.log.getFavorite());
+            if( !wishlist.contains(p)){
+                wishlist.add(p);
+                UserBean.log.setFavorite(wishlist);
+                this.em.merge(UserBean.log);
+            }
+            
+	}        
+    
 }

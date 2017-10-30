@@ -22,7 +22,7 @@
         <p:breadCrumb >            
             <p:menuitem   rendered="false" ></p:menuitem>
             <p:menuitem value="Home" url="/View/UnSecured/home.xhtml" />
-            <p:menuitem value="All cameras" url="all.xhtml" />
+            <p:menuitem value="All tablets" url="all.xhtml" />
                         
         </p:breadCrumb>
             
@@ -48,13 +48,14 @@
                         <b:growl for="add" id="growl" globalOnly="true" placementFrom="bottom" show-detail="true" 
                                  show-summary="false" allowDismiss="true" delay="4000" escape="true"  />
                     </h:form>
+                    <p:spacer height="10pv" />
                     <sec:authorize access="isAuthenticated()">
-                        <h:form >
-                            <b:commandButton id="add"  update="growlwish" action="#{supportService.addToWishList(tabletService.tablet.product)}"  look="info"  icon-awesome="fa-heart-o " icon-size="lg" size="lg" iconAlign="right">
+                        <h:form>
+                            <b:commandButton id="add" tooltip="Add to wish list!" tooltip-position="right"  update="growlwish" action="#{supportService.addToWishList(tabletService.tablet.product)}"  look="danger"  icon-awesome="fa-heart-o " icon-size="md" size="md" iconAlign="right">
                                    </b:commandButton>
                             <b:growl for="add" id="growlwish" globalOnly="true" placementFrom="bottom" show-detail="true" 
                                  show-summary="false" allowDismiss="true" delay="4000" escape="true"  />
-                            </h:form>
+                        </h:form>
                     </sec:authorize>
                 </b:column>
             </b:row> 

@@ -24,12 +24,13 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 import lombok.ToString;
+import lombok.EqualsAndHashCode;
 
 @Getter
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
-@ToString
+@ToString(exclude ={"users"}  )
 @ManagedBean(name="product")
 @Table(name="product")
 @Entity
@@ -64,10 +65,25 @@ public class Product implements Serializable {
     @OneToMany(mappedBy = "product",fetch = FetchType.EAGER)     
     private List<Review> review;
     
-    @ManyToMany(cascade = CascadeType.REFRESH, fetch = FetchType.LAZY)
+    @ManyToMany(cascade = CascadeType.REFRESH, fetch = FetchType.EAGER)
     @JoinTable(name = "user_favorite",
     joinColumns = @JoinColumn(name = "product_id"),
     inverseJoinColumns = @JoinColumn(name = "userId"))
     private Set<User> users;
+    
+    @Override public boolean equals(Object o) {
+      if (o == this) return true;
+      if (!(o instanceof Product)) return false;
+      Product other = (Product) o;
+      if (this.id != other.id) return false;
+      return true;
+    }
+    
+    @Override public int hashCode() {
+      final int PRIME = 59;
+      int result = 1;
+      result = (result*PRIME) + this.id;
+      return result;
+    }
 	
 }
