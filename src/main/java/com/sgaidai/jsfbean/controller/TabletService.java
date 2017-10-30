@@ -6,7 +6,7 @@ import com.sgaidai.springdatajpa.dao.TabletDAO;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
-import javax.enterprise.context.SessionScoped;
+import javax.enterprise.context.ConversationScoped;
 import javax.faces.bean.ManagedBean;
 import javax.inject.Named;
 import lombok.Getter;
@@ -19,7 +19,7 @@ import org.springframework.cache.annotation.Cacheable;
 @Setter
 @Named 
 @ManagedBean(name="tabletService")
-@SessionScoped
+@ConversationScoped
 public class TabletService implements Serializable{
         
         
@@ -55,7 +55,7 @@ public class TabletService implements Serializable{
 //	}
         
         public void getTabletbyid() {
-                tablet = this.tabletDAO.getTabletById(this.tablet.getId());
+                this.tablet = this.tabletDAO.getTabletById(this.tablet.getId());
                
 	}
 //        public List<Camera> listCamerasbyPrice() {

@@ -20,7 +20,6 @@ import org.springframework.transaction.annotation.Transactional;
 @Named
 @Service
 @Repository
-@RequestScoped
 public class TabletDAOImpl implements TabletDAO {
     
         @Autowired

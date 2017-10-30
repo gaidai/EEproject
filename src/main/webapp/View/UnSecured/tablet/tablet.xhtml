@@ -51,8 +51,10 @@
                     <p:spacer height="10pv" />
                     <sec:authorize access="isAuthenticated()">
                         <h:form>
-                            <b:commandButton id="add" tooltip="Add to wish list!" tooltip-position="right"  update="growlwish" action="#{supportService.addToWishList(tabletService.tablet.product)}"  look="danger"  icon-awesome="fa-heart-o " icon-size="md" size="md" iconAlign="right">
-                                   </b:commandButton>
+                            <b:commandButton id="add-wish" tooltip="Add to wish list!" tooltip-position="right"  update="growlwish,add-wish" action="#{supportService.addToWishList()}"
+                                             look="danger"  icon-awesome="fa-heart-o " icon-size="md" size="md" iconAlign="right">
+                                <f:param value="#{tabletService.tablet.product.id}" name="product_id" />
+                            </b:commandButton>
                             <b:growl for="add" id="growlwish" globalOnly="true" placementFrom="bottom" show-detail="true" 
                                  show-summary="false" allowDismiss="true" delay="4000" escape="true"  />
                         </h:form>

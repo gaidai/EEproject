@@ -14,7 +14,8 @@ import javax.inject.Named;
 public interface SupportDAO {
     
     void addMistake(Mistake m) ; 
-    void addToWishList(Product p) ;  
+    void addToWishList(Product p) ;
+    void deletFromWishList(Product p) ;
 //       
 //    public List<Camera> listCameras();
 //    

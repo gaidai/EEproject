@@ -15,7 +15,7 @@
       <b:container style="margin-right: 20%;  background-color: #f4feff ; border-radius: 20px ; min-height: 800px"  >   
         <center>
             <p:spacer height="15px" width="100%" ></p:spacer>
-            <h:form prependId="false" id="form">
+            
                 <p:dataScroller id="list" value="#{userBean.userProfile.favorite}" var="p" >
                     <f:facet name="header">
                         My favorite items
@@ -38,13 +38,15 @@
                             </a>
                         </b:column >
                         <b:column  style="width: 5% ; height: 80px" >
-
+                            <b:form ><br/>
+                                <p:commandLink ajax="true" update="list" action="#{supportService.deletFromWishList(p)}" ><i class="fa  fa-trash fa-lg " /></p:commandLink>
+                            </b:form> 
                         </b:column >
                     </b:row>
                     <hr/>
                     
                 </p:dataScroller>                
-            </h:form >
+            
         </center>
     </b:container>    
 </ui:define>

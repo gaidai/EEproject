@@ -6,8 +6,7 @@ import com.sgaidai.jsfbean.controller.UserBean;
 import com.sgaidai.security.entities.model.product.Mistake;
 import com.sgaidai.security.entities.model.product.Product;
 import java.util.HashSet;
-import java.util.Set;
-import javax.enterprise.context.RequestScoped;
+import javax.faces.bean.ViewScoped;
 import javax.inject.Named;
 import javax.persistence.EntityManager;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -18,7 +17,7 @@ import org.springframework.transaction.annotation.Transactional;
 @Named
 @Service
 @Repository
-@RequestScoped
+@ViewScoped
 public class SupportDAOImpl implements SupportDAO {
     
         @Autowired
@@ -33,14 +32,20 @@ public class SupportDAOImpl implements SupportDAO {
         @Transactional
         @Override
 	public void addToWishList(Product p) {
+            this.em.merge(UserBean.log);  
+	}     
+        
+        @Transactional
+        @Override
+	public void deletFromWishList(Product p) {
             HashSet <Product> wishlist =   new HashSet();             
             wishlist.addAll(UserBean.log.getFavorite());
+            wishlist.remove(p);
             if( !wishlist.contains(p)){
-                wishlist.add(p);
                 UserBean.log.setFavorite(wishlist);
                 this.em.merge(UserBean.log);
             }
             
-	}        
+	}  
     
 }
