@@ -1,3 +1,6 @@
+body {
+    min-height: 100vh;
+}
 .price{
     color: red;
     font: 15pt italic;
