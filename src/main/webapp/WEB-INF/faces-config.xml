@@ -8,10 +8,9 @@
   	
   	<!-- JSF and Spring are integrated -->
   	<application>
-    	<el-resolver>
-    		org.springframework.web.jsf.el.SpringBeanFacesELResolver
-    	</el-resolver>
-    	
+            <el-resolver>
+                    org.springframework.web.jsf.el.SpringBeanFacesELResolver
+            </el-resolver>    	
   	</application>	
         
         <managed-bean>

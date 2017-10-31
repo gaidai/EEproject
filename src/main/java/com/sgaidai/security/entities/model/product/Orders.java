@@ -30,7 +30,7 @@ import lombok.ToString;
 @ManagedBean(name="orders")
 @Table(name="orders")
 @Entity
-public class Orders implements Serializable {
+public class Orders extends AbstractTimestampCreateEntity implements Serializable {
     
     @Id
     @Column(name="id")

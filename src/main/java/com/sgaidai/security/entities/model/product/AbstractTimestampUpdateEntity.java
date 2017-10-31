@@ -20,22 +20,16 @@ import org.hibernate.annotations.CreationTimestamp;
 @Setter
 @ToString
 @MappedSuperclass
-public abstract class AbstractTimestampEntity {
-    
-    @CreationTimestamp
-    @Temporal(TemporalType.TIMESTAMP)
-    @Column(name = "created", nullable = false)
-    private Date created=new Date ();
-    
+public abstract class AbstractTimestampUpdateEntity extends AbstractTimestampCreateEntity{
+      
     @CreationTimestamp
     @Temporal(TemporalType.TIMESTAMP)
     @Column(name = "updated", nullable = false)
     private Date updated=new Date();
 
-   public void setCreated (Date created){
-      this.created = created;
-      setUpdated (created);
-   }
-
-   
+    @Override
+    public void setCreated (Date created){
+        super.setCreated(created);
+        setUpdated (created);
+    }   
 }

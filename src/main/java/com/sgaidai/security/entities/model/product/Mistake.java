@@ -27,7 +27,7 @@ import lombok.ToString;
 @ManagedBean(name="mistake")
 @Table(name="mistake")
 @Entity
-public class Mistake extends AbstractTimestampEntity implements Serializable {
+public class Mistake extends AbstractTimestampUpdateEntity implements Serializable {
 
     @Id
     @Column(name="id")
