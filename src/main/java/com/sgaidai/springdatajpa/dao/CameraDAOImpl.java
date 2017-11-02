@@ -5,13 +5,16 @@ package com.sgaidai.springdatajpa.dao;
 import com.sgaidai.security.entities.model.product.Camera;
 import java.util.List;
 import javax.enterprise.context.RequestScoped;
+import javax.faces.bean.ManagedBean;
 import javax.inject.Named;
 import javax.persistence.EntityManager;
+import javax.persistence.PersistenceContext;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+@ManagedBean
 @Named
 @Service
 @Repository

@@ -9,7 +9,6 @@ import com.sgaidai.security.entities.model.product.Product;
 import java.util.List;
 import javax.inject.Named;
 
-
 @Named
 public interface ProductDAO {
     

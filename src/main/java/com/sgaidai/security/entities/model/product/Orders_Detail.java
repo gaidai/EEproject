@@ -26,7 +26,7 @@ import lombok.ToString;
 @NoArgsConstructor
 @ToString
 @ManagedBean(name="order_detail")
-@Table(name="Order_detail")
+@Table(name="order_detail")
 @Entity
 public class Orders_Detail implements Serializable {
     
@@ -43,7 +43,6 @@ public class Orders_Detail implements Serializable {
     @JoinColumn(name="order_id")
     private Orders order_id ; 
   
-    
     
     @Column(name="price")
     private int fixed_price;    

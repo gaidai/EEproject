@@ -8,12 +8,16 @@ import javax.inject.Named;
 import javax.persistence.EntityManager;
 import javax.persistence.criteria.CriteriaBuilder;
 import javax.persistence.criteria.CriteriaQuery;
+import javax.persistence.criteria.Predicate;
 import javax.persistence.criteria.Root;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Repository;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+
+@Component
 @Named
 @Service
 @Repository
@@ -110,7 +114,8 @@ public class ProductDAOImpl implements ProductDAO {
         @Transactional 
         @Override
         public Product getProductbyid(int id){            
-            Product result =(Product) this.em.createQuery("SELECT p FROM Product p WHERE p.id ="+id).getSingleResult();            
+            Product result = this.em.find(Product.class, id);          
+                   
             return result;
         }
         

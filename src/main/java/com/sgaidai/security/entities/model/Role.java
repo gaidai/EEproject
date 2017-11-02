@@ -16,11 +16,10 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 /**
- * @RRay
+ * catalog="testing",
  */
 @Entity        
-@Table(name="role"
-    ,catalog="testing",uniqueConstraints = @UniqueConstraint(
+@Table(name="role" ,uniqueConstraints = @UniqueConstraint(
 		columnNames = { "user_id", "role" })        
 )
 @NoArgsConstructor

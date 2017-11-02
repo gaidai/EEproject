@@ -22,9 +22,9 @@ import javax.persistence.UniqueConstraint;
 
 
 
+//    ,catalog="testing"
 @Entity       
-@Table(name="user"
-    ,catalog="testing",uniqueConstraints = @UniqueConstraint(
+@Table(name="user",uniqueConstraints = @UniqueConstraint(
                         columnNames = {"user_name","password" })       
 )
 public class User  implements java.io.Serializable {
