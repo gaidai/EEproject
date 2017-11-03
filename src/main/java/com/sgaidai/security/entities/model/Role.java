@@ -15,9 +15,7 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
-/**
- * catalog="testing",
- */
+
 @Entity        
 @Table(name="role" ,uniqueConstraints = @UniqueConstraint(
 		columnNames = { "user_id", "role" })        
@@ -27,8 +25,6 @@ import lombok.Setter;
 @Getter
 @Setter
 public class Role  implements java.io.Serializable {
-
-    
 
     @Id 
     @Column(name="role_id", unique=true, nullable=false)
@@ -41,19 +37,11 @@ public class Role  implements java.io.Serializable {
     @JoinColumn(name="user_id", nullable=false)
     private User user;
 
-   
-    
-
-   
-
-  
-
-@Override
+    @Override
     public String toString() {
-    return "Role is:-"
-    + "\n\t RoleId:- " + this.getRoleId()
-    + "\n\t UserId:- " + this.getUser().getUserId()
-    + "\n\t Role:- " + this.role;
+        return "Role is:-"
+        + "\n\t RoleId:- " + this.getRoleId()
+        + "\n\t UserId:- " + this.getUser().getUserId()
+        + "\n\t Role:- " + this.role;
     }
-
 }
