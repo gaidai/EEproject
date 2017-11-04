@@ -1,7 +1,8 @@
 package com.sgaidai.secondary;
 
+import static com.sgaidai.jsfbean.controller.Cart.createdorder_id;
+import com.sgaidai.jsfbean.controller.UserBean;
 import com.sgaidai.security.entities.model.product.Orders;
-import com.sgaidai.security.entities.model.product.Orders_Detail;
 import java.util.List;
 import javax.faces.bean.ManagedBean;
 import lombok.Getter;
@@ -24,21 +25,29 @@ public class Ordering {
     
     @Autowired
     private OrdersDAO orderDAO ;
+    private Orders order;
     
-    public List<Orders> getAllorders(){
-        
+    public List<Orders> getAllorders(){        
         List <Orders> allorders = this.orderDAO.listAllOrders();
+        return allorders;        
+    }       
+     public List<Orders> listOrdersByBuyerId(){        
+        List <Orders> allorders = this.orderDAO.listOrdersByBuyerId(UserBean.log.getUserId());
+        return allorders;        
+    } 
+    public Orders getCreatedorder(){ 
+        order  = this.orderDAO.getOrderById(createdorder_id);
         
-//        for(Orders o: allorders ){
-//            List <Orders_Detail> od =  o.getOrder_details();
-//                for(Orders_Detail d: od ){
-//                    System.out.println("Detail product_id: " + d.getProduct_id().getCategory() + " "+ d.getProduct_id().getId() + " Fixed price: " + d.getFixed_price());
-//                }  
-//        }
-        return allorders;
-        
+        return order ;    
+    }  
+    
+    public void methodOne(){ 
+        System.out.println("methodOne"); 
     }
     
-  
-   
+    public void methodTwo(){
+         System.out.println("methodTwo");
+    }
+    
+    
 }

@@ -54,38 +54,19 @@ public class OrdersDAOImpl implements OrdersDAO {
         @Transactional 
         @Override
         public Orders getOrderById(int id){
-            CriteriaBuilder cb = em.getCriteriaBuilder();
-            CriteriaQuery<Orders> criteriaQuery = cb.createQuery(Orders.class);
-            Root<Orders> orderEntityRoot = criteriaQuery.from(Orders.class);
-
-            criteriaQuery.select(orderEntityRoot).distinct(true);
-//        }
-
-//            Predicate criteria = cb.conjunction();
-//            Predicate p = cb.equal(cameraEntityRoot.get(Camera_.brand), b);
-//            criteria = cb.and(criteria, p);
-
-            criteriaQuery.where(cb.equal(orderEntityRoot.get("id"), id));
-            Orders result = em.createQuery(criteriaQuery).getSingleResult();
-            
+            Orders result = em.find(Orders.class, id);            
             return result;
         }
         
         @Transactional
         @Override
-        public List<Orders> listOrdersByBuyerId(int buyer_id) {
+        public List<Orders> listOrdersByBuyerId(int userId) {
             CriteriaBuilder cb = em.getCriteriaBuilder();
             CriteriaQuery<Orders> criteriaQuery = cb.createQuery(Orders.class);
             Root<Orders> orderEntityRoot = criteriaQuery.from(Orders.class);
 
             criteriaQuery.select(orderEntityRoot).distinct(true);
-//        }
-
-//            Predicate criteria = cb.conjunction();
-//            Predicate p = cb.equal(cameraEntityRoot.get(Camera_.brand), b);
-//            criteria = cb.and(criteria, p);
-
-            criteriaQuery.where(cb.equal(orderEntityRoot.get("buyer_id"), buyer_id));
+            criteriaQuery.where(cb.equal(orderEntityRoot.get("userId"), userId));
             List<Orders> result =  em.createQuery(criteriaQuery).getResultList();
             
             return result;

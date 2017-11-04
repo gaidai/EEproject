@@ -31,10 +31,9 @@ public class UserBean implements Serializable {
     private static final long serialVersionUID = 1L;
     
 
-    @Autowired//@Inject or #(ManagedProperty) can also be used		   
+    @Autowired	   
     private UserService userService;
-    //Spring User Service is injected...
-    @Autowired//@Inject or #(ManagedProperty) can also be used	
+    @Autowired
     private RoleService roleService;    
 
     List<User> userList;

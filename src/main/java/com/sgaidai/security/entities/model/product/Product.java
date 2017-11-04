@@ -4,6 +4,7 @@ package com.sgaidai.security.entities.model.product;
 
 import com.sgaidai.security.entities.model.User;
 import java.io.Serializable;
+import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 import javax.faces.bean.ManagedBean;
@@ -69,7 +70,7 @@ public class Product implements Serializable {
     @JoinTable(name = "user_favorite",
     joinColumns = @JoinColumn(name = "product_id"),
     inverseJoinColumns = @JoinColumn(name = "userId"))
-    private Set<User> users;
+    private Set<User> users = new HashSet();
     
     @Override public boolean equals(Object o) {
       if (o == this) return true;

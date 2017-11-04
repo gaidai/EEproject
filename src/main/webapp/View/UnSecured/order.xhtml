@@ -1,14 +1,11 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-
 <html xmlns="http://www.w3.org/1999/xhtml"
 	xmlns:h="http://java.sun.com/jsf/html"
 	xmlns:ui="http://java.sun.com/jsf/facelets"
         xmlns:p="http://primefaces.org/ui"
-        xmlns:pt="http://xmlns.jcp.org/jsf/passthrough"
         xmlns:b="http://bootsfaces.net/ui"
         xmlns:f="http://xmlns.jcp.org/jsf/core"
-        xmlns:c="http://xmlns.jcp.org/jsp/jstl/core"
         xmlns:jsf="http://xmlns.jcp.org/jsf">
 <ui:composition template="/resources/composition.xhtml">
     <ui:define name="title"> Confirmation </ui:define>
@@ -52,7 +49,6 @@
                         <input type="text" placeholder="Lastname" required="required" jsf:id="lastname"  jsf:value="#{cart.neworder.lastname}"/>    
                         <input type="text" placeholder="Phone" required="required" jsf:id="phone" jsf:value="#{cart.neworder.phone}"/> 
                     </div>
-
                     <div id="block2" style="display: none">
                         <h3> Shipping</h3>
                         <div onload="">
@@ -80,18 +76,15 @@
                         <br/>
                         <input type="text" placeholder="NP" required="required" maxlength="45" jsf:id="address" jsf:value="#{cart.neworder.adress}"/>   
                     </div>
-                    <div id="block3" style="display: none">
-                        
+                    <div id="block3" style="display: none">                        
                         <h3>Payment method </h3>
                         <select jsf:id="payment" required="required" size="0" jsf:value="#{cart.neworder.payment_method}"  style="width:125px">  
                             <f:selectItem itemValue="" itemLabel=""/>
                             <f:selectItem itemValue="Cash money" itemLabel="Cash money"/>
                             <f:selectItem itemValue="MasterCard/VISA" itemLabel="MasterCard/VISA"/>
                             <f:selectItem itemValue="PayPal" itemLabel="PayPal"/>
-                        </select >
-                       
+                        </select >                       
                     </div>
-
                     <div id="block4" style="display: none">
                         <h3> Confirmation</h3>
                         <button jsf:action="#{cart.buyAll()}">Save</button>

@@ -1,8 +1,4 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+
 package com.sgaidai.secondary;
 
 import java.util.ArrayList;
@@ -13,27 +9,20 @@ import org.mockito.InjectMocks;
 
 /**
  *
- * @author user
+ * Testing the method using directory with products images
  */
 public class ImagesTest {
-    
-    
-    @InjectMocks  
-    Images instance= new Images();
-
+        
     @Test
     public void testGetImages() {
-        String category = "test";
-        int id = 1;
-                
+        Images instance= new Images();
+        String category = "phone";
+        int id = 83;                
         List<String> expResult = new ArrayList();
-        expResult.add("test1.png");
-        expResult.add("test2.png");        
+        expResult.add("1.jpg");
+        expResult.add("htc.jpg");        
         List<String> result = instance.getImages(category, id);
         assertEquals(expResult, result);
-        System.out.println(expResult);
-        System.out.println(result);
-//        fail("The test case is a prototype.");
     }
 
     

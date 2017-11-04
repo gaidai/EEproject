@@ -12,6 +12,7 @@ import javax.servlet.ServletRequest;
 import javax.servlet.ServletResponse;
 import lombok.Getter;
 import lombok.Setter;
+import static com.sgaidai.jsfbean.controller.UserBean.log;
 import org.springframework.security.core.authority.AuthorityUtils;
 
 
@@ -37,16 +38,15 @@ public class LoginController implements Serializable {
     
     
     
-    public String logout() throws IOException, ServletException
-            
-    {
-         System.out.println("Login controller password is :-" + password);
+    public String logout() throws IOException, ServletException {
+        
         ExternalContext context = FacesContext.getCurrentInstance().getExternalContext();
         RequestDispatcher dispatcher = ((ServletRequest) context.getRequest()).getRequestDispatcher("/logout");
         dispatcher.forward((ServletRequest) context.getRequest(), (ServletResponse) context.getResponse());
         FacesContext.getCurrentInstance().responseComplete();
         username = null;
-        
+        log = null;
+        System.out.println("I PRESSED logout() " + log);        
         
         return null;
     }

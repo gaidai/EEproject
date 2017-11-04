@@ -5,7 +5,8 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
 	xmlns:h="http://java.sun.com/jsf/html"
         xmlns:b="http://bootsfaces.net/ui"
-        xmlns:sec="http://www.springframework.org/security/tags">
+        xmlns:sec="http://www.springframework.org/security/tags"
+        xmlns:f="http://xmlns.jcp.org/jsf/core">
  
     <b:navBar brand="Home" brandHref="#{request.contextPath}/View/UnSecured/home.xhtml" id="homepage" class="navlink" inverse="true" fixed="top" >
             <b:navbarLinks>
@@ -29,14 +30,16 @@
                     </h:form>
                 </sec:authorize>
                 <sec:authorize access="isAuthenticated()">
-                    <h:form styleClass="navbar-form navbar-right">
+                    
                         <b:dropMenu  value="Hello #{loginController.username} !">
                             <b:navLink value="My profile" href="#{request.contextPath}/View/Secured/User/profile.xhtml"></b:navLink>
                             <b:navLink value="My favorite" href="#{request.contextPath}/View/Secured/User/myfavorite.xhtml"></b:navLink>
                             <b:navLink value="All Orders" href="#{request.contextPath}/View/Secured/User/myorders.xhtml"></b:navLink>
                         </b:dropMenu>&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;
-
-                        <b:button href="#{request.contextPath}/logout" value="Logout" look="danger" icon="chevron-right" iconAlign="right"></b:button>
+                    <h:form styleClass="navbar-form navbar-right" >
+                        <b:button id="logout_button" href="#{request.contextPath}/logout" value="Logout" look="danger" icon="chevron-right" iconAlign="right">
+                            
+                        </b:button>                        
                     </h:form>
                 </sec:authorize>
             </b:navbarLinks>

@@ -3,7 +3,9 @@ package com.sgaidai.security.entities.model.product;
 
 import com.sgaidai.security.entities.model.User;
 import java.io.Serializable;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 import javax.faces.bean.ManagedBean;
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -72,6 +74,6 @@ public class Orders extends AbstractTimestampCreateEntity implements Serializabl
     private String city;
     
     @OneToMany(mappedBy = "order_id",fetch = FetchType.EAGER)     
-    private List<Orders_Detail> order_details;
+    private Set<Orders_Detail> order_details = new HashSet();
     
 }

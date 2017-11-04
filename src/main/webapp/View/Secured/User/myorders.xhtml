@@ -13,13 +13,10 @@
 <ui:define name="content">
     <p:spacer height="40px" width="100%"></p:spacer>
       <b:container style="margin-right: 20%;  background-color: #f4feff ; border-radius: 20px ; min-height: 800px"  >    
-        <center><h2>Register User</h2></center>      
+        <center><h2>My orders</h2></center>      
         <center>
             <h:form prependId="false" id="form">
-                <p:dataScroller id="list" value="#{userBean.userProfile.orders}" var="o" >
-                    <f:facet name="header">
-                        List of orders
-                    </f:facet>    
+                <p:dataScroller id="list" value="#{ordering.listOrdersByBuyerId()}" var="o" >                       
                     <h:panelGrid columns="1" style="width:100%" >
                         <p:outputPanel>
                             <h:panelGrid  columns="2" >

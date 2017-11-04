@@ -14,6 +14,7 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 import lombok.AllArgsConstructor;
+import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -24,7 +25,6 @@ import lombok.ToString;
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
-@ToString
 @ManagedBean(name="order_detail")
 @Table(name="order_detail")
 @Entity
@@ -45,6 +45,21 @@ public class Orders_Detail implements Serializable {
   
     
     @Column(name="price")
-    private int fixed_price;    
+    private int fixed_price;   
+    
+    @Override public boolean equals(Object o) {
+      if (o == this) return true;
+      if (!(o instanceof Orders_Detail)) return false;
+      Orders_Detail other = (Orders_Detail) o;
+      if (this.id != other.id) return false;
+      return true;
+    }
+    
+    @Override public int hashCode() {
+      final int PRIME = 59;
+      int result = 1;
+      result = (result*PRIME) + this.id;
+      return result;
+    }
     
 }

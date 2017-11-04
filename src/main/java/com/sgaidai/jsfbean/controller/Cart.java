@@ -1,6 +1,7 @@
 
 package com.sgaidai.jsfbean.controller;
 
+import static com.sgaidai.jsfbean.controller.UserBean.log;
 import com.sgaidai.secondary.Growl;
 import com.sgaidai.security.entities.model.product.Orders;
 import com.sgaidai.security.entities.model.product.Orders_Detail;
@@ -19,6 +20,7 @@ import lombok.Getter;
 import lombok.Setter;
 import lombok.ToString;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Repository;
 import org.springframework.stereotype.Service;
 
@@ -43,7 +45,8 @@ public class Cart implements  Serializable {
     @Autowired
     private Orders_DetailDAO order_DetailDAO ;
     private Orders neworder = new Orders();
-     private Orders createdorder = new Orders();
+    private Orders createdorder = new Orders();
+    public static int createdorder_id ;
     private String ln = null;
     
     public Cart(){
@@ -54,6 +57,9 @@ public class Cart implements  Serializable {
         
         neworder.setTotal(total);
         neworder.setStatus("created");
+        if( !SecurityContextHolder.getContext().getAuthentication().getPrincipal().getClass().equals(String.class) ){
+            neworder.setUserId(log);
+        } 
         Orders creatorder = this.orderDAO.addOrder(neworder);
         int created_id= creatorder.getId();
         List <Orders_Detail> odlist = new ArrayList();
@@ -63,9 +69,10 @@ public class Cart implements  Serializable {
             od.setProduct_id(p);
             od.setOrder_id(creatorder);
             odlist.add(od);
-        }        
+        }     
         this.order_DetailDAO.addOrder_Detail(odlist);
         createdorder =  this.orderDAO.getOrderById(created_id);
+        createdorder_id = createdorder.getId();
         neworder = new Orders();
 //         after ordering clear the shopping cart created_order.xhtml?id="+created_id
         mycart.clear();
