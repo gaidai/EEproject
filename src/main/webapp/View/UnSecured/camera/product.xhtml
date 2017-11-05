@@ -9,31 +9,35 @@
         xmlns:b="http://bootsfaces.net/ui"
         xmlns:f="http://xmlns.jcp.org/jsf/core"
         xmlns:jsf="http://xmlns.jcp.org/jsf"
-        xmlns:pt="http://xmlns.jcp.org/jsf/passthrough">
+        xmlns:pt="http://xmlns.jcp.org/jsf/passthrough"
+        xmlns:c="http://xmlns.jcp.org/jsp/jstl/core">
 <ui:composition template="/resources/composition.xhtml">
-    <ui:define name="title">#{cameraService.camera.product.brand} #{cameraService.camera.product.model}</ui:define>
+    <ui:define name="title">#{productService.product.brand} #{productService.product.model}</ui:define>
     <ui:define name="content">
     <p:spacer height="40px" width="100%"></p:spacer>
     <f:metadata>
-        <f:viewParam name="id" value="#{cameraService.camera.id}"/>
-        <f:viewAction  action="#{cameraService.getcamerabyid}"/>       
+        <f:viewParam name="id" value="#{productService.product.id}"/>
+        <f:viewAction  action="#{productService.getProductbyid}"/>       
     </f:metadata>
     <b:container style="margin-right: 20%; margin-left: 20%; background-color: #f4feff ; border-radius: 20px ; min-height: 800px">        
         <p:spacer height="30px" width="100%"></p:spacer>
         <p:breadCrumb >            
             <p:menuitem   rendered="false" ></p:menuitem>
             <p:menuitem value="Home" url="/View/UnSecured/home.xhtml" />
-            <p:menuitem value="All cameras" url="all.xhtml" />
+            <p:menuitem rendered="#{productService.isHeadphones()}" value="All #{productService.product.category}" url="all.xhtml" />
+            <p:menuitem rendered="#{!productService.isHeadphones()}" value="All #{productService.product.category}s" url="all.xhtml" />
+           
                         
         </p:breadCrumb>
-            
-            <b:row> <h1 align="center" > #{cameraService.camera.product.brand} #{cameraService.camera.product.model} </h1> </b:row> 
-             <p:spacer height="20"/>
-             <b:row>  
+        <c:if test='#{productService.product.category} == headphones'>
+        </c:if>
+            <b:row> <h1 align="center" > #{productService.product.brand} #{productService.product.model} </h1> </b:row> 
+            <p:spacer height="20"/>
+            <b:row>  
                 <b:column   col-lg="7"  >  
                     <p:imageSwitch effect="shuffle" >
-                        <ui:repeat value="#{cameraService.image()}" var="i" > 
-                            <p:graphicImage value="/resources/products/#{cameraService.camera.product.category}/#{cameraService.camera.product.id}/#{i}" height="350"/>
+                        <ui:repeat value="#{productService.image()}" var="i" > 
+                            <p:graphicImage value="/resources/products/#{productService.product.category}/#{productService.product.id}/#{i}" height="350"/>
                         </ui:repeat>
                     </p:imageSwitch>
                     <p:spacer height="20"/>     
@@ -41,10 +45,10 @@
                  
                 <b:column  col-lg="3">
                     <p:spacer height="80px" width="200px" ></p:spacer>
-                    <h3 style="color: #A40F0F"> Price: #{cameraService.camera.product.price} UAH </h3> <br/>
+                    <h3 style="color: #A40F0F"> Price: #{productService.product.price} UAH </h3> <br/>
                     <h:form >
                         <b:commandButton id="add"  action="#{cart.AddtoCart()}"  update="navcart,growl,add" value="Add to Cart" look="info"  icon-awesome="fa-shopping-cart" icon-size="lg" size="lg" iconAlign="right">
-                            <f:param value="#{cameraService.camera.product.id}" name="product_id" />
+                            <f:param value="#{productService.product.id}" name="product_id" />
                         </b:commandButton>
                         <b:growl id="growl" for="add" globalOnly="true" placementFrom="bottom" show-detail="true" 
                                  show-summary="false" allowDismiss="true" delay="4000" escape="true"  />
@@ -55,7 +59,7 @@
             <h:form>
             <b:tabView activeIndex="0">
                 <b:tab title="Descriptions" >
-                    <ui:include src="/resources/products/#{cameraService.camera.product.category}/#{cameraService.camera.product.id}/Description/1.xhtml" />
+                    <ui:include src="/resources/products/#{productService.product.category}/#{productService.product.id}/Description/1.xhtml" />
                 </b:tab>
                 <b:tab title="Another Tab">
                     <p>This is the second tab.</p>
@@ -68,42 +72,35 @@
                 <b:tab title="Reviews">
                     <b:column col-lg="6" >
                         <p:spacer height="10" width="100%"/>
-                        <ui:repeat value="#{cameraService.camera.product.review}" var="r" >                             
+                        <ui:repeat value="#{productService.product.review}" var="r" >                             
                             <b:panel collapsible="false">
                                 <f:facet name="heading">
                                     <h:outputText value="#{r.author}" style=" font-family: cursive; font-size:18px "/>
                                 </f:facet>
                                 <p:rating value="#{r.rating}" readonly="true" />
                                 <h:outputText value="#{r.text}"/>
-                            </b:panel>
-
-                            
-                        </ui:repeat>
-                        
+                            </b:panel>                            
+                        </ui:repeat>                        
                     </b:column>
                     <b:column offset-lg="1" col-lg="5" >
                         <b:form class="center" >
                             <div class="cont">
                                 <div class="stars" >
-                                    <p:rating id="stars" value="#{reviewService.stars}" />                           
+                                    <p:rating id="stars" value="#{supportService.stars}" />                           
                                     <div class="rev-box">
-                                        <b:inputText id="author" label="Author:" value="#{reviewService.review.author}" maxlength="20" labelStyle="width:80px"/>
-                                        <p:inputTextarea  id="review" rows="10" cols="43" class="review" maxlength="550"  value="#{reviewService.review.text}" 
+                                        <b:inputText id="author" label="Author:" value="#{supportService.review.author}" maxlength="20" labelStyle="width:80px"/>
+                                        <p:inputTextarea  id="review" rows="10" cols="43" class="review" maxlength="550"  value="#{supportService.review.text}" 
                                                           counterTemplate="{0} characters remaining." />
                                     </div>   
                                 </div>
                             </div>
-                            <center> <b:commandButton id="addReview" action="#{reviewService.addReview(cameraService.camera.product)}" icon-size="lg" 
+                            <center> <b:commandButton id="addReview" action="#{supportService.addReview(productService.product)}" icon-size="lg" 
                                                  update="addReview,author,review,stars" value="Create review" look="info" size="lg" iconAlign="right">
                                 </b:commandButton></center> 
-                        </b:form>
-                        
-                        
-                    </b:column>
-                    
+                        </b:form>                   
+                    </b:column>                    
                     <p:spacer height="20" width="100%"/>
                 </b:tab>
-
             </b:tabView>
               </h:form>
         </b:container>

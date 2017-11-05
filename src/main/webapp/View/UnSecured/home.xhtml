@@ -12,10 +12,9 @@
     <ui:define name="title">Home page</ui:define>
 <ui:define name="content">
     <f:metadata>
-        <f:viewAction action="#{checkedService.listTop('top')}" />
+        <f:viewAction action="#{productService.listTop('top')}" />
     </f:metadata>  
-    <p:spacer height="40px" width="100%"></p:spacer>
- 
+    <p:spacer height="40px" width="100%"></p:spacer> 
     <b:column col-lg="2" style=" margin-left: 7%" >
         <p:megaMenu orientation="vertical" class="megamenu" style="margin-top:20px">
             <p:submenu label="Smartphones"  icon="fa fa-mobile ">
@@ -119,7 +118,6 @@
                         <p:menuitem value="Tech.2.1" url="#" />                        
                     </p:submenu>
                 </p:column>
-
                 <p:column>
                     <p:submenu label="Tech.4">
                         <p:menuitem value="Tech.4.1" url="#" />
@@ -153,7 +151,6 @@
                         <p:menuitem value="Tech.2.1" url="#" />                        
                     </p:submenu>
                 </p:column>
-
                 <p:column>
                     <p:submenu label="Tech.4">
                         <p:menuitem value="Tech.4.1" url="#" />
@@ -243,7 +240,7 @@
             <div class="indicator"></div>
             <div class="wrap">
                 <ul>
-                    <ui:repeat var="p" value="#{checkedService.list}" > 
+                    <ui:repeat var="p" value="#{productService.list}" > 
                         <li>
                             <a href="#{p.category}/#{p.category}.xhtml?id=#{p.id}">
                                 <div style=" width: 200px; margin:2px 2px 2px 2px ; background: white"  >                                
@@ -268,7 +265,6 @@
                 </ul>
             </div>
         </div> 
-
     </b:container>             
    <h:outputStylesheet library="css" name="carousel_sale.css"  />
    <h:outputScript library="js" name="carousel_sale.js" />

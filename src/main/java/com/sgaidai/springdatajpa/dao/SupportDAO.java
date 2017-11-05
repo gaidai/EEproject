@@ -7,15 +7,18 @@ package com.sgaidai.springdatajpa.dao;
 
 import com.sgaidai.security.entities.model.product.Mistake;
 import com.sgaidai.security.entities.model.product.Product;
+import com.sgaidai.security.entities.model.product.Review;
 import javax.inject.Named;
 
 
 @Named
 public interface SupportDAO {
     
+    
     void addMistake(Mistake m) ; 
     void addToWishList(Product p) ;
     void deletFromWishList(Product p) ;
+    void addReview (Review o) ; 
 //       
 //    public List<Camera> listCameras();
 //    

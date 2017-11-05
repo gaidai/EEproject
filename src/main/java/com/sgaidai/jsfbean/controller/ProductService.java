@@ -1,6 +1,7 @@
 package com.sgaidai.jsfbean.controller;
 
 
+import com.sgaidai.secondary.Images;
 import com.sgaidai.security.entities.model.product.Product;
 import com.sgaidai.springdatajpa.dao.ProductDAO;
 import java.io.Serializable;
@@ -13,6 +14,7 @@ import javax.inject.Named;
 import lombok.Getter;
 import lombok.Setter;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.cache.annotation.Cacheable;
 
 
 @Getter
@@ -47,8 +49,22 @@ public class ProductService implements Serializable{
         public void getProductbyid() {
                 product = this.productDAO.getProductbyid(this.product.getId());               
 	}
+                
+        public List<String> image () {
+                Images g = new Images();
+                List <String> pics = g.getImages( product.getCategory(), product.getId());   
+               return pics ;                
+	}  
         
         public List<Product> listProductsbyPrice() {
 		return this.productDAO.listProductsbyPrice();
 	}
+        
+        @Cacheable(value="itemlist", key="#name")
+	public void listTop(String name) {
+		list = this.productDAO.getTop(name);
+        } 
+        public boolean isHeadphones () {
+               return "headphones".equals(product.getCategory()) ;                
+	} 
 }

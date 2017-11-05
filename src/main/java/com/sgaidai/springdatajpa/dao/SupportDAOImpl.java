@@ -5,6 +5,7 @@ package com.sgaidai.springdatajpa.dao;
 import com.sgaidai.jsfbean.controller.UserBean;
 import com.sgaidai.security.entities.model.product.Mistake;
 import com.sgaidai.security.entities.model.product.Product;
+import com.sgaidai.security.entities.model.product.Review;
 import java.util.HashSet;
 import javax.faces.bean.ViewScoped;
 import javax.inject.Named;
@@ -47,5 +48,11 @@ public class SupportDAOImpl implements SupportDAO {
             }
             
 	}  
+        @Transactional
+        @Override
+	public void addReview(Review o) {
+            this.em.persist(o); 
+            em.flush();
+	}
     
 }
