@@ -53,7 +53,7 @@
                         <h:form>
                             <b:commandButton id="add-wish" tooltip="Add to wish list!" tooltip-position="right"  update="growlwish,add-wish" action="#{supportService.addToWishList()}"
                                              look="danger"  icon-awesome="fa-heart-o " icon-size="md" size="md" iconAlign="right">
-                                <f:param value="#{tabletService.tablet.product.id}" name="product_id" />
+                                <f:param value="#{tabletService.tablet.product.id}" name="wish_product_id" />
                             </b:commandButton>
                             <b:growl for="add" id="growlwish" globalOnly="true" placementFrom="bottom" show-detail="true" 
                                  show-summary="false" allowDismiss="true" delay="4000" escape="true"  />

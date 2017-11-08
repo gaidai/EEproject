@@ -7,6 +7,7 @@
 	xmlns:ui="http://java.sun.com/jsf/facelets"
         xmlns:p="http://primefaces.org/ui"
         xmlns:b="http://bootsfaces.net/ui"
+        xmlns:sec="http://www.springframework.org/security/tags"
         xmlns:f="http://xmlns.jcp.org/jsf/core">
 <ui:composition template="/resources/composition.xhtml">
     <ui:define name="title">#{phoneService.phone.product.brand} #{phoneService.phone.product.model}</ui:define>
@@ -47,6 +48,17 @@
                         <b:growl for="add" id="growl" globalOnly="true" placementFrom="bottom" show-detail="true" 
                                  show-summary="false" allowDismiss="true" delay="4000" escape="true"  />
                     </h:form>
+                    <p:spacer height="10pv" />
+                    <sec:authorize access="isAuthenticated()">
+                        <h:form>
+                            <b:commandButton id="add-wish" tooltip="Add to wish list!" tooltip-position="right"  update="growlwish,add-wish" action="#{supportService.addToWishList()}"
+                                             look="danger"  icon-awesome="fa-heart-o " icon-size="md" size="md" iconAlign="right">
+                                <f:param value="#{phoneService.phone.product.id}" name="wish_product_id" />
+                            </b:commandButton>
+                            <b:growl for="add" id="growlwish" globalOnly="true" placementFrom="bottom" show-detail="true" 
+                                 show-summary="false" allowDismiss="true" delay="4000" escape="true"  />
+                        </h:form>
+                    </sec:authorize>
                 </b:column>
             </b:row> 
              <p:spacer height="60px" />

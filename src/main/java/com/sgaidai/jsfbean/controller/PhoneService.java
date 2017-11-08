@@ -9,6 +9,7 @@ import java.util.ArrayList;
 import java.util.List;
 import javax.enterprise.context.SessionScoped;
 import javax.faces.bean.ManagedBean;
+import javax.faces.bean.ViewScoped;
 import javax.inject.Named;
 import lombok.Getter;
 import lombok.Setter;
@@ -20,7 +21,7 @@ import org.springframework.cache.annotation.Cacheable;
 @Setter
 @Named 
 @ManagedBean(name="phoneService")
-@SessionScoped
+@ViewScoped
 public class PhoneService implements Serializable{
                 
 	@Autowired

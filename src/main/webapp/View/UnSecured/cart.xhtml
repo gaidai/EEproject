@@ -10,7 +10,7 @@
         xmlns:f="http://xmlns.jcp.org/jsf/core"
         xmlns:c="http://xmlns.jcp.org/jsp/jstl/core">
 <ui:composition template="/resources/composition.xhtml">
-    <ui:define name="title">My NEW shopping cart </ui:define>
+    <ui:define name="title">My shopping cart </ui:define>
     <ui:define name="content">
     <p:spacer height="40px" width="100%"/>
     <b:container id="main-container" style="margin-right: 20%; margin-left: 20%; background-color: #f4feff ; border-radius: 20px ; min-height: 800px"> 
@@ -41,25 +41,28 @@
                         List of items
                     </f:facet>    
                     
-                    <b:row style="height: 100px">
-                        <b:column style="width:40% ; height: 100px">
-                            <a href="#{p.category}/#{p.category}.xhtml?id=#{p.id}">
+                    <b:row style="height: 100px" class=" center" >
+                        <b:column style="width:25% ; height: 100px">
+                            <h:link outcome="/View/UnSecured/items/product.xhtml">
+                                <f:param  name="id" value="#{p.id}"/>
+                                <f:param  name="category" value="#{p.category}"/>  
                                 <p:graphicImage value="/resources/products/#{p.category}/#{p.id}/1.png" height="90px" /> 
                                 <p:graphicImage value="/resources/products/#{p.category}/#{p.id}/1.jpg" height="90px"/>
-                            </a>
-                        </b:column>
-                                               
-                        <b:column style="width:50% ; height: 90px"> 
-                            <a href="#{p.category}/#{p.category}.xhtml?id=#{p.id}">
-                            <br/><h:outputText value="#{p.brand} #{p.model}" style="font-weight: bold"/><br/>
+                            </h:link>
+                        </b:column>                                               
+                        <b:column style="width:60% ; height: 90px"> 
+                            <h:link outcome="/View/UnSecured/items/product.xhtml">
+                                <f:param  name="id" value="#{p.id}"/>
+                                <f:param  name="category" value="#{p.category}"/> <br/>
+                                <h:outputText value="#{p.brand} #{p.model}" style="font-weight: bold"/><br/>
                                 <h:outputText value="Price: " />
                                 <h:outputText value="#{p.price}" style="color: red; font-weight: 600 " />
                                 <h:outputText value=" UAH" style="color: red " />
-                            </a>
+                            </h:link>
                         </b:column >
-                        <b:column  style="width: 5% ; height: 80px" >
+                        <b:column  style="width: 15% ; height: 80px" >
                             <b:form ><br/>
-                                <p:commandLink ajax="true" update="growl, navcart, main-container" action="#{cart.deletfromCart(p)}" ><i class="fa  fa-trash fa-lg " /></p:commandLink>
+                                <p:commandLink ajax="true" update="list" action="#{cart.deletfromCart(p)}" ><i class="fa  fa-trash fa-lg " /></p:commandLink>
                             </b:form> 
                         </b:column >
                     </b:row>

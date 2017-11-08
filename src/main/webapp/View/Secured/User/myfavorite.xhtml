@@ -12,42 +12,41 @@
     <ui:define name="title">My favorite</ui:define>
 <ui:define name="content">
     <p:spacer height="40px" width="100%"></p:spacer>
-      <b:container style="margin-right: 20%;  background-color: #f4feff ; border-radius: 20px ; min-height: 800px"  >   
-        <center>
-            <p:spacer height="15px" width="100%" ></p:spacer>
-            
-                <p:dataScroller id="list" value="#{userBean.userProfile.favorite}" var="p" >
-                    <f:facet name="header">
-                        My favorite items
-                    </f:facet>    
-                    
-                    <b:row style="height: 100px">
-                        <b:column style="width:40% ; height: 100px">
-                            <a href="#{request.contextPath}/View/UnSecured/#{p.category}/#{p.category}.xhtml?id=#{p.id}">
-                                <p:graphicImage value="/resources/products/#{p.category}/#{p.id}/1.png" height="90px" /> 
-                                <p:graphicImage value="/resources/products/#{p.category}/#{p.id}/1.jpg" height="90px"/>
-                            </a>
-                        </b:column>
-                                               
-                        <b:column style="width:50% ; height: 90px"> 
-                            <a href="#{request.contextPath}/View/UnSecured/#{p.category}/#{p.category}.xhtml?id=#{p.id}">
-                            <br/><h:outputText value="#{p.brand} #{p.model}" style="font-weight: bold"/><br/>
-                                <h:outputText value="Price: " />
-                                <h:outputText value="#{p.price}" style="color: red; font-weight: 600 " />
-                                <h:outputText value=" UAH" style="color: red " />
-                            </a>
-                        </b:column >
-                        <b:column  style="width: 5% ; height: 80px" >
-                            <b:form ><br/>
-                                <p:commandLink ajax="true" update="list" action="#{supportService.deletFromWishList(p)}" ><i class="fa  fa-trash fa-lg " /></p:commandLink>
-                            </b:form> 
-                        </b:column >
-                    </b:row>
-                    <hr/>
-                    
-                </p:dataScroller>                
-            
-        </center>
+      <b:container style="margin-right: 20%;  background-color: #f4feff ; border-radius: 20px ; min-height: 800px"  >    
+            <p:spacer height="15px" width="100%" ></p:spacer>            
+            <p:dataScroller id="list" value="#{userBean.userProfile.favorite}" var="p" >
+                <f:facet name="header">
+                    <h:outputLabel rendered="#{userBean.userProfile.favorite.size() > 0}" value="My favorite items"/>                    
+                    <h:outputLabel rendered="#{userBean.userProfile.favorite.size() eq 0}" value="Your wishlist is empty "/>
+                </f:facet>    
+                <b:row style="height: 100px" class="center">
+                    <b:column style="width:25% ; height: 100px">
+                        <h:link outcome="/View/UnSecured/items/product.xhtml">
+                            <f:param  name="id" value="#{p.id}"/>
+                            <f:param  name="category" value="#{p.category}"/>  
+                            <p:graphicImage value="/resources/products/#{p.category}/#{p.id}/1.png" height="90px" /> 
+                            <p:graphicImage value="/resources/products/#{p.category}/#{p.id}/1.jpg" height="90px"/>
+                        </h:link>
+                    </b:column>
+
+                    <b:column style="width:60% ; height: 90px"> 
+                        <h:link outcome="/View/UnSecured/items/product.xhtml">
+                            <f:param  name="id" value="#{p.id}"/>
+                            <f:param  name="category" value="#{p.category}"/>  <br/>
+                            <h:outputText value="#{p.brand} #{p.model}" style="font-weight: bold"/><br/>
+                            <h:outputText value="Price: " />
+                            <h:outputText value="#{p.price}" style="color: red; font-weight: 600 " />
+                            <h:outputText value=" UAH" style="color: red " />
+                        </h:link>
+                    </b:column >
+                    <b:column  style="width: 15% ; height: 80px" >
+                        <b:form ><br/>
+                            <p:commandLink ajax="true" update="list" action="#{supportService.deletFromWishList(p)}" ><i class="fa  fa-trash fa-lg " /></p:commandLink>
+                        </b:form> 
+                    </b:column >
+                </b:row>
+                <hr/>                    
+            </p:dataScroller>           
     </b:container>    
 </ui:define>
 </ui:composition>
