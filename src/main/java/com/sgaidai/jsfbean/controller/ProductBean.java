@@ -1,18 +1,16 @@
 package com.sgaidai.jsfbean.controller;
 
 
-import com.sgaidai.secondary.Images;
 import com.sgaidai.security.entities.model.product.Product;
 import com.sgaidai.springdatajpa.dao.ProductDAO;
+import java.io.File;
+import java.io.FilenameFilter;
 import java.io.Serializable;
 import java.util.ArrayList;
-import java.util.HashSet;
+import java.util.Arrays;
 import java.util.List;
-import java.util.Set;
-import javax.enterprise.context.ConversationScoped;
-import javax.enterprise.context.SessionScoped;
+import java.util.regex.Pattern;
 import javax.faces.bean.ManagedBean;
-import javax.faces.bean.RequestScoped;
 import javax.faces.bean.ViewScoped;
 import javax.inject.Named;
 import lombok.Getter;
@@ -31,16 +29,24 @@ public class ProductBean implements Serializable{
         @Autowired
 	private ProductDAO productDAO;
         private Product product = new Product();
-        private List <Product> list = new ArrayList();    
+        private List <Product> list = new ArrayList();
         
         public void getProductbyid() {
                 this.product = this.productDAO.getProductbyid(this.product.getId());               
 	}
         
-        public List<String> image () {
-                Images g = new Images();
-                List <String> pics = g.getImages( product.getCategory(), product.getId());   
-               return pics ;                
+        public List<String> image () {            
+            ClassLoader classLoader = getClass().getClassLoader();
+            File file = new File(classLoader.getResource("products/"+product.getCategory()+"/"+product.getId()).getFile());            
+            List<String> images  = Arrays.asList( file.list(new FilenameFilter(){
+                    private Pattern pattern = Pattern.compile( "([^\\s]+(\\.(?i)(jpg|png|gif|bmp))$)");
+                    @Override
+                    public boolean accept(File dir,String name){
+                        return pattern.matcher(name).matches();
+                    }
+                }   
+            ));                
+            return images ;                
 	}  
 
         public boolean isHeadphones () {

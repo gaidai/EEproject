@@ -1,6 +1,5 @@
 package com.sgaidai.jsfbean.controller;
 
-import com.sgaidai.secondary.Images;
 import com.sgaidai.security.entities.model.product.Tablet;
 import com.sgaidai.springdatajpa.dao.TabletDAO;
 import java.io.Serializable;
@@ -32,13 +31,7 @@ public class TabletService implements Serializable{
 	public void listTablets(String name) {
 		list = this.tabletDAO.listTablets();
 	}
-        
-        public List<String> image () {
-                Images g = new Images();
-               System.out.println( tablet.getProduct().getId() );
-                List <String> pics = g.getImages( "tablet", tablet.getProduct().getId());   
-               return pics ;                
-	}
+
        
 //	public void addCamera(Camera c) {
 //		this.cameraDAO.addCamera(c);

@@ -24,10 +24,8 @@
             <p:menuitem   rendered="false" ></p:menuitem>
             <p:menuitem value="Home" url="#{request.contextPath}/View/UnSecured/home.xhtml" />      
             <p:menuitem  rendered="#{productBean.isHeadphones()}" value="All #{productBean.product.category}" url="#{productBean.product.category}.xhtml" />
-            <p:menuitem  rendered="#{!productBean.isHeadphones()}" value="All #{productBean.product.category}s" url="#{productBean.product.category}s.xhtml" />
-                        
-        </p:breadCrumb>
-            
+            <p:menuitem  rendered="#{!productBean.isHeadphones()}" value="All #{productBean.product.category}s" url="#{productBean.product.category}s.xhtml" />                        
+        </p:breadCrumb>            
             <b:row> <h1 align="center" > #{productBean.product.brand} #{productBean.product.model} </h1> </b:row> 
              <p:spacer height="20"/>
              <b:row>  
@@ -78,6 +76,7 @@
 
                     </b:tab>
                     <b:tab title="Reviews">
+                        <!--list of created reviews-->
                         <b:column col-lg="6" >
                             <p:spacer height="10" width="100%"/>
                             <ui:repeat value="#{productBean.product.review}" var="r" >                             
@@ -90,6 +89,7 @@
                                 </b:panel>                            
                             </ui:repeat>                        
                         </b:column>
+                                              <!--form for creating a new review-->
                         <b:column offset-lg="1" col-lg="5" >
                             <b:form class="center" >
                                 <div class="cont">

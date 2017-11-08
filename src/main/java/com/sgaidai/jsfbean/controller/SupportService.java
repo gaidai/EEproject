@@ -18,6 +18,12 @@ import lombok.Getter;
 import lombok.Setter;
 import org.springframework.beans.factory.annotation.Autowired;
 
+/**
+ *  This bean serves Support functional: reviews, mistakes, wishlist 
+ *  
+ * 
+ * 
+ */
 
 @Getter
 @Setter

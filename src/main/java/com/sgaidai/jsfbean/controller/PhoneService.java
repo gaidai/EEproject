@@ -1,13 +1,11 @@
 package com.sgaidai.jsfbean.controller;
 
 
-import com.sgaidai.secondary.Images;
 import com.sgaidai.security.entities.model.product.Phone;
 import com.sgaidai.springdatajpa.dao.PhoneDAO;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
-import javax.enterprise.context.SessionScoped;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ViewScoped;
 import javax.inject.Named;
@@ -35,12 +33,7 @@ public class PhoneService implements Serializable{
                 
 	}
         
-        public List<String> image () {
-                Images g = new Images();
-               System.out.println( phone.getProduct().getId() );
-                List <String> pics = g.getImages( "phone", phone.getProduct().getId());   
-               return pics ;                
-	}
+
        
 //	public void addCamera(Camera c) {
 //		this.cameraDAO.addCamera(c);
@@ -56,10 +49,7 @@ public class PhoneService implements Serializable{
 //		
 //	}
 ////        
-        public void getPhoneById() {
-                phone = this.phoneDAO.getPhoneById(this.phone.getId());
-               
-	}
+        
 //        public List<Camera> listCamerasbyPrice() {
 //		return this.cameraDAO.listCamerasbyPrice();
 //	}

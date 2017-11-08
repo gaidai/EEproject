@@ -1,7 +1,6 @@
 package com.sgaidai.jsfbean.controller;
 
 
-import com.sgaidai.secondary.Images;
 import com.sgaidai.security.entities.model.product.Headphones;
 import com.sgaidai.springdatajpa.dao.HeadphonesDAO;
 import java.io.Serializable;
@@ -9,7 +8,6 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
 import java.util.List;
-import javax.enterprise.context.SessionScoped;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ViewScoped;
 import javax.inject.Named;
@@ -45,12 +43,7 @@ public class HeadphonesService implements Serializable {
             }
         };
        
-        
-        public List<String> image () {
-                Images g = new Images();
-                List <String> pics = g.getImages( "headphones", headphones.getProduct().getId());   
-               return pics ;                
-	}
+
        
 //	public void addCamera(Camera c) {
 //		this.cameraDAO.addCamera(c);
