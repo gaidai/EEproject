@@ -15,10 +15,11 @@ import javax.faces.bean.ViewScoped;
 import javax.inject.Named;
 import lombok.Getter;
 import lombok.Setter;
+import lombok.extern.log4j.Log4j2;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.cache.annotation.Cacheable;
 
-
+@Log4j2
 @Getter
 @Setter
 @Named 

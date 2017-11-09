@@ -3,6 +3,7 @@ package com.sgaidai.jsfbean.controller;
 
 import static com.sgaidai.jsfbean.controller.UserBean.log;
 import com.sgaidai.secondary.Growl;
+import com.sgaidai.security.entities.model.User;
 import com.sgaidai.security.entities.model.product.Orders;
 import com.sgaidai.security.entities.model.product.Orders_Detail;
 import com.sgaidai.security.entities.model.product.Product;
@@ -19,11 +20,13 @@ import javax.faces.context.FacesContext;
 import lombok.Getter;
 import lombok.Setter;
 import lombok.ToString;
+import lombok.extern.log4j.Log4j2;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Repository;
 import org.springframework.stereotype.Service;
 
+@Log4j2
 @Service
 @Repository
 @ApplicationScoped
@@ -58,7 +61,7 @@ public class Cart implements  Serializable {
         neworder.setTotal(total);
         neworder.setStatus("created");
         if( !SecurityContextHolder.getContext().getAuthentication().getPrincipal().getClass().equals(String.class) ){
-            neworder.setUserId(log);
+            neworder.setUserId((User) log);
         } 
         Orders creatorder = this.orderDAO.addOrder(neworder);
         int created_id= creatorder.getId();
