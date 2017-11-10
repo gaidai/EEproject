@@ -1,6 +1,12 @@
 body {
     min-height: 100vh;
 }
+
+/*Delete standard primefaces 10px borders*/
+.fa-sm{
+    border-radius: 0px 0px 0px 0px !important;
+}
+
 .price{
     color: red;
     font: 15pt italic;

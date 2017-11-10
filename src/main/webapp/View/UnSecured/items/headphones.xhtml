@@ -16,13 +16,24 @@
     </f:metadata>    
     <p:spacer height="40px"></p:spacer>
         <b:container style="min-height: 70vh" >
+            <h:form>
+                <h:panelGrid columns="1" style="margin-bottom: 10px">
+                    <h:outputText id="displayRange" value="Between #{headphonesService.min} and #{headphonesService.max}" />
+                    <p:slider for="min,max" maxValue="35000" step="100" minValue="0" display="displayRange" style="width: 50vh" range="true" displayTemplate="From {min} to {max}" />          
+                </h:panelGrid>
+                <h:inputHidden id="min" value="#{headphonesService.min}" />
+                <h:inputHidden id="max" value="#{headphonesService.max}" />
+
+                <p:separator />
+                <p:commandButton value="Submit" id="slideSubmit" actionListener="#{headphonesService.onSlideEnd()}" update="slideSubmit, form" />
+            </h:form>
             <b:column  span="2" col-lg="10"  >
 <!--                <b:button href="list.xhtml?brand='Canon'" icon=" glyphicon glyphicon-chevron-right" look="info"  size="md" value="Canon"/>
                 <b:button href="list.xhtml?brand='Nikon'" icon=" glyphicon glyphicon-chevron-right" look="info"  size="md" value="Nikon"/>
                 <b:button href="list.xhtml?brand='Konica'" icon=" glyphicon glyphicon-chevron-right" look="info"  size="md" value="Konica"/>-->
-                <h:form id="form">
-                    <p:dataGrid lazy="true" var="p" value="#{headphonesService.list}" transient="false" columns="3" layout="grid"
-                        rows="12" paginator="true" id="tablets"
+                <h:form id="form" >
+                    <p:dataGrid lazy="false"   var="p" value="#{headphonesService.list}" transient="false" columns="3" layout="grid"
+                        rows="12" paginator="true" id="c"
                         paginatorTemplate="{CurrentPageReport}  {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
                         rowsPerPageTemplate="12,18,36">
 

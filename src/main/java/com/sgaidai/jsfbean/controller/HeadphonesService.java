@@ -8,11 +8,16 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
 import java.util.List;
+import javax.enterprise.context.RequestScoped;
+import javax.enterprise.context.SessionScoped;
+import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ViewScoped;
+import javax.faces.context.FacesContext;
 import javax.inject.Named;
 import lombok.Getter;
 import lombok.Setter;
+import org.primefaces.event.SlideEndEvent;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.cache.annotation.Cacheable;
 
@@ -21,49 +26,53 @@ import org.springframework.cache.annotation.Cacheable;
 @Setter
 @Named 
 @ManagedBean(name="headphonesService")
-@ViewScoped
+@RequestScoped
 public class HeadphonesService implements Serializable {
         
         
-	@Autowired
-	private HeadphonesDAO headphonesDAO;
-        private Headphones headphones = new Headphones();
-        private List <Headphones> list = new ArrayList();
-        
-        @Cacheable(value="itemlist", key="#name")
-	public void listHeadphones(String name) {
-		list = this.headphonesDAO.listHeadphones();
-                Collections.sort(list, this.COMPARE_BY_PRICE);
-	}
-        
-        Comparator<Headphones> COMPARE_BY_PRICE = new Comparator<Headphones>(){
-            @Override
-            public int compare(Headphones lhs, Headphones rhs) {
-                return lhs.getProduct().getPrice()- rhs.getProduct().getPrice();
-            }
-        };
-       
+    @Autowired
+    private HeadphonesDAO headphonesDAO;
+    private Headphones headphones = new Headphones();
+    private List <Headphones> list = new ArrayList();
+    private List <Headphones> fulllist = new ArrayList();
+    // Rannge for the price slider
+    private int max = 30000;
+    private int min = 100;
 
+    @Cacheable(value="itemlist", key="#name")
+    public void listHeadphones(String name) {
+        fulllist = this.headphonesDAO.listHeadphones();                
+        Collections.sort(fulllist, this.COMPARE_BY_PRICE);
+        list = fulllist;
        
-//	public void addCamera(Camera c) {
-//		this.cameraDAO.addCamera(c);
-//	}
-//        
-//	public void deleteCamera(Camera c) {
-//                this.cameraDAO.deleteCamera(c);
-//	}
-//             
-//        public void listCamerasByBrand (){
-//            System.out.println(this.camera.getBrand()+"-----");
-//            list = this.cameraDAO.listCamerasByBrand(this.camera.getBrand());
-//		
-//	}
-        
-        public void getHeadphonesById() {
-                headphones = this.headphonesDAO.getHeadphonesById(this.headphones.getId());
-               
-	}
-//        public List<Camera> listCamerasbyPrice() {
-//		return this.cameraDAO.listCamerasbyPrice();
-//	}
+    }
+
+    Comparator<Headphones> COMPARE_BY_PRICE = new Comparator<Headphones>(){
+        @Override
+        public int compare(Headphones lhs, Headphones rhs) {
+            return lhs.getProduct().getPrice()- rhs.getProduct().getPrice();
+        }
+    };
+
+
+    public void getHeadphonesById() {
+        headphones = this.headphonesDAO.getHeadphonesById(this.headphones.getId());
+
+    }
+    public void onSlideEnd() {
+        System.out.println(min + " onSlideEnd ");
+        System.out.println( max);
+        System.out.println(fulllist.size());
+        System.out.println(list.size());
+        this.list = new ArrayList();
+        int price;
+        for(Headphones h: fulllist ){
+            price = h.getProduct().getPrice();
+            if(price <= max && price>= min  ){         
+                 list.add(h);
+            }
+        } 
+        System.out.println(list.size());
+        System.out.println(fulllist.size());
+    }    
 }
