@@ -47,12 +47,8 @@ public class HeadphonesService implements Serializable {
        
     }
 
-    Comparator<Headphones> COMPARE_BY_PRICE = new Comparator<Headphones>(){
-        @Override
-        public int compare(Headphones lhs, Headphones rhs) {
-            return lhs.getProduct().getPrice()- rhs.getProduct().getPrice();
-        }
-    };
+    Comparator<Headphones> COMPARE_BY_PRICE = (Headphones lhs, Headphones rhs)
+            -> lhs.getProduct().getPrice()- rhs.getProduct().getPrice();
 
 
     public void getHeadphonesById() {
