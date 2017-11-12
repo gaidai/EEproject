@@ -16,6 +16,21 @@
     </f:metadata>    
     <p:spacer height="40px"></p:spacer>
         <b:container style="min-height: 70vh" >
+            <h:form>
+                <b:column  col-lg="5">
+                    <h:panelGrid columns="1" style="margin-bottom: 10px">
+                        <h:outputText id="displayRange" class="center" value="Between #{cameraService.min} and #{cameraService.max}" />
+                        <p:slider for="min,max" maxValue="55000" step="100" minValue="0" display="displayRange" style="width: 50vh" range="true" 
+                                  displayTemplate="{min}&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;{max}" />          
+                    </h:panelGrid>
+                    <h:inputHidden id="min" value="#{cameraService.min}" />
+                    <h:inputHidden id="max" value="#{cameraService.max}" />
+                </b:column>
+                <b:column  col-lg="2" style="margin: 10px" >
+                    <b:commandButton value="Submit" id="slideSubmit" icon="stats" tooltip="Submit new price range!" tooltip-delay="1800" tooltipPosition="right" look="info" 
+                                     style=" border-radius: 10px" actionListener="#{cameraService.onSlideEnd()}" update="slideSubmit, form"/>
+                </b:column>
+            </h:form>
             <b:column  span="2" col-lg="10"  >
 <!--                <b:button href="list.xhtml?brand='Canon'" icon=" glyphicon glyphicon-chevron-right" look="info"  size="md" value="Canon"/>
                 <b:button href="list.xhtml?brand='Nikon'" icon=" glyphicon glyphicon-chevron-right" look="info"  size="md" value="Nikon"/>

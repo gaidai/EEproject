@@ -19,7 +19,7 @@
         <b:row>
             <b:column col-lg="6">
                 <b:form >  
-                    <p:commandButton  value="Clear the cart" actionListener="#{cart.clearCart()}" update="growl, navcart, main-container" ajax="true">
+                    <p:commandButton  value="Clear the cart" rendered="#{cart.mycart.size() gt 0}" actionListener="#{cart.clearCart()}" update="growl, navcart, main-container" ajax="true">
                         <p:confirm header="You want to clear the shopping cart ?" message="Are you sure?" icon="ui-icon-alert" />
                     </p:commandButton>
                     <p:confirmDialog global="true" showEffect="fade" hideEffect="fade">
@@ -29,70 +29,47 @@
                 </b:form >                 
             </b:column >
              <b:column col-lg="3" rendered="#{cart.totalPrice() gt 0}" >
-                 <h:outputText class="price" id ="totalprice" value=" Total Price : #{cart.totalPrice()} UAH"  />
-                 <b:button href="order.xhtml" value="Buy All"/>
+                 <h:outputText class="price" id ="totalprice" value=" Total Price : #{cart.totalPrice()} UAH"  />                
             </b:column>
         </b:row>
         
             <p:spacer height="20px" width="100%"/>
                                     
             <p:dataScroller id="list" value="#{cart.mycart}" var="p" >
-                    <f:facet name="header">
-                        List of items
-                    </f:facet>    
-                    
-                    <b:row style="height: 100px" class=" center" >
-                        <b:column style="width:25% ; height: 100px">
-                            <h:link outcome="/View/UnSecured/items/product.xhtml">
-                                <f:param  name="id" value="#{p.id}"/>
-                                <f:param  name="category" value="#{p.category}"/>  
-                                <p:graphicImage value="/resources/products/#{p.category}/#{p.id}/1.png" height="90px" /> 
-                                <p:graphicImage value="/resources/products/#{p.category}/#{p.id}/1.jpg" height="90px"/>
-                            </h:link>
-                        </b:column>                                               
-                        <b:column style="width:60% ; height: 90px"> 
-                            <h:link outcome="/View/UnSecured/items/product.xhtml">
-                                <f:param  name="id" value="#{p.id}"/>
-                                <f:param  name="category" value="#{p.category}"/> <br/>
-                                <h:outputText value="#{p.brand} #{p.model}" style="font-weight: bold"/><br/>
-                                <h:outputText value="Price: " />
-                                <h:outputText value="#{p.price}" style="color: red; font-weight: 600 " />
-                                <h:outputText value=" UAH" style="color: red " />
-                            </h:link>
-                        </b:column >
-                        <b:column  style="width: 15% ; height: 80px" >
-                            <b:form ><br/>
-                                <p:commandLink ajax="true" update="list" action="#{cart.deletfromCart(p)}" ><i class="fa  fa-trash fa-lg " /></p:commandLink>
-                            </b:form> 
-                        </b:column >
-                    </b:row>
-                    <hr/>
-                    
-                </p:dataScroller>
-<!--                <p:repeat value="#{dataListView.cars1}" var="car">
-                            <h:panelGrid columns="2" style="width:100%" columnClasses="logo,detail">
-                          <p:commandLink update=":form:carDetail" oncomplete="PF('carDialog').show()">
-                              <f:setPropertyActionListener value="#{car}" target="#{dataListView.selectedCar}" />
-                              <p:graphicImage name="demo/images/car/#{car.brand}-big.gif" /> 
-                          </p:commandLink>
+                <f:facet name="header">
+                    <p:outputLabel rendered="#{cart.totalPrice() gt 0}" >List of items</p:outputLabel>
+                    <p:outputLabel rendered="#{cart.totalPrice() le 0}" > Your cart is Empty now </p:outputLabel>
+                </f:facet>    
 
-                          <p:outputPanel>
-                              <h:panelGrid columns="2" cellpadding="5">
-                                  <h:outputText value="Id:" />
-                                  <h:outputText value="#{car.id}" style="font-weight: bold"/>
-
-                                  <h:outputText value="Year:" />
-                                  <h:outputText value="#{car.year}" style="font-weight: bold"/>
-
-                                  <h:outputText value="Color:" />
-                                  <h:outputText value="#{car.color}" style="font-weight: bold"/>
-                              </h:panelGrid>
-                          </p:outputPanel>
-                      </h:panelGrid>
-                      <hr />
-                </p:repeat>-->
+                <b:row style="height: 100px" class=" center" >
+                    <b:column style="width:25% ; height: 100px">
+                        <h:link outcome="/View/UnSecured/items/product.xhtml">
+                            <f:param  name="id" value="#{p.id}"/>
+                            <f:param  name="category" value="#{p.category}"/>  
+                            <p:graphicImage value="/resources/products/#{p.category}/#{p.id}/1.png" height="90px" /> 
+                            <p:graphicImage value="/resources/products/#{p.category}/#{p.id}/1.jpg" height="90px"/>
+                        </h:link>
+                    </b:column>                                               
+                    <b:column style="width:60% ; height: 90px"> 
+                        <h:link outcome="/View/UnSecured/items/product.xhtml">
+                            <f:param  name="id" value="#{p.id}"/>
+                            <f:param  name="category" value="#{p.category}"/> <br/>
+                            <h:outputText value="#{p.brand} #{p.model}" style="font-weight: bold"/><br/>
+                            <h:outputText value="Price: " />
+                            <h:outputText value="#{p.price}" style="color: red; font-weight: 600 " />
+                            <h:outputText value=" UAH" style="color: red " />
+                        </h:link>
+                    </b:column >
+                    <b:column  style="width: 15% ; height: 80px" >
+                        <b:form ><br/>
+                            <p:commandLink ajax="true" update="list" action="#{cart.deletfromCart(p)}" ><i class="fa  fa-trash fa-lg " /></p:commandLink>
+                        </b:form> 
+                    </b:column >
+                </b:row>
+                <hr/>
+            </p:dataScroller>
             <p:spacer height="20"/>
-            <b:button  href="order.xhtml" value="Buy All" look="info"   rendered="#{cart.totalPrice() gt 0}"/>
+            <b:button  href="order.xhtml" value="Buy All" look="info" style="margin-top: 15px"  rendered="#{cart.totalPrice() gt 0}"/>
            
             <br/>
             <div>

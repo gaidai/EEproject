@@ -21,7 +21,8 @@
             </b:navbarLinks> 
             <b:navbarLinks pull="right" >
                 <h:form styleClass="navbar-form navbar-right" id="navcart">
-                    <b:button href="#{request.contextPath}/View/UnSecured/cart.xhtml" value="My Cart #{cart.getSize()}" look="danger" icon-awesome="fa-shopping-cart" icon-size="lg" ></b:button>
+                    <b:button href="#{request.contextPath}/View/UnSecured/cart.xhtml" rendered="#{cart.mycart.size() le 0}" value="My Cart" look="danger" icon-awesome="fa-shopping-cart" icon-size="lg" />
+                    <b:button href="#{request.contextPath}/View/UnSecured/cart.xhtml" rendered="#{cart.mycart.size() gt 0 }" value="My Cart (#{cart.mycart.size()})" look="danger" icon-awesome="fa-shopping-cart" icon-size="lg" />
                 </h:form>
                <sec:authorize access="!isAuthenticated()">
                      <h:form styleClass="navbar-form navbar-right">

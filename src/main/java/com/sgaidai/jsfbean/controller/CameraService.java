@@ -26,10 +26,14 @@ public class CameraService implements Serializable{
 	private CameraDAO cameraDAO;
         private Camera camera = new Camera();
         private List <Camera> list = new ArrayList();
-        
+        private List <Camera> fulllist = new ArrayList();
+        // Rannge for the price slider
+        private int max = 50000;
+        private int min = 100;
         @Cacheable(value="itemlist", key="#name")
 	public void listCameras(String name) {
-		list = this.cameraDAO.listCameras();
+		fulllist = this.cameraDAO.listCameras();
+                list = fulllist;
 	}
         
     
@@ -51,7 +55,14 @@ public class CameraService implements Serializable{
             this.camera = this.cameraDAO.getcamerabyid( this.camera.getId());
                
 	}
-//        public List<Camera> listCamerasbyPrice() {
-//		return this.cameraDAO.listCamerasbyPrice();
-//	}
+        public void onSlideEnd() {
+            this.list = new ArrayList();
+            int price;
+            for(Camera h: fulllist ){
+                price = h.getProduct().getPrice();
+                if(price <= max && price>= min  ){         
+                     list.add(h);
+                }
+            } 
+        }
 }

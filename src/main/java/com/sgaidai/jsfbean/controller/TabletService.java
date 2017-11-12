@@ -26,26 +26,27 @@ public class TabletService implements Serializable{
 	private TabletDAO tabletDAO;
         private Tablet tablet = new Tablet();
         private List <Tablet> list = new ArrayList();
+        private List <Tablet> fulllist = new ArrayList();
+        // Rannge for the price slider
+        private int max = 30000;
+        private int min = 400;    
         
         @Cacheable(value="itemlist", key="#name")
 	public void listTablets(String name) {
-		list = this.tabletDAO.listTablets();
+		fulllist = this.tabletDAO.listTablets();
+                list = fulllist;
 	}
+        public void onSlideEnd() {
+            this.list = new ArrayList();
+            int price;
+            for(Tablet h: fulllist ){
+                price = h.getProduct().getPrice();
+                if(price <= max && price>= min  ){         
+                     list.add(h);
+                }
+            } 
+        }
 
-       
-//	public void addCamera(Camera c) {
-//		this.cameraDAO.addCamera(c);
-//	}
-//        
-//	public void deleteCamera(Camera c) {
-//                this.cameraDAO.deleteCamera(c);
-//	}
-//             
-//        public void listCamerasByBrand (){
-//            System.out.println(this.camera.getBrand()+"-----");
-//            list = this.cameraDAO.listCamerasByBrand(this.camera.getBrand());
-//		
-//	}
         
         public void getTabletbyid() {
                 this.tablet = this.tabletDAO.getTabletById(this.tablet.getId());

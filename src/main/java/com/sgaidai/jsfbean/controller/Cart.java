@@ -99,16 +99,7 @@ public class Cart implements  Serializable {
   //     delet ordered product from the shopping cart  
         mycart.remove(p);
         return "home";
-    }    
-     
-    public String getSize(){        
-        if ( mycart.isEmpty()){
-            return "";   
-        } else{ 
-          String size = "(" + mycart.size() + ")";
-            return size;}
-    }
-    
+    }   
     public void AddtoCart(){
           
         FacesContext fc = FacesContext.getCurrentInstance();
