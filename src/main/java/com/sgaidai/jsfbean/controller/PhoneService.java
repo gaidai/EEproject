@@ -18,6 +18,9 @@ import lombok.Setter;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.cache.annotation.Cacheable;
 
+/*
+*  bean used at phones.xhtml
+*/
 
 @Getter
 @Setter
@@ -51,7 +54,7 @@ public class PhoneService implements Serializable{
             brands.add(p); 
         });  
     }
-
+  // filter the list by price and brand
     public void onSlideEnd() {
         this.list = new ArrayList();
         int price;

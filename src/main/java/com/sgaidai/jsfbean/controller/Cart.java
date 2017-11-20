@@ -1,6 +1,7 @@
 
 package com.sgaidai.jsfbean.controller;
 
+import static com.sgaidai.jsfbean.controller.UserBean.log;
 import com.sgaidai.secondary.Growl;
 import com.sgaidai.security.entities.model.User;
 import com.sgaidai.security.entities.model.product.Orders;
@@ -13,9 +14,9 @@ import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
+import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ApplicationScoped;
 import javax.faces.context.FacesContext;
-import javax.inject.Named;
 import lombok.Getter;
 import lombok.Setter;
 import lombok.ToString;
@@ -32,7 +33,7 @@ import org.springframework.stereotype.Service;
 @Getter
 @Setter
 @ToString
-@Named
+@ManagedBean(name="cart")
 public class Cart implements  Serializable {
     
     

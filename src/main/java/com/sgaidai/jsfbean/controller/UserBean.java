@@ -25,6 +25,7 @@ import org.springframework.dao.DataAccessException;
 @Getter
 @Setter
 @Named 
+@ManagedBean(name="userBean")
 @SessionScoped
 public class UserBean implements Serializable {
 

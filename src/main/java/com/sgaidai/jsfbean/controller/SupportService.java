@@ -28,6 +28,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 @Getter
 @Setter
 @Named 
+@ManagedBean(name="supportService")
 @ViewScoped
 public class SupportService implements Serializable{
        

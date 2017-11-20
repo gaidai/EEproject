@@ -18,7 +18,9 @@ import lombok.Setter;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.cache.annotation.Cacheable;
 
-
+/*
+*  bean used at cameras.xhtml
+*/
 @Getter
 @Setter
 @Named 
@@ -52,25 +54,11 @@ public class CameraService implements Serializable{
             });       
 	}
         
-    
-//	public void addCamera(Camera c) {
-//		this.cameraDAO.addCamera(c);
-//	}
-//        
-//	public void deleteCamera(Camera c) {
-//                this.cameraDAO.deleteCamera(c);
-//	}
-//             
-//        public void listCamerasByBrand (){
-//            System.out.println(this.camera.getBrand()+"-----");
-//            list = this.cameraDAO.listCamerasByBrand(this.camera.getBrand());
-//		
-//	}
-        
         public void getcamerabyid() {
-            this.camera = this.cameraDAO.getcamerabyid( this.camera.getId());
-               
+            this.camera = this.cameraDAO.getcamerabyid( this.camera.getId());               
 	}
+        
+        // filter the list by price and brand
         public void onSlideEnd() {
             this.list = new ArrayList();
             int price;
