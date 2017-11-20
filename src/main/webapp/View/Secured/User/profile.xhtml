@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html  xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:c="http://xmlns.jcp.org/jsp/jstl/core"
+        xmlns:p="http://primefaces.org/ui"
+        xmlns:b="http://bootsfaces.net/ui">
+<ui:composition template="/resources/composition.xhtml">
+    <ui:define name="title">My shopping cart </ui:define>
+    <ui:define name="content">
+    <p:spacer height="40px" width="100%"/>
+    <b:container style="margin-right: 20%; margin-left: 20%; background-color: #f4feff ; border-radius: 20px ; min-height: 800px">
+        <h:form id="form1" style="font-size: 20px"> 
+            <b:row><b:column col-lg="3"  offset-lg="4"><h2>User Information</h2></b:column></b:row><br/><br/>
+                
+            <b:column col-lg="2"  offset-lg="4" class="tomotto" style="text-align: left"> 
+                <b:row><h:outputText value="Login: "/></b:row>
+                <b:row><h:outputText value="First name: "/></b:row>
+                <b:row><h:outputText value="Last name:" /></b:row>
+                <b:row><h:outputText value="Email:" /></b:row>                            
+            </b:column>
+            <b:column col-lg="3" class="tomotto"  style="text-align: left ; color: #215A6D" >  
+                <b:row><h:outputText value="#{userBean.userProfile.username}"   /></b:row>
+                <b:row><h:outputText value="#{userBean.userProfile.firstName}" /></b:row>
+                <b:row><h:outputText value="#{userBean.userProfile.lastName}" /></b:row>
+                <b:row><h:outputText value="#{userBean.userProfile.email}" /></b:row>                            
+            </b:column>  
+
+        </h:form>
+    </b:container>
+    <p:spacer height="20"/>   
+    
+   </ui:define>
+</ui:composition>
+</html>

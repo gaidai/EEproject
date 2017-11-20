@@ -1,0 +1,53 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html  xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:c="http://xmlns.jcp.org/jsp/jstl/core"
+      xmlns:p="http://primefaces.org/ui" 
+      xmlns:b="http://bootsfaces.net/ui">
+
+   
+<ui:composition template="/resources/composition.xhtml">
+    <ui:define name="title">My favorite</ui:define>
+<ui:define name="content">
+    <p:spacer height="40px" width="100%"></p:spacer>
+      <b:container style="margin-right: 20%;  background-color: #f4feff ; border-radius: 20px ; min-height: 800px"  >    
+            <p:spacer height="15px" width="100%" ></p:spacer>            
+            <p:dataScroller id="list" value="#{userBean.userProfile.favorite}" var="p" >
+                <f:facet name="header">
+                    <h:outputLabel rendered="#{userBean.userProfile.favorite.size() > 0}" value="My favorite items"/>                    
+                    <h:outputLabel rendered="#{userBean.userProfile.favorite.size() eq 0}" value="Your wishlist is empty "/>
+                </f:facet>    
+                <b:row style="height: 100px" class="center">
+                    <b:column style="width:25% ; height: 100px">
+                        <h:link outcome="/View/UnSecured/items/product.xhtml">
+                            <f:param  name="id" value="#{p.id}"/>
+                            <f:param  name="category" value="#{p.category}"/>  
+                            <p:graphicImage value="/resources/products/#{p.category}/#{p.id}/1.png" height="90px" /> 
+                            <p:graphicImage value="/resources/products/#{p.category}/#{p.id}/1.jpg" height="90px"/>
+                        </h:link>
+                    </b:column>
+
+                    <b:column style="width:60% ; height: 90px"> 
+                        <h:link outcome="/View/UnSecured/items/product.xhtml">
+                            <f:param  name="id" value="#{p.id}"/>
+                            <f:param  name="category" value="#{p.category}"/>  <br/>
+                            <h:outputText value="#{p.brand} #{p.model}" style="font-weight: bold"/><br/>
+                            <h:outputText value="Price: " />
+                            <h:outputText value="#{p.price}" style="color: red; font-weight: 600 " />
+                            <h:outputText value=" UAH" style="color: red " />
+                        </h:link>
+                    </b:column >
+                    <b:column  style="width: 15% ; height: 80px" >
+                        <b:form ><br/>
+                            <p:commandLink ajax="true" update="list" action="#{supportService.deletFromWishList(p)}" ><i class="fa  fa-trash fa-lg " /></p:commandLink>
+                        </b:form> 
+                    </b:column >
+                </b:row>
+                <hr/>                    
+            </p:dataScroller>           
+    </b:container>    
+</ui:define>
+</ui:composition>
+</html>

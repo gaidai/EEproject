@@ -1,0 +1,142 @@
+
+.carousel.sale {
+  display: block;
+  -webkit-transform: translateZ(0);
+  /*  for demo only */
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  width: 90%;
+  height: 250px;
+  margin: auto;
+  font-size: 0;
+  /* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#e1ffff+0,d8c036+20,ce10a8+33,e2e542+47,e0f76c+61,961515+74,efdf4a+90,ef4cc6+100 */
+  background: rgb(225,255,255); /* Old browsers */
+  background: -moz-linear-gradient(-45deg, rgba(225,255,255,1) 0%, rgba(216,192,54,1) 20%, rgba(206,16,168,1) 33%, rgba(226,229,66,1) 47%, rgba(224,247,108,1) 61%, rgba(150,21,21,1) 74%, rgba(239,223,74,1) 90%, rgba(239,76,198,1) 100%); /* FF3.6-15 */
+  background: -webkit-gradient(linear, left top, right bottom, color-stop(0%,rgba(225,255,255,1)), color-stop(20%,rgba(216,192,54,1)), color-stop(33%,rgba(206,16,168,1)), color-stop(47%,rgba(226,229,66,1)), color-stop(61%,rgba(224,247,108,1)), color-stop(74%,rgba(150,21,21,1)), color-stop(90%,rgba(239,223,74,1)), color-stop(100%,rgba(239,76,198,1))); /* Chrome4-9,Safari4-5 */
+  background: -webkit-linear-gradient(-45deg, rgba(225,255,255,1) 0%,rgba(216,192,54,1) 20%,rgba(206,16,168,1) 33%,rgba(226,229,66,1) 47%,rgba(224,247,108,1) 61%,rgba(150,21,21,1) 74%,rgba(239,223,74,1) 90%,rgba(239,76,198,1) 100%); /* Chrome10-25,Safari5.1-6 */
+  background: -o-linear-gradient(-45deg, rgba(225,255,255,1) 0%,rgba(216,192,54,1) 20%,rgba(206,16,168,1) 33%,rgba(226,229,66,1) 47%,rgba(224,247,108,1) 61%,rgba(150,21,21,1) 74%,rgba(239,223,74,1) 90%,rgba(239,76,198,1) 100%); /* Opera 11.10-11.50 */
+  background: -ms-linear-gradient(-45deg, rgba(225,255,255,1) 0%,rgba(216,192,54,1) 20%,rgba(206,16,168,1) 33%,rgba(226,229,66,1) 47%,rgba(224,247,108,1) 61%,rgba(150,21,21,1) 74%,rgba(239,223,74,1) 90%,rgba(239,76,198,1) 100%); /* IE10 preview */
+  background: linear-gradient(135deg, rgba(225,255,255,1) 0%,rgba(216,192,54,1) 20%,rgba(206,16,168,1) 33%,rgba(226,229,66,1) 47%,rgba(224,247,108,1) 61%,rgba(150,21,21,1) 74%,rgba(239,223,74,1) 90%,rgba(239,76,198,1) 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#e1ffff', endColorstr='#ef4cc6',GradientType=1 ); /* IE6-9 fallback on horizontal gradient */
+  padding: 8px;
+  border-radius: 6px;
+  box-shadow: 0 4px 10px #000;
+  /********************/
+  height: 250px;
+  -webkit-overflow-scrolling: touch;
+  /* for tablets */
+}
+.touch .carousel .sale {
+  overflow: auto;
+}
+.carousel .sale:before, .carousel .sale:after {
+  content: '';
+  opacity: 0;
+  top: 0;
+  bottom: 0;
+  z-index: 2;
+  width: 50px;
+  font-size: 80px;
+  line-height: 250px;
+  font-family: arial;
+  color: #555;
+  font-weight: bold;
+  pointer-events: none;
+  -webkit-transition: 0.2s ease-out;
+  transition: 0.2s ease-out;
+}
+.carousel .sale:before {
+  content: '\2039';
+  left: 0;
+  text-align: left;
+  text-indent: -20px;
+  box-shadow: 50px 0 20px -20px #292B2C inset;
+}
+.carousel .sale:after {
+  content: '\203A';
+  right: 0;
+  text-align: right;
+  text-indent: 40px;
+  box-shadow: -50px 0 20px -20px #292B2C inset;
+}
+.carousel.sale.right:after, .carousel.sale.left:before {
+  opacity: 1;
+}
+.carousel.sale.right:after {
+  right: 0;
+  text-indent: 60px;
+}
+.carousel.sale.left:before {
+  left: 0;
+  text-indent: -40px;
+}
+.carousel.sale > a {
+  position: absolute;
+  margin: 0;
+  top: 0;
+  bottom: 0;
+  color: #CCC;
+  font-size: 1.5em;
+  -webkit-transition: 0.1s;
+  transition: 0.1s;
+}
+.carousel.sale > a:hover {
+  color: #FFF;
+}
+.carousel.sale > a.prev {
+  left: -20px;
+}
+.carousel.sale > a.next {
+  right: -20px;
+}
+.carousel.sale > .indicator {
+  pointer-events: none;
+  position: absolute;
+  z-index: 4;
+  bottom: 0;
+  left: 0;
+  background: #D82B6A;
+  height: 4px;
+  border-radius: 10px;
+  opacity: 0;
+  -webkit-transition: opacity 0.2s, bottom 0.2s;
+  transition: opacity 0.2s, bottom 0.2s;
+}
+.carousel.sale:hover > .indicator {
+  opacity: 1;
+  bottom: -10px;
+}
+.carousel.sale > .wrap {
+  overflow: hidden;
+  border-radius: 5px;
+}
+.carousel.sale > .wrap > ul {
+  list-style: none;
+  white-space: nowrap;
+  height: 250px;
+}
+.carousel.sale > .wrap > ul > li {
+  display: inline-block;
+  vertical-align: middle;
+  height: 100%;
+  margin: 0 0 0 5px;
+  position: relative;
+  overflow: hidden;
+  -webkit-transition: 0.25s ease-out;
+  transition: 0.25s ease-out;
+}
+.carousel.sale > .wrap > ul > li:first-child {
+  margin: 0;
+}
+.carousel.sale > .wrap > ul > li > img {
+  display: block;
+  height: 100%;
+  margin: auto;
+  vertical-align: bottom;
+  position: relative;
+  z-index: 1;
+  -webkit-transition: 1s ease;
+  transition: 1s ease;
+}

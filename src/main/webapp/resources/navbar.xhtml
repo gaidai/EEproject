@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+        xmlns:b="http://bootsfaces.net/ui"
+        xmlns:sec="http://www.springframework.org/security/tags"
+        xmlns:h="http://xmlns.jcp.org/jsf/html"
+        xmlns:f="http://xmlns.jcp.org/jsf/core"
+        xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
+ 
+    <b:navBar brand="Home" brandHref="#{request.contextPath}/View/UnSecured/home.xhtml" id="homepage" class="navlink" inverse="true" fixed="top" >
+            <b:navbarLinks>
+                <b:navLink value="Shipping" href="#{request.contextPath}/View/UnSecured/shipping.xhtml"></b:navLink>
+                <!--<b:navLink value="All Orders" href="#{request.contextPath}/View/UnSecured/orderlist.xhtml"></b:navLink>-->
+                <b:dropMenu value="Promotions" class="navmenu">
+                    <b:navLink style=" color: red; font-size: 20px" value="Hot Sale" href="#{request.contextPath}/View/UnSecured/sale.xhtml"></b:navLink>
+                    <b:navLink  style=" color: red"  header="Other:"></b:navLink>
+                    <b:navLink  value="Found mistake?" href="#{request.contextPath}/View/UnSecured/support/mistake.xhtml"></b:navLink>
+                   
+                </b:dropMenu> 
+            </b:navbarLinks> 
+            <b:navbarLinks pull="right" >
+                <h:form styleClass="navbar-form navbar-right" id="navcart">
+                    <b:button href="#{request.contextPath}/View/UnSecured/cart.xhtml" rendered="#{cart.mycart.size() le 0}" value="My Cart" look="danger" icon-awesome="fa-shopping-cart" icon-size="lg" />
+                    <b:button href="#{request.contextPath}/View/UnSecured/cart.xhtml" rendered="#{cart.mycart.size() gt 0 }" value="My Cart (#{cart.mycart.size()})" look="danger" icon-awesome="fa-shopping-cart" icon-size="lg" />
+                </h:form>
+               <sec:authorize access="!isAuthenticated()">
+                     <h:form styleClass="navbar-form navbar-right">
+                        &nbsp; &nbsp;&nbsp; &nbsp;
+                        <b:button href="#{request.contextPath}/View/UnSecured/login.xhtml" value="Login" look="info" icon="chevron-right" iconAlign="right"></b:button>
+                    </h:form>
+                </sec:authorize>
+                <sec:authorize access="isAuthenticated()">
+                    
+                        <b:dropMenu  value="Hello #{loginController.username} !">
+                            <b:navLink value="My profile" href="#{request.contextPath}/View/Secured/User/profile.xhtml"></b:navLink>
+                            <b:navLink value="My favorite" href="#{request.contextPath}/View/Secured/User/myfavorite.xhtml"></b:navLink>
+                            <b:navLink value="All Orders" href="#{request.contextPath}/View/Secured/User/myorders.xhtml"></b:navLink>
+                        </b:dropMenu>&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;
+                    <h:form styleClass="navbar-form navbar-right" >
+                        <b:button id="logout_button" href="#{request.contextPath}/logout" value="Logout" look="danger" icon="chevron-right" iconAlign="right">
+                            
+                        </b:button>                        
+                    </h:form>
+                </sec:authorize>
+            </b:navbarLinks>
+        </b:navBar>
+      
+    
+</html>

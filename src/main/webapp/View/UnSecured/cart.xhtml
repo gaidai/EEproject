@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:c="http://xmlns.jcp.org/jsp/jstl/core"
+        xmlns:p="http://primefaces.org/ui"
+        xmlns:b="http://bootsfaces.net/ui"
+        xmlns:f="http://xmlns.jcp.org/jsf/core">
+<ui:composition template="/resources/composition.xhtml">
+    <ui:define name="title">My shopping cart </ui:define>
+    <ui:define name="content">
+    <p:spacer height="40px" width="100%"/>
+    <b:container id="main-container" style="margin-right: 20%; margin-left: 20%; background-color: #f4feff ; border-radius: 20px ; min-height: 800px"> 
+        <p:spacer height="30px" width="100%"/>
+        <p:growl id="growl" globalOnly="true" />
+        <b:row>
+            <b:column col-lg="6">
+                <b:form >  
+                    <p:commandButton  value="Clear the cart" rendered="#{cart.mycart.size() gt 0}" actionListener="#{cart.clearCart()}" update="growl, navcart, main-container" ajax="true">
+                        <p:confirm header="You want to clear the shopping cart ?" message="Are you sure?" icon="ui-icon-alert" />
+                    </p:commandButton>
+                    <p:confirmDialog global="true" showEffect="fade" hideEffect="fade">
+                        <p:commandButton value="Yes" type="button" styleClass="ui-confirmdialog-yes" icon="ui-icon-check" />
+                        <p:commandButton value="No" type="button" styleClass="ui-confirmdialog-no" icon="ui-icon-close" />
+                    </p:confirmDialog>
+                </b:form >                 
+            </b:column >
+             <b:column col-lg="3" rendered="#{cart.totalPrice() gt 0}" >
+                 <h:outputText class="price" id ="totalprice" value=" Total Price : #{cart.totalPrice()} UAH"  />                
+            </b:column>
+        </b:row>
+        
+            <p:spacer height="20px" width="100%"/>
+                                    
+            <p:dataScroller id="list" value="#{cart.mycart}" var="p" >
+                <f:facet name="header">
+                    <p:outputLabel rendered="#{cart.totalPrice() gt 0}" >List of items</p:outputLabel>
+                    <p:outputLabel rendered="#{cart.totalPrice() le 0}" > Your cart is Empty now </p:outputLabel>
+                </f:facet>    
+
+                <b:row style="height: 100px" class=" center" >
+                    <b:column style="width:25% ; height: 100px">
+                        <h:link outcome="/View/UnSecured/items/product.xhtml">
+                            <f:param  name="id" value="#{p.id}"/>
+                            <f:param  name="category" value="#{p.category}"/>  
+                            <p:graphicImage value="/resources/products/#{p.category}/#{p.id}/1.png" height="90px" /> 
+                            <p:graphicImage value="/resources/products/#{p.category}/#{p.id}/1.jpg" height="90px"/>
+                        </h:link>
+                    </b:column>                                               
+                    <b:column style="width:60% ; height: 90px"> 
+                        <h:link outcome="/View/UnSecured/items/product.xhtml">
+                            <f:param  name="id" value="#{p.id}"/>
+                            <f:param  name="category" value="#{p.category}"/> <br/>
+                            <h:outputText value="#{p.brand} #{p.model}" style="font-weight: bold"/><br/>
+                            <h:outputText value="Price: " />
+                            <h:outputText value="#{p.price}" style="color: red; font-weight: 600 " />
+                            <h:outputText value=" UAH" style="color: red " />
+                        </h:link>
+                    </b:column >
+                    <b:column  style="width: 15% ; height: 80px" >
+                        <b:form ><br/>
+                            <p:commandLink ajax="true" update="list" action="#{cart.deletfromCart(p)}" ><i class="fa  fa-trash fa-lg " /></p:commandLink>
+                        </b:form> 
+                    </b:column >
+                </b:row>
+                <hr/>
+            </p:dataScroller>
+            <p:spacer height="20"/>
+            <b:button  href="order.xhtml" value="Buy All" look="info" style="margin-top: 15px"  rendered="#{cart.totalPrice() gt 0}"/>
+           
+            <br/>
+            <div>
+                <p:clock   pattern="HH:mm:ss dd.MM.yyyy"  />
+            </div>
+                
+            <br/>
+                
+    </b:container>
+    <p:spacer height="20"/> 
+   
+    
+   </ui:define>
+</ui:composition>
+</html>

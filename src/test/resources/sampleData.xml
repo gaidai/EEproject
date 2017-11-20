@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<dataset>
+	<Product id="1" model="1100D" category="camera" price="9555" color="red" brand="Nikon"  quantity="10" description="0" />
+	<Product id="2" model="1200D" category="camera" price="10055" color="red" brand="Nikon"  quantity="5" description="0" />
+<!--        <Orders_Detail id="11" order_id="1" product_id="1" fixed_price="1" >-->
+</dataset>

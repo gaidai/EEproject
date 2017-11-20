@@ -1,0 +1,80 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:c="http://xmlns.jcp.org/jsp/jstl/core"
+      xmlns:p="http://primefaces.org/ui" 
+      xmlns:b="http://bootsfaces.net/ui">
+
+   
+<ui:composition template="/resources/composition.xhtml">
+    <ui:define name="title">Register page</ui:define>
+<ui:define name="content">
+    <p:spacer height="40px" width="100%"></p:spacer>
+      <b:container style="margin-right: 20%;  background-color: #f4feff ; border-radius: 20px ; min-height: 800px"  >    
+        <center><h2>Register User</h2></center>      
+        <center><h:form prependId="false" id="form">
+                <h:panelGrid columns="2" >
+                    <b:inputText value="#{userBean.user.firstName}" id="firstname" required="true"  requiredMessage="FirstName is required" placeholder="FirstName:">
+                        <f:facet name="prepend">
+                            <b:icon name="user" />
+                        </f:facet>
+                    </b:inputText>                      
+                    <b:message for="firstname" style="color:green" />
+                        
+                    <b:inputText value="#{userBean.user.lastName}" id="lastname" required="true" requiredMessage="LastName is required" placeholder="LastName:">
+                        <f:facet name="prepend">
+                            <b:icon name="user" />
+                        </f:facet>
+                    </b:inputText> 
+                    <b:message for="lastname" style="color:red" />
+                    
+                    <b:inputText value="#{userBean.user.username}" id="username" required="true" requiredMessage="Login is required" placeholder="Login:" >
+                        <f:facet name="prepend">
+                            <b:icon name="user" />
+                        </f:facet>
+                    </b:inputText> 
+                    <b:message for="username" style="color:green" />
+                    
+                    <b:inputText value="#{userBean.user.phone}" id="user_phone" required="true"  maxlength="10" requiredMessage="Login is required" placeholder="Phone:" >
+                        <f:facet name="prepend">
+                            <b:icon name="user" />
+                        </f:facet>
+                    </b:inputText> 
+                    <b:message for="user_phone" style="color:green" />
+                    
+                    <b:inputText value="#{userBean.user.email}" id="email" required="true" requiredMessage="Email is required" validator="emailValidator" placeholder="Email:" >
+                        <f:facet name="prepend">
+                            <b:icon name="user" />
+                        </f:facet>
+                    </b:inputText> 
+                    <b:message for="email" style="color:green" />
+                    
+                    <b:inputSecret  value="#{userBean.user.password}" id="password" required="true" validatorMessage="Password must match confirm password"  requiredMessage="Password is required" placeholder="Password:" >
+                        <f:facet name="prepend">
+                            <b:icon name="user" />
+                        </f:facet>
+                    </b:inputSecret > 
+                    <b:message for="password" style="color:green" />
+
+             
+                    <b:inputSecret  id="confirmpassword" value="#{userBean.confirmPassword}" required="true" validatorMessage="Password must match confirm password"  requiredMessage="Password is required" placeholder="ConfirmPassword:" >
+                       
+                    </b:inputSecret > 
+                    <b:message for="confirmpassword" style="color:green" />
+
+                    </h:panelGrid>
+                    
+                     <p:spacer height="20px" width="10px">  </p:spacer>
+
+                    <p:commandButton action="#{userBean.addUser()}" value="Register" ajax="false"/>
+                    <p:commandButton type="reset" value="Reset"  /> 
+                  
+                 </h:form >
+        </center>
+
+      </b:container>    
+    </ui:define>
+</ui:composition>
+</html>

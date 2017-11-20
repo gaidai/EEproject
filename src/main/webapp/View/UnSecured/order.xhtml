@@ -1,0 +1,111 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:c="http://xmlns.jcp.org/jsp/jstl/core"
+        xmlns:p="http://primefaces.org/ui"
+        xmlns:b="http://bootsfaces.net/ui"
+        xmlns:f="http://xmlns.jcp.org/jsf/core"
+        xmlns:pt="http://xmlns.jcp.org/jsf/passthrough" 
+        xmlns:jsf="http://xmlns.jcp.org/jsf">
+<ui:composition template="/resources/composition.xhtml">
+    <ui:define name="title"> Confirmation </ui:define>
+    <ui:define name="content">
+    <h:outputStylesheet library="css" name="steps.css"  />
+    <p:spacer height="40px" width="100%" />    
+    <b:container  id="main-container" style="margin-right: 20%; margin-left: 20%; background-color: #f4feff ; border-radius: 20px ; min-height: 800px"> 
+        <p:spacer height="15px" width="100%" />
+        <center>
+            <ul class="steps" >
+                <li id="step1"  clas s="step active">Personal</li>
+                <li id="step2" class="step ">Shipping</li>
+                <li id="step3" class="step ">Payment</li>
+                <li id="step4" class="step ">Confirmation</li>
+            </ul>
+            <br/>
+            <p:fieldset legend="Items:" toggleable="true" toggleSpeed="500">
+                <ui:repeat value="#{cart.mycart}" var="p"  >
+                    <b:row>   
+                        <b:column col-lg="3">
+                            <a href="#{p.category}/#{p.category}.xhtml?id=#{p.id}" target="_blank">
+                                <h:outputText style="display:block; text-align:left ; margin-left: 20px; color: darkblue ; font-size:18px " value="#{p.brand } #{p.model } (#{p.color })" />
+                           </a>
+                        </b:column> 
+                        <b:column offset-lg="5" col-lg="3">
+                            <a href="#{p.category}/#{p.category}.xhtml?id=#{p.id}" target="_blank">
+                                <h:outputText  value="#{p.price } UAH" style="color: red ; font-size:18px ; font-family: cursive" />
+                            </a>
+                        </b:column>   
+                    </b:row>
+                </ui:repeat>
+                <hr/>
+                <h2 style="color: red ; font-family: cursive">Total: #{cart.total} UAH</h2>
+            </p:fieldset>
+            <hr/>
+            <form jsf:id="form1">
+                <div style="height:450px; width: 90% ">
+                    <div id="block1" style="height:400px; width: 100% ">
+                        <h3>Receiver name </h3>
+                        <input type="text" placeholder="Firstname" required="required" jsf:id="firstname"  jsf:value="#{cart.neworder.firstname}"/>
+                        <input type="text" placeholder="Lastname" required="required" jsf:id="lastname"  jsf:value="#{cart.neworder.lastname}"/>    
+                        <input type="text" placeholder="Phone" required="required" jsf:id="phone" jsf:value="#{cart.neworder.phone}"/> 
+                    </div>
+                    <div id="block2" style="display: none">
+                        <h3> Shipping</h3>
+                        <div >
+-->                            <f:metadata>
+                                <f:viewParam name="a-radio"  value="#{cart.neworder.delivery}"/>
+                            </f:metadata>
+
+                            <label for="form1:delivery-1" id="l11">
+                              <input type="radio" jsf:id="delivery-1" checked="checked" pt:name="a-radio" value="NP"/>
+                              <span>NP</span>
+                            </label> <br/>
+
+                            <label for="form1:delivery-2" id="l22">
+                              <input type="radio" jsf:id="delivery-2" pt:name="a-radio" value="MistExpress"/>
+                              <span>MistExpress</span>
+                            </label > <br/>
+                            
+                            <label for="form1:delivery-3" id="l33">
+                                <input type="radio" jsf:id="delivery-3" pt:name="a-radio" value="UkrPost"/>
+                              <span>UkrPost</span>
+                            </label>
+                        </div>
+                        <br/>
+                        <input type="text" placeholder="City" required="required" maxlength="45" jsf:id="city" jsf:value="#{cart.neworder.city}"/>   
+                        <br/>
+                        <input type="text" placeholder="NP" required="required" maxlength="45" jsf:id="address" jsf:value="#{cart.neworder.adress}"/>   <!--
+-->                    </div>
+                    <div id="block3" style="display: none">                        
+                        <h3>Payment method </h3>
+                        <select jsf:id="payment" required="required" size="0" jsf:value="#{cart.neworder.payment_method}"  style="width:125px">  
+                            <f:selectItem itemValue="" itemLabel=""/>
+                            <f:selectItem itemValue="Cash money" itemLabel="Cash money"/>
+                            <f:selectItem itemValue="MasterCard/VISA" itemLabel="MasterCard/VISA"/>
+                            <f:selectItem itemValue="PayPal" itemLabel="PayPal"/>
+                        </select >                       
+                    </div>
+                    <div id="block4" style="display: none;">
+                        <h3> Confirmation</h3>
+                        <button jsf:action="#{cart.buyAll()}" class="button-three" >Create order</button>
+                    </div>
+                </div>
+            </form>
+        </center>   
+        <br/>
+        <b:row>
+            <b:column col-lg="6">
+                <center><button  class="gradbtnback"  id = "back-btn" style="display: none" onclick="backstep()"  >Back</button> </center>
+            </b:column>
+            <b:column col-lg="6">
+                <center><button class="gradbtnnext" id = "next-btn"  onclick="nextstep()"  >Next</button></center>
+            </b:column>
+        </b:row>
+        <p:spacer height="20"/>   
+        </b:container>
+        <p:spacer height="20"/>         
+    </ui:define>
+</ui:composition>
+</html>

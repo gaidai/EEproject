@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+        xmlns:p="http://primefaces.org/ui"
+        xmlns:b="http://bootsfaces.net/ui"
+        xmlns:f="http://xmlns.jcp.org/jsf/core">
+<ui:composition template="/resources/composition.xhtml">
+    <ui:define name="title">Hot Sale</ui:define>
+    <ui:define name="content" >
+    <f:metadata>
+        <f:viewAction action="#{productBean.listTop('top')}" />
+    </f:metadata> 
+    <p:spacer height="40px"></p:spacer>    
+        <b:container  fluid="true" style="min-height: 70vh" >
+            <b:column  col-lg="2" >
+                <a style="position: fixed ; top: 10vh; left: 2%;  " class="center" target="_blank" href="#{request.contextPath}/View/UnSecured/support/mistake.xhtml" >
+                    <b:iconAwesome style="color: #863eca" name="fa-question-circle-o" size="lg" tooltip="Found mistake?" tooltip-position="right"  /> 
+                </a>  
+            </b:column>
+            <b:column  col-lg="8"  >
+                <h:form id="form">
+                    <p:dataGrid lazy="true"  var="p" value="#{productBean.list}" transient="false" columns="4" layout="grid"
+                        rows="12" paginator="true" id="sale"
+                        paginatorTemplate="{CurrentPageReport}  {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
+                        rowsPerPageTemplate="12,20,36">
+                        <h:link outcome="items/product.xhtml">
+                            <f:param  name="id" value="#{p.id}"/>
+                            <f:param  name="category" value="#{p.category}"/>
+                            <p:panel header="#{p.brand} #{p.model}" style="text-align:center" >
+                            <h:panelGrid columns="1" style="width:100%">
+                                <p:graphicImage value="/resources/products/#{p.category}/#{p.id}/1.png" height="150"/> 
+                                <p:graphicImage value="/resources/products/#{p.category}/#{p.id}/1.jpg" height="150"/> 
+                                <hr/>
+                                <h:outputText value="#{p.price} UAH" style="color: red; font-weight: bold"/>                                
+                            </h:panelGrid>
+                            </p:panel>  
+                        </h:link>
+                    </p:dataGrid>                    
+                </h:form>
+            </b:column>
+        </b:container>
+       
+    </ui:define>
+</ui:composition>
+</html>
