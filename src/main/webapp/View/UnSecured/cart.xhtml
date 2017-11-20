@@ -69,15 +69,15 @@
                 <hr/>
             </p:dataScroller>
             <p:spacer height="20"/>
-            <b:button  href="order.xhtml" value="Buy All" look="info" style="margin-top: 15px"  rendered="#{cart.totalPrice() gt 0}"/>
-           
-            <br/>
-            <div>
-                <p:clock   pattern="HH:mm:ss dd.MM.yyyy"  />
-            </div>
-                
-            <br/>
-                
+            <b:row style="margin-top: 15px">
+                <b:column class="center" col-lg="4" >
+                    <b:button  href="order.xhtml" value="Buy All" look="info"   rendered="#{cart.totalPrice() gt 0}"/>
+                </b:column>
+                <b:column class="center" offset-lg="4" col-lg="4" >
+                    <p:clock   pattern="HH:mm:ss dd.MM.yyyy"  />
+                </b:column>
+            </b:row>
+            <br/>                
     </b:container>
     <p:spacer height="20"/> 
    

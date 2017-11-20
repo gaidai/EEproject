@@ -15,49 +15,68 @@
     </f:metadata>    
     <p:spacer height="40px"></p:spacer>
         <b:container style="min-height: 70vh">
-            <h:form>
-                <b:column  col-lg="5">
-                    <h:panelGrid columns="1" style="margin-bottom: 10px">
-                        <h:outputText id="displayRange" class="center" value="Between #{tabletService.min} and #{tabletService.max}" />
-                        <p:slider for="min,max" maxValue="35000" step="100" minValue="0" display="displayRange" style="width: 50vh" range="true"
-                                  displayTemplate="{min}&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;{max}" />          
-                    </h:panelGrid>
-                    <h:inputHidden id="min" value="#{tabletService.min}" />
-                    <h:inputHidden id="max" value="#{tabletService.max}" />
-                </b:column>
-                <b:column  col-lg="2" style="margin: 10px" >
-                    <b:commandButton value="Submit" id="slideSubmit" icon="stats" tooltip="Submit new price range!" tooltip-delay="1800" tooltipPosition="right"
-                                     look="info" style=" border-radius: 10px" actionListener="#{tabletService.onSlideEnd()}" update="slideSubmit, form"/>
-                </b:column>
-            </h:form>
-            <b:column  span="2" col-lg="10"  >
-<!--                <b:button href="list.xhtml?brand='Canon'" icon=" glyphicon glyphicon-chevron-right" look="info"  size="md" value="Canon"/>
-                <b:button href="list.xhtml?brand='Nikon'" icon=" glyphicon glyphicon-chevron-right" look="info"  size="md" value="Nikon"/>
-                <b:button href="list.xhtml?brand='Konica'" icon=" glyphicon glyphicon-chevron-right" look="info"  size="md" value="Konica"/>-->
-                <h:form id="form">
-                    <p:dataGrid lazy="true" var="p" value="#{tabletService.list}" transient="false" columns="3" layout="grid"
-                        rows="12" paginator="true" id="tablets"
-                        paginatorTemplate="{CurrentPageReport}  {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
-                        rowsPerPageTemplate="12,18,36">
-
-                        <f:facet name="header">
-                            All Tablets
-                        </f:facet>
-                        <h:link outcome="product.xhtml">
-                            <f:param  name="id" value="#{p.product.id}"/>
-                            <f:param  name="category" value="#{p.product.category}"/>
-                            <p:panel header="#{p.product.brand} #{p.product.model}" style="text-align:center" >
-                            <h:panelGrid columns="1" style="width:100%">
-                                <p:graphicImage value="/resources/products/#{p.product.category}/#{p.product.id}/1.png" height="150"/> 
-                                <p:graphicImage value="/resources/products/#{p.product.category}/#{p.product.id}/1.jpg" height="150"/> 
-                                <hr/>
-                                <h:outputText value="#{p.product.price} UAH" style="color: red; font-weight: bold"/>                                
-                            </h:panelGrid>
-                           </p:panel>
-                        </h:link>
-                    </p:dataGrid>                    
+            <b:row >                
+                <h:form>
+                    <b:column offset-lg="2" col-lg="5">
+                        <h:panelGrid columns="1" style="margin-bottom: 10px">
+                            <h:outputText id="displayRange" class="center" value="Between #{tabletService.min} and #{tabletService.max}" />
+                            <p:slider for="min,max" maxValue="35000" step="100" minValue="0" display="displayRange" style="width: 50vh" range="true"
+                                      displayTemplate="{min}&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;{max}" />          
+                        </h:panelGrid>
+                        <h:inputHidden id="min" value="#{tabletService.min}" />
+                        <h:inputHidden id="max" value="#{tabletService.max}" />
+                    </b:column>
+                    <b:column  col-lg="2" style="margin: 10px" >
+                        <b:commandButton value="Submit" id="slideSubmit" icon="stats" tooltip="Submit new price range!" tooltip-delay="1800" tooltipPosition="right"
+                                         look="info" style=" border-radius: 10px" actionListener="#{tabletService.onSlideEnd()}" update="slideSubmit, form"/>
+                    </b:column>
                 </h:form>
-            </b:column>
+            </b:row>
+            <b:row>
+                <b:column col-lg="2" style=" background-color: white; min-height: 40vh; border-radius: 5px" >
+                    <div style="margin-top: 15px;margin-bottom: 15px ">
+                        <h:form>
+                            <p:repeat var="b" value="#{cameraService.brands}" >
+                                <b:row style="margin-top: 5px;margin-bottom: 5px ">
+                                    <h:outputText style="margin-left: 20px" value="#{b.name}" />
+                                    <p:selectBooleanCheckbox style="margin-right: 30px ; float:right; " value="#{b.active}" disabled="#{not b.enabled}">
+                                        <p:ajax  listener="#{cameraService.onSlideEnd()}" update="form" />
+                                    </p:selectBooleanCheckbox>
+                                </b:row>
+                            </p:repeat>
+                        </h:form>
+                    </div>
+                </b:column> 
+             
+                <b:column  col-lg="10"  >
+    <!--                <b:button href="list.xhtml?brand='Canon'" icon=" glyphicon glyphicon-chevron-right" look="info"  size="md" value="Canon"/>
+                    <b:button href="list.xhtml?brand='Nikon'" icon=" glyphicon glyphicon-chevron-right" look="info"  size="md" value="Nikon"/>
+                    <b:button href="list.xhtml?brand='Konica'" icon=" glyphicon glyphicon-chevron-right" look="info"  size="md" value="Konica"/>-->
+                    <h:form id="form">
+                        <p:dataGrid lazy="true" var="p" value="#{tabletService.list}" transient="false" columns="3" layout="grid"
+                            rows="12" paginator="true" id="tablets"
+                            paginatorTemplate="{CurrentPageReport}  {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
+                            rowsPerPageTemplate="12,18,36">
+
+                            <f:facet name="header">
+                                All Tablets
+                            </f:facet>
+                            <h:link outcome="product.xhtml">
+                                <f:param  name="id" value="#{p.product.id}"/>
+                                <f:param  name="category" value="#{p.product.category}"/>
+                                <p:panel header="#{p.product.brand} #{p.product.model}" style="text-align:center" >
+                                <h:panelGrid columns="1" style="width:100%">
+                                    <p:graphicImage value="/resources/products/#{p.product.category}/#{p.product.id}/1.png" height="150"/> 
+                                    <p:graphicImage value="/resources/products/#{p.product.category}/#{p.product.id}/1.jpg" height="150"/> 
+                                    <hr/>
+                                    <h:outputText value="#{p.product.price} UAH" style="color: red; font-weight: bold"/>                                
+                                </h:panelGrid>
+                               </p:panel>
+                            </h:link>
+                        </p:dataGrid>                    
+                    </h:form>
+                </b:column>
+            </b:row>
         </b:container>
     </ui:define>
 </ui:composition>
