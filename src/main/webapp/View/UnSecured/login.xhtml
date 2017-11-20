@@ -1,0 +1,68 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:c="http://xmlns.jcp.org/jsp/jstl/core"
+      xmlns:b="http://bootsfaces.net/ui"
+      xmlns:p="http://primefaces.org/ui">
+<h:head>
+        <title>Login</title>
+         <style type="text/css">
+            .form-signin {
+                margin: 0 auto;
+                max-width: 320px;
+                padding: 50px;
+            } 
+        </style>
+ </h:head>
+    <h:body style="padding-top: 30px; min-height: 100vh" class="grad-background">
+    <ui:include src="/resources/navbar.xhtml" />
+    <p:spacer height="35px" width="100%"/>
+    <b:button href="#{request.contextPath}/View/UnSecured/register.xhtml" id="registerlink" value="Register" look="primary" icon="chevron-right" size="lg" iconAlign="right"></b:button>
+    <p:tooltip  for="registerlink" value="click to register new account !" hideEffect="explode" position="right"/>
+    
+    <c:if test="${'fail' eq param.auth}">
+        <div style="color:red">
+            Login Failed!!!<br/>
+                Reason : Bad Credentials!Please Try Again.
+        </div>
+    </c:if>
+    
+        <h:form styleClass="form-signin" prependId="false" id="form">
+          
+            <b:row> 
+                <b:icon name="user" /> &nbsp;
+                <p:inputText value="#{loginController.username}" id="username" required="true" size="20" placeholder="Login" requiredMessage="UserName is required"/>
+                <p:tooltip  for="username" value="Enter your Login !" position="right"/>
+            </b:row>
+            <b:row> 
+                <b:iconAwesome name="key" /> &nbsp;
+                <p:password value="#{loginController.password}" id="password" required="true" requiredMessage="Password is required" placeholder="Password"/>
+                <p:tooltip  for="password" value="Enter your password !" position="right"/>
+            </b:row>
+            <b:row> 
+                <b:selectBooleanCheckbox id="remember-me" value="true" caption="remember me"/>
+                <p class="wrapper-x">
+                    <h:commandLink action="#{loginController.login()}"   class="btn-x">Login <b:iconAwesome name="fa-unlock "/></h:commandLink >
+                </p>
+            </b:row> 
+        </h:form>
+    <br/><br/><br/><br/>
+           
+    
+    <h:outputStylesheet library="css" name="style.css" />
+    
+    <b:button href="http://sgaidai.com" look="info" id="gaidai"  value="sgaidai.com" icon="bookmark" style="position: absolute; bottom: 2vh" />
+    <p:tooltip  for="gaidai" value="Click to look created with Bootstrap test website !" trackMouse="true" position="right"/>
+  
+    
+    <h:form>
+        <p:stack icon="/resources/images/png/Basket.png" expanded="true">
+            <p:menuitem value="Resume"  icon="/resources/images/png/Document.png" url="http://sgaidai.com/junior.html"/>
+            <p:menuitem value="Music" icon="/resources/images/png/Music.png" url="http://sgaidai.com/multimedia.html"/>
+            <p:menuitem value="Contact" icon="/resources/images/png/Contact.png" url="http://sgaidai.com/contacts.html"/>
+        </p:stack>
+    </h:form>
+</h:body>
+</html>

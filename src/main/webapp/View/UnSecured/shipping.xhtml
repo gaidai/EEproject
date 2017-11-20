@@ -1,0 +1,186 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+        xmlns:p="http://primefaces.org/ui"
+        xmlns:b="http://bootsfaces.net/ui"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
+<ui:composition template="/resources/composition.xhtml">
+    <ui:define name="title">Shipping</ui:define>
+    <ui:define name="content">
+    <p:spacer height="40px" width="100%"/>
+    <script src='http://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js'></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/meyer-reset/2.0/reset.min.css"></link>    
+   
+    <h:outputScript library="js" name="main.js" />   
+   
+    <b:container id="main-container" >
+        <br/>
+        <p class="center" style="color: #3CA2A2; font-size: 25px; font-family: Geneva, Arial, Helvetica, sans-serif; font-weight: 600">Shipping and Delivery Questions</p>
+        <div id="faq-0" class="faq listing">            
+            <ol>
+              <li><a href="#shipping-order-charges">What does EEproject charge for shipping an order?</a></li>
+              <li><a href="#receive-order-time">How long will it be before I receive my order?</a></li>
+              <li><a href="#ship-outside-us">Do you ship to addresses outside the United States?</a></li>
+              <li><a href="#po-box-military-addresses">Do you ship to PO boxes or Military APO/FPO addresses?</a></li>
+              <li><a href="#expedite-shipping">Can I expedite my shipping?</a></li>
+              <li><a href="#contact-us">How can I contact EEproject for additional assistance?</a></li>
+              <li><a href="#return-policy">What is EEproject&#039;s Return Policy?</a></li>
+              <li><a href="#guaranteed-shipping">Are the shipping time-frames listed on your website guaranteed?</a></li>
+              </ol>
+
+        </div>
+        <div class="faq responses">
+            <h3></h3>
+            <ol>
+              <li id="shipping-order-charges">
+                <dl>
+                  <dt>
+                    <abbr title="Question">Q:</abbr>
+                    <h4>What does EEproject charge for shipping an order?</h4>
+                  </dt>
+                  <dd>
+                    <abbr title="Answer">A:</abbr>
+                    <p><p>Order two or more items at any price, or one item totaling $50 &#43; for FREE Standard Shipping* (4-5 Business Days)! If you do not meet those requirements, Standard Shipping (4-5 Business Days) is $3.95.</p>
+
+          <p>In a hurry? We also offer Expedited Shipping!</p>
+
+          <p>2-Business Day Shipping** $9.99</p>
+
+          <p>1-Business Day Shipping $14.99</p>
+
+          <p>*Free standard shipping (4-5 Business Days) is automatically applied to orders with two or more items or one item totaling $50 or more before tax. Free shipping is applied before coupon and before gift card is used (when applicable).</p>
+
+          <p>** Shipping speeds are based on carrier transit times and do not include the time it takes to handle and pack a shipment. All expected delivery dates are provided at the checkout page. However, due to payment type, and that company&#39;s approval procedures, there could be a delay in shipping your order if the billing information is inaccurate, or if your billing and shipping addresses are different. Expedited shipping is not available for shipments to Hawaii, Alaska, U.S. Territories, PO Boxes, or APO/FPO addresses. Please allow additional time for orders shipped to these addresses. Expedited shipping is also not available for shipments including items containing hazardous material by the Department of Transportation (fragrances, nail polish, etc) and some watches due to the batteries they contain.</p>
+          </p>
+                  </dd>
+                  <a class="return" title="Return to Top of Page" href="#">Return to Top</a>
+                </dl>
+              </li>
+              <li id="receive-order-time">
+                <dl>
+                  <dt>
+                    <abbr title="Question">Q:</abbr>
+                    <h4>How long will it be before I receive my order?</h4>
+                  </dt>
+                  <dd>
+                    <abbr title="Answer">A:</abbr>
+                    <p><p>For standard shipping, you should receive your order within 4-5 business days.</p>
+
+          <p>Please allow additional time for shipments to PO Boxes and military addresses (APO, FPO).</p>
+          </p>
+                  </dd>
+                  <a class="return" title="Return to Top of Page" href="#">Return to Top</a>
+                </dl>
+              </li>
+              <li id="ship-outside-us">
+                <dl>
+                  <dt>
+                    <abbr title="Question">Q:</abbr>
+                    <h4>Do you ship to addresses outside the United States?</h4>
+                  </dt>
+                  <dd>
+                    <abbr title="Answer">A:</abbr>
+                    <p><p>At this time orders may only be shipped to US States and Territories. Please keep in mind that using third-party shipping services is at your own risk.</p>
+          </p>
+                  </dd>
+                  <a class="return" title="Return to Top of Page" href="#">Return to Top</a>
+                </dl>
+              </li>
+              <li id="po-box-military-addresses">
+                <dl>
+                  <dt>
+                    <abbr title="Question">Q:</abbr>
+                    <h4>Do you ship to PO boxes or Military APO/FPO addresses?</h4>
+                  </dt>
+                  <dd>
+                    <abbr title="Answer">A:</abbr>
+                    <p><p>Shipments can be sent to both PO Boxes and Military APO/FPO addresses. Please allow additional time for orders shipped to these addresses.*  Expedited shipping is not available to these address types. *Please Note: At this time we cannot ship items considered a hazardous material by the Department of Transportation due to the alcohol content (fragrances, nail polish, etc.) to Alaska, Hawaii, PO Boxes, military addresses (APO, FPO), or US territories (i.e. Guam, Puerto Rico).</p>
+          </p>
+                  </dd>
+                  <a class="return" title="Return to Top of Page" href="#">Return to Top</a>
+                </dl>
+              </li>
+              <li id="expedite-shipping">
+                <dl>
+                  <dt>
+                    <abbr title="Question">Q:</abbr>
+                    <h4>Can I expedite my shipping?</h4>
+                  </dt>
+                  <dd>
+                    <abbr title="Answer">A:</abbr>
+                    <p><p>The following shipping options are available when you check out.</p>
+
+          <p>Order two or more items at any price, or one item totaling $50 &#43; for FREE Standard Shipping* (4-5 Business Days)! If you do not meet those requirements, Standard Shipping (4-5 Business Days) is $3.95.</p>
+
+          <p>In a hurry? We also offer Expedited Shipping!</p>
+
+          <p>2-Business Day Shipping** $9.99</p>
+
+          <p>1-Business Day Shipping $14.99</p>
+
+          <p>*Free shipping is automatically applied to orders with two or more items or one item totaling $50 or more before tax. Free shipping is applied before coupon and before gift card is used (when applicable).</p>
+
+          <p>**Shipping speeds are based on carrier transit times and do not include the time it takes to handle and pack a shipment. 
+          All expected delivery dates are provided at the checkout page. However, due to payment type, and that company&#39;s approval procedures, there could be a delay in shipping your order if the billing information is inaccurate, or if your billing and shipping addresses are different. Expedited shipping is not available for shipments to Hawaii, Alaska, U.S. Territories, PO Boxes, or APO/FPO addresses. Please allow additional time for orders shipped to these addresses. Expedited shipping is also not available for shipments including items containing hazardous material by the Department of Transportation (fragrances, nail polish, etc) and some watches as well due to the batteries they contain.</p>
+          </p>
+                  </dd>
+                  <a class="return" title="Return to Top of Page" href="#">Return to Top</a>
+                </dl>
+              </li>
+              <li id="contact-us">
+                <dl>
+                  <dt>
+                    <abbr title="Question">Q:</abbr>
+                    <h4>How can I contact EEproject for additional assistance?</h4>
+                  </dt>
+                  <dd>
+                    <abbr title="Answer">A:</abbr>
+                    <p><p>If you need help with your order please feel free to <a target="_blank" href="http://sgaidai.com/contacts.html">email us</a> or call our Customer Loyalty Team at 0976147973</p>
+          </p>
+                  </dd>
+                  <a class="return" title="Return to Top of Page" href="#">Return to Top</a>
+                </dl>
+              </li>
+              <li id="return-policy">
+                <dl>
+                  <dt>
+                    <abbr title="Question">Q:</abbr>
+                    <h4>What is EEproject&#039;s Return Policy?</h4>
+                  </dt>
+                  <dd>
+                    <abbr title="Answer">A:</abbr>
+                    <p><p>We&#39;re glad you asked! See our <a target="_blank" href="http://sgaidai.com/contacts.html">Returns Section</a> to see the entire policy.</p>
+          </p>
+                  </dd>
+                  <a class="return" title="Return to Top of Page" href="#">Return to Top</a>
+                </dl>
+              </li>
+              <li id="guaranteed-shipping">
+                <dl>
+                  <dt>
+                    <abbr title="Question">Q:</abbr>
+                    <h4>Are the shipping time-frames listed on your website guaranteed?</h4>
+                  </dt>
+                  <dd>
+                    <abbr title="Answer">A:</abbr>
+                    <p><p>Yes. EEproject strives to fulfill all of the orders that we process within the quoted time-frames EEproject gladly stands behind the quoted delivery time-frames associated with each of the shipping types that we offer.</p>
+
+                    <p><em>EEproject accepts no responsibility for packages that do not arrive within a stated time-frame due to extreme weather conditions or a force majeure</em></p>
+                    </p>
+                  </dd>
+                  <a class="return" title="Return to Top of Page" href="#">Return to Top</a>
+                </dl>
+              </li>
+              </ol>
+          </div>        
+                
+    </b:container> 
+   
+        
+
+   </ui:define>
+</ui:composition>
+</html>

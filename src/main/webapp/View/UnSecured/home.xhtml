@@ -1,0 +1,196 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://xmlns.jcp.org/jsf/html"
+	xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+        xmlns:p="http://primefaces.org/ui"
+        xmlns:b="http://bootsfaces.net/ui"
+        xmlns:f="http://xmlns.jcp.org/jsf/core">
+<ui:composition template="/resources/composition.xhtml">     
+    <ui:define name="title">Home page</ui:define>
+<ui:define name="content">
+    <f:metadata>
+        <f:viewAction action="#{productBean.listTop('top')}" />        
+    </f:metadata>  
+    <p:spacer height="40px" width="100%"></p:spacer>
+ 
+    <b:column col-lg="2" style=" margin-left: 7%" >
+        <p:megaMenu orientation="vertical" class="megamenu" style=" line-height: 22px"   >
+            <p:submenu label="Smartphones"   icon="fa fa-mobile fa-sm" >
+                <p:column>
+                    <p:submenu label="By brand:" >
+                        <p:menuitem value="Sumsung" url="#" />
+                        <p:menuitem value="Apple" url="#" />
+                        <p:menuitem value="Sony" url="#" />
+                        <p:menuitem value="HTC" url="#" />
+                        <p:menuitem value="Huawei" url="#" />
+                        <p:menuitem value="All phones" url="items/phones.xhtml" ></p:menuitem>
+                    </p:submenu>
+                    <p:submenu label="Accesories:">
+                        <p:menuitem value="MicroSD cards" url="#" />
+                        <p:menuitem value="Headphones" url="#" />
+                        <p:menuitem value="Cases" url="#" />
+                    </p:submenu>               
+                </p:column>
+
+                <p:column>
+                    <p:submenu label="By OS:">
+                        <p:menuitem value="Android" url="#" />
+                        <p:menuitem value="iOS" url="#" />
+                    </p:submenu>
+                </p:column>
+                <p:column>
+                    <p:graphicImage value="/resources/products/phones/phones2.png" width="250"/>
+                </p:column>
+            </p:submenu>
+
+            <p:submenu label="Cameras" icon="fa fa-camera fa-sm">
+
+                <p:column>
+                   <p:submenu label="By brand:" >
+                       <p:menuitem value="Canon" url="camera/list.xhtml?brand='Canon'" />
+                        <p:menuitem value="Nikon" url="camera/list.xhtml?brand='Nikon'" />
+                        <p:menuitem value="Konica" url="camera/list.xhtml?brand='Konica'" />
+                        <p:menuitem value="All Cameras" url="items/cameras.xhtml" disableClientWindow="false" ></p:menuitem>
+                        <p:menuitem value="All Cameras" url="items/cameras.xhtml" disableClientWindow="true" ></p:menuitem>
+                    </p:submenu>                    
+                </p:column>
+
+                <p:column>
+                    <p:submenu label="Accesories:">
+                        <p:menuitem value="Memory SD cards" url="#" />
+                        <p:menuitem value="Headphones" url="#" />
+                        <p:menuitem value="Cases" url="#" />
+                    </p:submenu> 
+                </p:column>
+                
+                <p:column>
+                    <p:graphicImage value="/resources/products/cameras/cameras1.png" width="250"/>
+                </p:column>
+            </p:submenu>
+
+            <p:submenu label="Tablets" icon="fa fa-tablet fa-sm">
+                <p:column>
+                    <p:submenu label="Entertainment.1">
+                        <p:menuitem value="Entertainment.1.2" url="#" />
+                    </p:submenu>
+                    <p:submenu label="Entertainment.2">
+                      
+                        <p:menuitem value="Entertainment.2.3" url="#" />
+                    </p:submenu>
+                </p:column>
+
+                <p:column>
+                    <p:submenu label="Entertainment.4" icon="ui-icon-help">
+                        <p:menuitem value="Entertainment.4.2" url="#" />
+                    </p:submenu>
+                    <p:submenu label="Entertainment.5">
+                        <p:menuitem value="Entertainment.5.1" url="#" />
+                        <p:menuitem value="All Tablets" url="items/tablets.xhtml" ></p:menuitem>
+                    </p:submenu>
+                </p:column>
+            </p:submenu>
+
+            <p:submenu label=" Headphones" icon="fa fa-headphones fa-sm">
+                <p:column>
+                    <p:submenu label="Tech.1">
+                        <p:menuitem value="Tech.1.1" url="#" />
+                        <p:menuitem value="Tech.1.2" url="#" />
+                    </p:submenu>
+                    <p:submenu label="Tech.2">
+                        <p:menuitem value="Tech.2.1" url="#" />                        
+                    </p:submenu>
+                </p:column>
+
+                <p:column>
+                    <p:submenu label="Tech.4">
+                     <p:menuitem value="All Headphones" url="items/headphones.xhtml" ></p:menuitem>
+                    </p:submenu>
+                </p:column>
+            </p:submenu>
+            <p:submenu label="Desabled" icon="fa fa-desktop fa-sm"  >
+                <p:column>
+                    <p:submenu label="Tech.1">
+                        <p:menuitem value="Tech.1.1" url="#" />
+                        <p:menuitem value="Tech.1.2" url="#" />
+                    </p:submenu>
+                    <p:submenu label="Tech.2">
+                        <p:menuitem value="Tech.2.1" url="#" />                        
+                    </p:submenu>
+                </p:column>
+
+                <p:column>
+                    <p:submenu label="Tech.4">
+                        <p:menuitem value="Tech.4.1" url="#" />
+                    </p:submenu>
+                </p:column>
+            </p:submenu>  
+        </p:megaMenu>
+    </b:column>
+   
+    <b:container style=" margin-right: 20%;  background-color: #f4feff ; border-radius: 20px ; min-height: 900px"  class="center" >  
+        <p:spacer height="18px" width="300px"></p:spacer>
+        <center><b:carousel  id="tiovivo"  style="height: 400px; width: 750px" interval="2500">                
+                    <b:carouselItem >
+                        <a href="items/tablets.xhtml">  <b:image value="/resources/home/tablets.jpg"/></a>                 
+                    </b:carouselItem>
+                    <b:carouselItem >
+                        <a href="items/phones.xhtml">  <b:image value="/resources/home/phones.jpg"/></a>                 
+                    </b:carouselItem>
+                    <b:carouselItem >
+                        <a href="items/cameras.xhtml"><b:image value="/resources/home/cameras.png"/></a>             
+                    </b:carouselItem>   
+                    <b:carouselItem >
+                        <a href="items/headphones.xhtml">  <b:image value="/resources/home/headphones.jpg"/></a>                 
+                    </b:carouselItem>
+             
+                </b:carousel>
+        </center>
+        <br/><p:spacer height="30px" width="100%"></p:spacer>
+        
+        <div class="banner">
+            Hot products !
+        </div>
+        <p:spacer height="20px" width="100%"></p:spacer>
+
+        <div class="carousel sale right">
+            <div class="indicator"></div>
+            <div class="wrap">
+                <ul>
+                    <ui:repeat var="p" value="#{productBean.list}" > 
+                        <li>
+                            <h:link outcome="items/product.xhtml">
+                                <f:param  name="id" value="#{p.id}"/>
+                                <f:param  name="category" value="#{p.category}"/>
+                                <div style=" width: 200px; margin:2px 2px 2px 2px ; background: white"  >                                
+                                    <center>                                         
+                                        <h:outputText value="#{p.brand} #{p.model}"  style="color:black; font-size: 20px; margin-bottom: 5px" />
+                                    </center>   <p:spacer height="8px" width="100%"/>         
+                                     <center>
+                                         <div style="height:160px">                                      
+                                            <p:graphicImage value="/resources/products/#{p.category}/#{p.id}/1.png"  style="max-width: 180px; max-height: 160px" /> 
+                                            <p:graphicImage value="/resources/products/#{p.category}/#{p.id}/1.jpg"  style="max-width: 180px; max-height: 160px "/>                                  
+
+                                        </div>     
+                                        <div style="margin-bottom: 10px; margin-top: 6px" > 
+                                            <h:outputText value="#{p.price} UAH" style="color: red; font-weight: bold ; font-size: 20px" />   
+                                        </div>    
+                                    </center>     
+                                </div> 
+                            </h:link>
+                        </li>
+                    </ui:repeat>    
+                </ul>
+            </div>
+        </div> 
+
+    </b:container>             
+   <h:outputStylesheet library="css" name="carousel_sale.css"  />
+   <h:outputScript library="js" name="carousel_sale.js" />
+    <link rel='stylesheet prefetch' href='https://fonts.googleapis.com/css?family=Lato:700'/>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons"/>
+    </ui:define>
+</ui:composition>
+</html>
