@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+        xmlns:p="http://primefaces.org/ui"
+        xmlns:b="http://bootsfaces.net/ui"
+        xmlns:sec="http://www.springframework.org/security/tags"
+        xmlns:f="http://xmlns.jcp.org/jsf/core">
+<ui:composition template="/resources/composition.xhtml">
+    <ui:define name="title">#{tabletService.tablet.product.brand} #{tabletService.tablet.product.model}</ui:define>
+    <ui:define name="content">
+    <p:spacer height="40px" width="100%"></p:spacer>
+    <f:metadata>
+        <f:viewParam name="id" value="#{tabletService.tablet.id}"/>
+        <f:viewAction  action="#{tabletService.getTabletbyid}"/>       
+    </f:metadata>
+    <b:container style="margin-right: 20%; margin-left: 20%; background-color: #f4feff ; border-radius: 20px ; min-height: 800px">        
+        <p:spacer height="30px" width="100%"></p:spacer>
+        <p:breadCrumb >            
+            <p:menuitem   rendered="false" ></p:menuitem>
+            <p:menuitem value="Home" url="/View/UnSecured/home.xhtml" />
+            <p:menuitem value="All tablets" url="all.xhtml" />
+                        
+        </p:breadCrumb>
+            
+            <b:row> <h1 align="center" > #{tabletService.tablet.product.brand} #{tabletService.tablet.product.model} </h1> </b:row> 
+             <p:spacer height="20"/>
+             <b:row>  
+                <b:column   col-lg="7"  >  
+                    <p:imageSwitch effect="shuffle" >
+                        <ui:repeat value="#{tabletService.image()}" var="i" > 
+                            <p:graphicImage value="/resources/products/#{tabletService.tablet.product.category}/#{tabletService.tablet.product.id}/#{i}" height="350"/>
+                        </ui:repeat>
+                    </p:imageSwitch>
+                    <p:spacer height="20"/>     
+                </b:column>
+                 
+                <b:column  col-lg="3">
+                    <p:spacer height="80px" width="200px" ></p:spacer>
+                    <h3 style="color: #A40F0F"> Price: #{tabletService.tablet.product.price} UAH </h3> <br/>
+                    <h:form>
+                        <b:commandButton id="add"  update="navcart,growl,add" action="#{cart.AddtoCart()}" value="Add to Cart" look="info"  icon-awesome="fa-shopping-cart" icon-size="lg" size="lg" iconAlign="right">
+                            <f:param value="#{tabletService.tablet.product.id}" name="product_id" />
+                        </b:commandButton>
+                        <b:growl for="add" id="growl" globalOnly="true" placementFrom="bottom" show-detail="true" 
+                                 show-summary="false" allowDismiss="true" delay="4000" escape="true"  />
+                    </h:form>
+                    <p:spacer height="10pv" />
+                    <sec:authorize access="isAuthenticated()">
+                        <h:form>
+                            <b:commandButton id="add-wish" tooltip="Add to wish list!" tooltip-position="right"  update="growlwish,add-wish" action="#{supportService.addToWishList()}"
+                                             look="danger"  icon-awesome="fa-heart-o " icon-size="md" size="md" iconAlign="right">
+                                <f:param value="#{tabletService.tablet.product.id}" name="wish_product_id" />
+                            </b:commandButton>
+                            <b:growl for="add" id="growlwish" globalOnly="true" placementFrom="bottom" show-detail="true" 
+                                 show-summary="false" allowDismiss="true" delay="4000" escape="true"  />
+                        </h:form>
+                    </sec:authorize>
+                </b:column>
+            </b:row> 
+             <p:spacer height="60px" />
+            <h:form>
+            <b:tabView activeIndex="0">
+                <b:tab title="Descriptions" >
+                    <ui:include src="/resources/products/#{tabletService.tablet.product.category}/#{tabletService.tablet.product.id}/Description/1.xhtml" />
+                </b:tab>
+                <b:tab title="Another Tab">
+                    <p>This is the second tab.</p>
+                </b:tab>
+                <!-- The next tab shows tabs aren't limited to text. You can put anything in a tab. -->
+                <b:tab title="Image Tab" >
+                      <p:spacer height="20"/>
+
+                </b:tab>
+                <b:tab title="Reviews">
+                    <f:facet name="anchor"><b:iconAwesome name="cog" spin="true" /></f:facet>
+                    <p>This is fancy tab with a spinning image.</p>
+                </b:tab>
+
+            </b:tabView>
+              </h:form>
+        </b:container>
+     <p:spacer height="20"/>   
+    
+   </ui:define>
+</ui:composition>
+</html>

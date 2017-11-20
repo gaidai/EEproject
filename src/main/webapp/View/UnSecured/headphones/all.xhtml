@@ -1,52 +1,36 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html  xmlns="http://www.w3.org/1999/xhtml"
-      xmlns:h="http://xmlns.jcp.org/jsf/html"
-      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
         xmlns:p="http://primefaces.org/ui"
         xmlns:b="http://bootsfaces.net/ui"
         xmlns:f="http://xmlns.jcp.org/jsf/core">
 <ui:composition template="/resources/composition.xhtml">
-    <ui:define name="title">Tablets</ui:define>
+    <ui:define name="title">Headphones</ui:define>
     <ui:define name="content">
     <f:metadata>
-        <f:viewAction action="#{tabletService.listTablets('tablet')}" />
+        <f:viewAction action="#{headphonesService.listHeadphones('headphones')}" />
     </f:metadata>    
     <p:spacer height="40px"></p:spacer>
-        <b:container style="min-height: 70vh">
-            <h:form>
-                <b:column  col-lg="5">
-                    <h:panelGrid columns="1" style="margin-bottom: 10px">
-                        <h:outputText id="displayRange" class="center" value="Between #{tabletService.min} and #{tabletService.max}" />
-                        <p:slider for="min,max" maxValue="35000" step="100" minValue="0" display="displayRange" style="width: 50vh" range="true"
-                                  displayTemplate="{min}&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;{max}" />          
-                    </h:panelGrid>
-                    <h:inputHidden id="min" value="#{tabletService.min}" />
-                    <h:inputHidden id="max" value="#{tabletService.max}" />
-                </b:column>
-                <b:column  col-lg="2" style="margin: 10px" >
-                    <b:commandButton value="Submit" id="slideSubmit" icon="stats" tooltip="Submit new price range!" tooltip-delay="1800" tooltipPosition="right"
-                                     look="info" style=" border-radius: 10px" actionListener="#{tabletService.onSlideEnd()}" update="slideSubmit, form"/>
-                </b:column>
-            </h:form>
+        <b:container>
             <b:column  span="2" col-lg="10"  >
 <!--                <b:button href="list.xhtml?brand='Canon'" icon=" glyphicon glyphicon-chevron-right" look="info"  size="md" value="Canon"/>
                 <b:button href="list.xhtml?brand='Nikon'" icon=" glyphicon glyphicon-chevron-right" look="info"  size="md" value="Nikon"/>
                 <b:button href="list.xhtml?brand='Konica'" icon=" glyphicon glyphicon-chevron-right" look="info"  size="md" value="Konica"/>-->
                 <h:form id="form">
-                    <p:dataGrid lazy="true" var="p" value="#{tabletService.list}" transient="false" columns="3" layout="grid"
+                    <p:dataGrid lazy="true" var="p" value="#{headphonesService.list}" transient="false" columns="3" layout="grid"
                         rows="12" paginator="true" id="tablets"
                         paginatorTemplate="{CurrentPageReport}  {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
                         rowsPerPageTemplate="12,18,36">
 
                         <f:facet name="header">
-                            All Tablets
+                            All Headphones
                         </f:facet>
-                        <h:link outcome="product.xhtml">
-                            <f:param  name="id" value="#{p.product.id}"/>
-                            <f:param  name="category" value="#{p.product.category}"/>
-                            <p:panel header="#{p.product.brand} #{p.product.model}" style="text-align:center" >
+
+                        <a href="headphones.xhtml?id=#{p.product.id}"><p:panel header="#{p.product.brand} #{p.product.model}" style="text-align:center" >
                             <h:panelGrid columns="1" style="width:100%">
                                 <p:graphicImage value="/resources/products/#{p.product.category}/#{p.product.id}/1.png" height="150"/> 
                                 <p:graphicImage value="/resources/products/#{p.product.category}/#{p.product.id}/1.jpg" height="150"/> 
@@ -54,7 +38,8 @@
                                 <h:outputText value="#{p.product.price} UAH" style="color: red; font-weight: bold"/>                                
                             </h:panelGrid>
                            </p:panel>
-                        </h:link>
+                        </a>
+
                     </p:dataGrid>                    
                 </h:form>
             </b:column>

@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+        xmlns:p="http://primefaces.org/ui"
+        xmlns:b="http://bootsfaces.net/ui"
+        xmlns:f="http://xmlns.jcp.org/jsf/core">
+<h:head>
+        <title>Cameras by #{cameraService.camera.brand}</title>
+        <style type="text/css"></style>
+</h:head>   
+<h:body style="padding-top: 30px; padding-bottom: 20px; background-color:  #add;;">
+    <p:spacer height="40px" width="100%"></p:spacer>
+    <ui:include src="/resources/navbar.xhtml" />
+    <f:metadata>
+         <f:viewParam name="brand" value="#{cameraService.camera.brand}"/>
+        <f:viewAction  action="#{cameraService.listCamerasByBrand}"/>      
+    </f:metadata>
+    <b:container style="background: #f4feff; border-radius: 10px; " >
+        <p:spacer height="20px" width="100%"></p:spacer>
+        <p:breadCrumb >               
+            <p:menuitem   rendered="false" ></p:menuitem>
+            <p:menuitem value="Home" url="/View/UnSecured/home.xhtml" />
+            <p:menuitem value="All cameras" url="all.xhtml" />                
+        </p:breadCrumb>
+        <p:spacer height="30px" width="100%"></p:spacer>
+        <b:column   col-lg="12"  >            
+            <h:form id="form">
+                <p:dataGrid var="c" value="#{cameraService.list}"   columns="3" layout="grid"    rows="12" paginator="true" id="cameras"
+                        paginatorTemplate="{CurrentPageReport}  {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
+                        rowsPerPageTemplate="6,12,16">
+
+                        <f:facet name="header">
+                            Digital cameras
+                        </f:facet>
+
+                        <a href="camera.xhtml?id=#{c.id}"><p:panel header="#{c.brand} #{c.model}" style="text-align:center" >
+                            <h:panelGrid columns="1" style="width:100%">
+                                <p:graphicImage value="/resources/products/cameras/#{c.id}/1.png" height="150"/> 
+                                <p:graphicImage value="/resources/products/cameras/#{c.id}/1.jpg" height="150"/> 
+                                <hr/>
+                                <h:outputText value="#{c.price} UAH" style="color: red; font-weight: bold"/>                                
+                            </h:panelGrid>
+                           </p:panel>
+                        </a>
+
+                    </p:dataGrid>                    
+                </h:form>
+        </b:column>
+        <p:spacer height="100px" width="100%"></p:spacer>
+    </b:container>
+</h:body>
+</html>
