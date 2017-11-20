@@ -1,11 +1,16 @@
 package com.sgaidai.jsfbean.controller;
 
 
+import com.sgaidai.secondary.CheckboxParam;
 import com.sgaidai.security.entities.model.product.Camera;
 import com.sgaidai.springdatajpa.dao.CameraDAO;
 import java.io.Serializable;
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.LinkedList;
 import java.util.List;
+import java.util.SortedSet;
+import java.util.TreeSet;
 import javax.faces.bean.ViewScoped;
 import javax.inject.Named;
 import lombok.Getter;
@@ -25,13 +30,26 @@ public class CameraService implements Serializable{
         private Camera camera = new Camera();
         private List <Camera> list = new ArrayList();
         private List <Camera> fulllist = new ArrayList();
-        // Rannge for the price slider
-        private int max = 50000;
+        // Rannge for the price slider      
+        private int max = 30000;
         private int min = 100;
+        private SortedSet <String> brandSet ;
+        private List <CheckboxParam> brands ;
+        
         @Cacheable(value="itemlist", key="#name")
 	public void listCameras(String name) {
-		fulllist = this.cameraDAO.listCameras();
-                list = fulllist;
+            fulllist = this.cameraDAO.listCameras();
+            Collections.sort(fulllist, (Camera lhs, Camera rhs)
+                -> lhs.getProduct().getPrice()- rhs.getProduct().getPrice());
+            list = fulllist;
+            brandSet  = new TreeSet();
+            brands = new LinkedList();
+            fulllist.forEach((Camera h) -> {brandSet.add(h.getProduct().getBrand());
+            });
+            brandSet.forEach((h) -> {
+                CheckboxParam p = new CheckboxParam(h,true,true);
+                brands.add(p); 
+            });       
 	}
         
     
@@ -59,7 +77,11 @@ public class CameraService implements Serializable{
             for(Camera h: fulllist ){
                 price = h.getProduct().getPrice();
                 if(price <= max && price>= min  ){         
-                     list.add(h);
+                    for(CheckboxParam p: brands){
+                        if( p.isActive() && p.isEnabled() && h.getProduct().getBrand().equals(p.getName())  ){
+                            list.add(h);
+                        }
+                    }
                 }
             } 
         }

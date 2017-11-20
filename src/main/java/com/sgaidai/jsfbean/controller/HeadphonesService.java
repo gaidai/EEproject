@@ -46,25 +46,19 @@ public class HeadphonesService implements Serializable {
     @Cacheable(value="itemlist", key="#name")
     public void listHeadphones(String name) {
         fulllist = this.headphonesDAO.listHeadphones();                
-        Collections.sort(fulllist, this.COMPARE_BY_PRICE);
+        Collections.sort(fulllist, (Headphones lhs, Headphones rhs)
+            -> lhs.getProduct().getPrice()- rhs.getProduct().getPrice());
         list = fulllist;
         brandSet  = new TreeSet();
         brands = new LinkedList();
         fulllist.forEach((Headphones h) -> {brandSet.add(h.getProduct().getBrand());
         });
-        max = 30000;
-        min = 100;
-        
         brandSet.forEach((h) -> {
             CheckboxParam p = new CheckboxParam(h,true,true);
             brands.add(p); 
         });       
         System.out.println(brandSet);
     }
-
-    Comparator<Headphones> COMPARE_BY_PRICE = (Headphones lhs, Headphones rhs)
-            -> lhs.getProduct().getPrice()- rhs.getProduct().getPrice();
-
 
     public void getHeadphonesById() {
         headphones = this.headphonesDAO.getHeadphonesById(this.headphones.getId());

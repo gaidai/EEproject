@@ -46,13 +46,13 @@
             <form jsf:id="form1">
                 <div style="height:450px; width: 90% ">
                     <div id="block1" style="height:400px; width: 100% ">
-                        <h3>Receiver name </h3>
+                        <h3> Contacts: </h3>
                         <input type="text" placeholder="Firstname" required="required" jsf:id="firstname"  jsf:value="#{cart.neworder.firstname}"/>
                         <input type="text" placeholder="Lastname" required="required" jsf:id="lastname"  jsf:value="#{cart.neworder.lastname}"/>    
                         <input type="text" placeholder="Phone" required="required" jsf:id="phone" jsf:value="#{cart.neworder.phone}"/> 
                     </div>
                     <div id="block2" style="display: none">
-                        <h3> Shipping</h3>
+                        <h3> Shipping:</h3>
                         <div >
 -->                            <f:metadata>
                                 <f:viewParam name="a-radio"  value="#{cart.neworder.delivery}"/>
@@ -79,7 +79,7 @@
                         <input type="text" placeholder="NP" required="required" maxlength="45" jsf:id="address" jsf:value="#{cart.neworder.adress}"/>   <!--
 -->                    </div>
                     <div id="block3" style="display: none">                        
-                        <h3>Payment method </h3>
+                        <h3>Payment method: </h3>
                         <select jsf:id="payment" required="required" size="0" jsf:value="#{cart.neworder.payment_method}"  style="width:125px">  
                             <f:selectItem itemValue="" itemLabel=""/>
                             <f:selectItem itemValue="Cash money" itemLabel="Cash money"/>
@@ -88,7 +88,7 @@
                         </select >                       
                     </div>
                     <div id="block4" style="display: none;">
-                        <h3> Confirmation</h3>
+                        <h3> Confirmation: </h3>
                         <button jsf:action="#{cart.buyAll()}" class="button-three" >Create order</button>
                     </div>
                 </div>
